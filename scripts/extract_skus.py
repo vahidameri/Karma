@@ -10,6 +10,7 @@ coating are not in the source data and are left for a later layer.
 
 Usage: python3 scripts/extract_skus.py  ->  output/DIN_SKU_list.xlsx
 """
+
 import datetime
 import glob
 import math
@@ -44,6 +45,9 @@ NUMLABEL = re.compile(
 EXTLABEL = re.compile(r"^(?:b|s|b x h)(?:\s+[a-zA-Z]{1,2}\d{1,2})?$")
 SECONDARY = re.compile(r"^d[2-9]\b")
 RANGE = re.compile(r"^\d+(?:[,.]\d+)?\s*-\s*\d+(?:[,.]\d+)?$")
+# Products whose length is fixed by the size (eyebolts, keys, grease nipples):
+# the legend mentions a length but it is not a variant axis.
+FIXED_LENGTH = {"DIN 580", "DIN 6888", "DIN 71412 a"}
 TITLE = re.compile(r"^(DIN)\s*(\d+)\s*([a-z]{0,4})\s*-\s*(.+)$", re.I)
 
 
@@ -125,7 +129,9 @@ class Sheet:
         # thread written over two cells: "M" above "10x1"
         for (r, c), v in list(self.raw.items()):
             below = txt(self.raw.get((r + 1, c)))
-            if txt(v) == "M" and re.match(r"^\d+(?:[,.]\d+)?(?:x\d+(?:[,.]\d+)?)?$", below):
+            if txt(v) == "M" and re.match(
+                r"^\d+(?:[,.]\d+)?(?:x\d+(?:[,.]\d+)?)?$", below
+            ):
                 self.raw[(r, c)] = "M" + below
                 del self.raw[(r + 1, c)]
         # merged ranges: every covered cell points to its range
@@ -149,8 +155,11 @@ class Sheet:
 
     def row_cells(self, r, maxc=None):
         maxc = maxc or self.ncol
-        return [(c, self.raw[(r, c)]) for c in range(1, maxc + 1)
-                if (r, c) in self.raw and (r, c) not in self.info_cells]
+        return [
+            (c, self.raw[(r, c)])
+            for c in range(1, maxc + 1)
+            if (r, c) in self.raw and (r, c) not in self.info_cells
+        ]
 
     def find_meta(self):
         self.title = self.code = self.name = self.form = None
@@ -176,18 +185,26 @@ class Sheet:
                 self.code = "DIN %s" % m.group(1)
                 self.form = m.group(2).lower()
                 self.name = ""
-                self.warnings.append("عنوان استاندارد در شیت نیست؛ کد از نام شیت گرفته شد")
+                self.warnings.append(
+                    "عنوان استاندارد در شیت نیست؛ کد از نام شیت گرفته شد"
+                )
         # legend lines ("l - length of bolt") live in the info column
         self.info_cells = set()
         for (r, c), v in self.raw.items():
             t = txt(v)
             if c >= self.info_col and re.match(r"^\S+(\s\S+)?\s+-\s+\D", t):
                 self.legend.append(t)
-            if (TITLE.match(t) and " - " in t) or t.startswith(("Current norm", "Equivalent norms")) \
-                    or (c >= self.info_col and re.match(r"^\S+(\s\S+)?\s+-\s+\D", t)) \
-                    or "dimensions in mm" in t or t.startswith("Table according"):
+            if (
+                (TITLE.match(t) and " - " in t)
+                or t.startswith(("Current norm", "Equivalent norms"))
+                or (c >= self.info_col and re.match(r"^\S+(\s\S+)?\s+-\s+\D", t))
+                or "dimensions in mm" in t
+                or t.startswith("Table according")
+            ):
                 self.info_cells.add((r, c))
-        self.has_length_attr = any(re.match(r"^[lL]\d?\s+-\s+.*length", x) for x in self.legend)
+        self.has_length_attr = any(
+            re.match(r"^[lL]\d?\s+-\s+.*length", x) for x in self.legend
+        )
 
     # ---------- size axis detection ----------
     def h_headers(self):
@@ -205,8 +222,11 @@ class Sheet:
         """Column with the most thread-type tokens stacked vertically."""
         best = (0, None)
         for c in range(1, self.ncol + 1):
-            n = sum(1 for r in range(1, self.nrow + 1)
-                    if (r, c) in self.raw and MTOK.match(txt(self.raw[(r, c)])))
+            n = sum(
+                1
+                for r in range(1, self.nrow + 1)
+                if (r, c) in self.raw and MTOK.match(txt(self.raw[(r, c)]))
+            )
             if n > best[0]:
                 best = (n, c)
         return best
@@ -226,7 +246,9 @@ class Sheet:
             if label is not None and lab != label:
                 continue
             rest = cells[1:]
-            first_num = next((i for i, (c, v) in enumerate(rest) if to_num(v) is not None), None)
+            first_num = next(
+                (i for i, (c, v) in enumerate(rest) if to_num(v) is not None), None
+            )
             if first_num is None:
                 continue
             nums = [(c, v) for c, v in rest[first_num:] if to_num(v) is not None]
@@ -243,7 +265,10 @@ class Sheet:
                 continue
             for c, v in cells:
                 if to_num(v) is None and labels.match(txt(v).rstrip(":*")):
-                    below = [self.raw.get((rr, c)) for rr in range(r + 1, min(r + 6, self.nrow + 1))]
+                    below = [
+                        self.raw.get((rr, c))
+                        for rr in range(r + 1, min(r + 6, self.nrow + 1))
+                    ]
                     if sum(is_size_num(x) for x in below) >= 2:
                         return r, c
                     break
@@ -253,7 +278,11 @@ class Sheet:
         """Plain numeric size row above a secondary thread row. Only rows that are
         unlabelled or labelled like a nominal size (d, d1, ...) qualify."""
         for r in range(hr - 1, max(hr - 4, 0), -1):
-            nums = [(c, self.raw.get((r, c))) for c in cols if to_num(self.raw.get((r, c))) is not None]
+            nums = [
+                (c, self.raw.get((r, c)))
+                for c in cols
+                if to_num(self.raw.get((r, c))) is not None
+            ]
             if len(nums) < max(2, len(cols) - 1):
                 continue
             labs = [(c, v) for c, v in self.row_cells(r) if c < cols[0]]
@@ -265,21 +294,36 @@ class Sheet:
 
     def numeric_column_left(self, vcol):
         """Numeric 'd'/'d1' column left of a thread column (ring bore, knob size)."""
-        first = next((r for r in range(1, self.nrow + 1)
-                      if (r, vcol) in self.raw and MTOK.match(txt(self.raw[(r, vcol)]))), None)
+        first = next(
+            (
+                r
+                for r in range(1, self.nrow + 1)
+                if (r, vcol) in self.raw and MTOK.match(txt(self.raw[(r, vcol)]))
+            ),
+            None,
+        )
         if not first:
             return None
         # washers are sold by the bolt they fit ("For thread" M8), keep that axis
-        if any("for thread" in txt(self.raw.get((r, vcol))).lower() for r in range(max(first - 3, 1), first)):
+        if any(
+            "for thread" in txt(self.raw.get((r, vcol))).lower()
+            for r in range(max(first - 3, 1), first)
+        ):
             return None
         for hdr in range(first - 1, max(first - 4, 0), -1):
             for c in range(1, vcol):
                 h = txt(self.raw.get((hdr, c)))
                 if re.match(r"^d1?(\s|$)", h):
-                    below = [self.raw.get((r, c)) for r in range(first, min(first + 5, self.nrow + 1))]
+                    below = [
+                        self.raw.get((r, c))
+                        for r in range(first, min(first + 5, self.nrow + 1))
+                    ]
                     rng = self.merge_of.get((hdr, c))
                     if rng and rng[3] > c:
-                        below += [self.raw.get((r, c + 1)) for r in range(first, min(first + 5, self.nrow + 1))]
+                        below += [
+                            self.raw.get((r, c + 1))
+                            for r in range(first, min(first + 5, self.nrow + 1))
+                        ]
                     if sum(to_num(x) is not None for x in below) >= 3:
                         return hdr, c
         return None
@@ -352,8 +396,10 @@ class Sheet:
             if notes:
                 self.warnings.append("اصلاح اعشار گم‌شده در سایز: " + ", ".join(notes))
                 it = iter(fixed)
-                headers = [(hr, lc, [(c, math.copysign(next(it), to_num(v))) for c, v in toks])
-                           for hr, lc, toks in headers]
+                headers = [
+                    (hr, lc, [(c, math.copysign(next(it), to_num(v))) for c, v in toks])
+                    for hr, lc, toks in headers
+                ]
 
         # stacked header rows (coarse / fine / extra-fine thread) share one column
         groups = []
@@ -367,13 +413,18 @@ class Sheet:
             base = max(group, key=lambda h: len(h[2]))
             spans = [[a, b, []] for _, a, b in self.spans(base[0], base[2])]
             for hr, labc, toks in group:
-                nonstd_block = any("nonstandard" in txt(v).lower() for _, v in self.row_cells(hr))
+                nonstd_block = any(
+                    "nonstandard" in txt(v).lower() for _, v in self.row_cells(hr)
+                )
                 own = self.spans(hr, toks)
                 pitches = self.pitch_row(group[-1][0], own) if hr == base[0] else {}
                 for tok, a, b in own:
                     s_, npf = norm_size(tok)
                     if s_ not in sizes:
-                        sizes[s_] = {"nonpref": npf or nonstd_block, "pitch": pitches.get(s_, "")}
+                        sizes[s_] = {
+                            "nonpref": npf or nonstd_block,
+                            "pitch": pitches.get(s_, ""),
+                        }
                     elif pitches.get(s_) and not sizes[s_]["pitch"]:
                         sizes[s_]["pitch"] = pitches[s_]
                     home = next((sp for sp in spans if sp[0] <= a <= sp[1]), None)
@@ -392,7 +443,9 @@ class Sheet:
                 L = to_num(v0)
                 if L is None or c0 >= first_size_col or L == 0:
                     continue
-                Lnonpref = (isinstance(v0, (int, float)) and v0 < 0) or txt(v0).startswith("(")
+                Lnonpref = (isinstance(v0, (int, float)) and v0 < 0) or txt(
+                    v0
+                ).startswith("(")
                 L = abs(L)
                 if L not in [x[0] for x in group_lengths]:
                     group_lengths.append((L, Lnonpref))
@@ -416,7 +469,9 @@ class Sheet:
                             # offered (matches ISO 4762 / 4017 minimum lengths)
                             if d and L < 1.5 * d:
                                 continue
-                        group_combos.append((s_, L, Lnonpref, "explicit" if explicit else "ambiguous"))
+                        group_combos.append(
+                            (s_, L, Lnonpref, "explicit" if explicit else "ambiguous")
+                        )
             # a real length table has several rows; a stray number is not one
             if len(group_lengths) >= 3:
                 combos.extend(group_combos)
@@ -465,7 +520,11 @@ class Sheet:
             if ok:
                 rows.append((r, v))
         if method == "V-num":
-            nums = [(i, abs(to_num(v))) for i, (r, v) in enumerate(rows) if v is not None and to_num(v) is not None]
+            nums = [
+                (i, abs(to_num(v)))
+                for i, (r, v) in enumerate(rows)
+                if v is not None and to_num(v) is not None
+            ]
             fixed, notes = fix_scale([x for _, x in nums])
             if notes:
                 self.warnings.append("اصلاح اعشار گم‌شده در سایز: " + ", ".join(notes))
@@ -489,7 +548,10 @@ class Sheet:
                 cur = s
                 if s not in sizes:
                     pitch = to_num(self.val(r, pcol)) if pcol else None
-                    sizes[s] = {"nonpref": npf, "pitch": fmt_num(pitch) if pitch else ""}
+                    sizes[s] = {
+                        "nonpref": npf,
+                        "pitch": fmt_num(pitch) if pitch else "",
+                    }
             if lcol and cur:
                 L = to_num(self.val(r, lcol))
                 if L:
@@ -539,13 +601,22 @@ def main():
                 continue
             method, sizes, combos, lengths = sh.extract()
             std_key = sh.code + (" " + sh.form if sh.form else "")
+            if std_key in FIXED_LENGTH:
+                sh.has_length_attr = False
             if std_key in seen_std:
                 sh.warnings.append("تکراری؛ قبلاً در Part %s آمده" % seen_std[std_key])
             seen_std.setdefault(std_key, part)
 
-            base = dict(standard=std_key, base_standard=sh.code, form=sh.form or "",
-                        name_en=sh.name or "", current_norm=sh.current_norm,
-                        equivalents=sh.equivalents, priority="Part %s" % part, sheet=ws.title)
+            base = dict(
+                standard=std_key,
+                base_standard=sh.code,
+                form=sh.form or "",
+                name_en=sh.name or "",
+                current_norm=sh.current_norm,
+                equivalents=sh.equivalents,
+                priority="Part %s" % part,
+                sheet=ws.title,
+            )
             explicit = [c for c in combos if c[3] == "explicit"]
             ambiguous = [c for c in combos if c[3] == "ambiguous"]
 
@@ -568,15 +639,32 @@ def main():
 
             seen = set()
             for target, group in ((skus, explicit), (review, ambiguous)):
-                for s, L, Lnp, conf in sorted(group, key=lambda c: (list(sizes).index(c[0]) if c[0] in sizes else 0, c[1])):
+                for s, L, Lnp, conf in sorted(
+                    group,
+                    key=lambda c: (
+                        list(sizes).index(c[0]) if c[0] in sizes else 0,
+                        c[1],
+                    ),
+                ):
                     code = sku_code(sh.code, sh.form, s, L)
                     if code in seen:
                         continue
                     seen.add(code)
-                    target.append(dict(base, sku=code, size=s, length=L,
-                                       pitch=sizes.get(s, {}).get("pitch", ""),
-                                       nonpref="بله" if (sizes.get(s, {}).get("nonpref") or Lnp) else "",
-                                       basis=basis_of(conf)))
+                    target.append(
+                        dict(
+                            base,
+                            sku=code,
+                            size=s,
+                            length=L,
+                            pitch=sizes.get(s, {}).get("pitch", ""),
+                            nonpref=(
+                                "بله"
+                                if (sizes.get(s, {}).get("nonpref") or Lnp)
+                                else ""
+                            ),
+                            basis=basis_of(conf),
+                        )
+                    )
             # a product without a length axis is complete at size level; for
             # products that need a length, sizes without a length from the source
             # stay on the parent only (listed in the Parents sheet)
@@ -591,25 +679,52 @@ def main():
                 if code in seen:
                     continue
                 seen.add(code)
-                skus.append(dict(base, sku=code, size=s, length=None, pitch=meta["pitch"],
-                                 nonpref="بله" if meta["nonpref"] else "",
-                                 basis="سایز؛ این محصول طول ندارد"))
+                skus.append(
+                    dict(
+                        base,
+                        sku=code,
+                        size=s,
+                        length=None,
+                        pitch=meta["pitch"],
+                        nonpref="بله" if meta["nonpref"] else "",
+                        basis="سایز؛ این محصول طول ندارد",
+                    )
+                )
 
             if not sizes:
                 sh.warnings.append("هیچ سایزی شناسایی نشد؛ بررسی دستی لازم است")
-            n_children = sum(1 for x in skus if x["standard"] == std_key and x["priority"] == base["priority"])
-            standards.append(dict(
-                base, method=method, n_sizes=len(sizes),
-                parent_code=sku_code(sh.code, sh.form, "").rstrip("-"),
-                role="والد + فرزند" if n_children else "فقط والد",
-                parent_only=", ".join(parent_only_sizes),
-                sizes=", ".join(sizes.keys()),
-                n_sku=sum(1 for x in skus if x["standard"] == std_key and x["priority"] == base["priority"]),
-                n_review=sum(1 for x in review if x["standard"] == std_key and x["priority"] == base["priority"]),
-                status=status,
-                confidence=confidence(method, sh.warnings, status),
-                lengths=", ".join(fmt_num(l) for l, _ in sorted(lengths)),
-                warnings=" | ".join(sh.warnings)))
+            n_children = sum(
+                1
+                for x in skus
+                if x["standard"] == std_key and x["priority"] == base["priority"]
+            )
+            standards.append(
+                dict(
+                    base,
+                    method=method,
+                    n_sizes=len(sizes),
+                    parent_code=sku_code(sh.code, sh.form, "").rstrip("-"),
+                    role="والد + فرزند" if n_children else "فقط والد",
+                    parent_only=", ".join(parent_only_sizes),
+                    sizes=", ".join(sizes.keys()),
+                    n_sku=sum(
+                        1
+                        for x in skus
+                        if x["standard"] == std_key
+                        and x["priority"] == base["priority"]
+                    ),
+                    n_review=sum(
+                        1
+                        for x in review
+                        if x["standard"] == std_key
+                        and x["priority"] == base["priority"]
+                    ),
+                    status=status,
+                    confidence=confidence(method, sh.warnings, status),
+                    lengths=", ".join(fmt_num(l) for l, _ in sorted(lengths)),
+                    warnings=" | ".join(sh.warnings),
+                )
+            )
     conf = {(x["standard"], x["priority"]): x["confidence"] for x in standards}
     for row in skus + review:
         row["parent_code"] = sku_code(row["base_standard"], row["form"], "").rstrip("-")
@@ -633,24 +748,53 @@ def write(skus, review, standards):
         for i, c in enumerate(cols, 1):
             cell = ws.cell(row=1, column=i)
             cell.font, cell.fill = hdr_font, hdr_fill
-            cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+            cell.alignment = Alignment(
+                horizontal="center", vertical="center", wrap_text=True
+            )
             ws.column_dimensions[get_column_letter(i)].width = c[2]
         ws.freeze_panes = "B2"
         ws.auto_filter.ref = ws.dimensions
         return ws
 
-    sku_cols = [("sku", "SKU Code", 24), ("parent_code", "Parent code", 14), ("title", "SKU title", 26), ("standard", "Standard", 14), ("base_standard", "Base DIN", 11),
-                ("form", "Form", 7), ("name_en", "Product name (EN)", 42), ("size", "Size (d)", 10),
-                ("length", "Length L (mm)", 11), ("pitch", "Pitch P", 9), ("nonpref", "غیرترجیحی", 10),
-                ("basis", "مبنا", 34), ("confidence", "اطمینان استخراج", 12), ("current_norm", "Current norm", 22),
-                ("equivalents", "Equivalent norms", 40), ("priority", "Priority file", 11), ("sheet", "Source sheet", 12)]
-    std_cols = [("parent_code", "Parent code", 14), ("standard", "Standard", 14), ("name_en", "Product name (EN)", 42),
-                ("priority", "Priority file", 11), ("role", "نقش", 12),
-                ("n_sizes", "# sizes", 8), ("n_sku", "# SKU فرزند", 9), ("n_review", "# برای بازبینی", 10),
-                ("status", "وضعیت طول", 34), ("confidence", "اطمینان استخراج", 12), ("sizes", "Sizes", 50),
-                ("parent_only", "سایزهای بدون طول (فقط در والد)", 40), ("lengths", "Lengths in source", 40),
-                ("method", "Layout", 8), ("current_norm", "Current norm", 22),
-                ("equivalents", "Equivalent norms", 40), ("sheet", "Source sheet", 12), ("warnings", "هشدارها", 50)]
+    sku_cols = [
+        ("sku", "SKU Code", 24),
+        ("parent_code", "Parent code", 14),
+        ("title", "SKU title", 26),
+        ("standard", "Standard", 14),
+        ("base_standard", "Base DIN", 11),
+        ("form", "Form", 7),
+        ("name_en", "Product name (EN)", 42),
+        ("size", "Size (d)", 10),
+        ("length", "Length L (mm)", 11),
+        ("pitch", "Pitch P", 9),
+        ("nonpref", "غیرترجیحی", 10),
+        ("basis", "مبنا", 34),
+        ("confidence", "اطمینان استخراج", 12),
+        ("current_norm", "Current norm", 22),
+        ("equivalents", "Equivalent norms", 40),
+        ("priority", "Priority file", 11),
+        ("sheet", "Source sheet", 12),
+    ]
+    std_cols = [
+        ("parent_code", "Parent code", 14),
+        ("standard", "Standard", 14),
+        ("name_en", "Product name (EN)", 42),
+        ("priority", "Priority file", 11),
+        ("role", "نقش", 12),
+        ("n_sizes", "# sizes", 8),
+        ("n_sku", "# SKU فرزند", 9),
+        ("n_review", "# برای بازبینی", 10),
+        ("status", "وضعیت طول", 34),
+        ("confidence", "اطمینان استخراج", 12),
+        ("sizes", "Sizes", 50),
+        ("parent_only", "سایزهای بدون طول (فقط در والد)", 40),
+        ("lengths", "Lengths in source", 40),
+        ("method", "Layout", 8),
+        ("current_norm", "Current norm", 22),
+        ("equivalents", "Equivalent norms", 40),
+        ("sheet", "Source sheet", 12),
+        ("warnings", "هشدارها", 50),
+    ]
     wb.remove(wb.active)
     guide = wb.create_sheet("راهنما")
     guide.sheet_view.rightToLeft = True
@@ -659,11 +803,26 @@ def write(skus, review, standards):
     lines = [
         ("محصولات DIN — والد و SKU فرزند", ""),
         ("", ""),
-        ("مبنا", "فقط داده‌های DIN موجود در data/raw. از هیچ منبع بیرونی استفاده نشده است."),
-        ("والد (Parent)", "هر استاندارد (و فرم آن) یک محصول والد است، مثل DIN933 یا DIN125A. برگه Parents."),
-        ("فرزند (SKU)", "استاندارد × سایز [× طول]، فقط وقتی داده‌ی DIN برای ساختن آن کامل باشد. برگه SKUs. جنس، کلاس و پوشش هنوز اضافه نشده‌اند."),
-        ("فقط والد", "وقتی طول جزو مشخصات محصول است ولی DIN نگفته کدام طول برای کدام قطر مجاز است (مثل DIN 931 و DIN 933)، فرزندی ساخته نمی‌شود و محصول فقط به‌صورت والد می‌ماند. سایزهای موجودش در ستون «سایزهای بدون طول» آمده."),
-        ("فرمت کد", "DIN912-M8X20 = DIN 912، رزوه M8، طول 20 میلی‌متر | DIN125A-M8 = DIN 125 فرم A برای پیچ M8"),
+        (
+            "مبنا",
+            "فقط داده‌های DIN موجود در data/raw. از هیچ منبع بیرونی استفاده نشده است.",
+        ),
+        (
+            "والد (Parent)",
+            "هر استاندارد (و فرم آن) یک محصول والد است، مثل DIN933 یا DIN125A. برگه Parents.",
+        ),
+        (
+            "فرزند (SKU)",
+            "استاندارد × سایز [× طول]، فقط وقتی داده‌ی DIN برای ساختن آن کامل باشد. برگه SKUs. جنس، کلاس و پوشش هنوز اضافه نشده‌اند.",
+        ),
+        (
+            "فقط والد",
+            "وقتی طول جزو مشخصات محصول است ولی DIN نگفته کدام طول برای کدام قطر مجاز است (مثل DIN 931 و DIN 933)، فرزندی ساخته نمی‌شود و محصول فقط به‌صورت والد می‌ماند. سایزهای موجودش در ستون «سایزهای بدون طول» آمده.",
+        ),
+        (
+            "فرمت کد",
+            "DIN912-M8X20 = DIN 912، رزوه M8، طول 20 میلی‌متر | DIN125A-M8 = DIN 125 فرم A برای پیچ M8",
+        ),
         ("", ""),
         ("تعداد والد", len(standards)),
         ("   ├ والد با فرزند", len(standards) - n_parent_only),
@@ -673,9 +832,18 @@ def write(skus, review, standards):
         ("   └ فقط سایز (محصول بدون طول)", len(skus) - n_len),
         ("ترکیب‌های مبهم (برگه Review)", len(review)),
         ("", ""),
-        ("برگه Review", "ترکیب‌هایی که جدول DIN درباره‌شان صریح نیست (سلول «full thread» که روی چند قطر ادغام شده). SKU حساب نشده‌اند."),
-        ("اطمینان استخراج", "بالا: جدول استاندارد و بدون هشدار | متوسط: سایزها عدد خالی بودند و از برچسب تشخیص داده شدند | پایین: هشدار دارد (ستون هشدارها)."),
-        ("غیرترجیحی", "سایزهای داخل پرانتز در استاندارد، مثل (M14) — مجاز ولی کم‌مصرف."),
+        (
+            "برگه Review",
+            "ترکیب‌هایی که جدول DIN درباره‌شان صریح نیست (سلول «full thread» که روی چند قطر ادغام شده). SKU حساب نشده‌اند.",
+        ),
+        (
+            "اطمینان استخراج",
+            "بالا: جدول استاندارد و بدون هشدار | متوسط: سایزها عدد خالی بودند و از برچسب تشخیص داده شدند | پایین: هشدار دارد (ستون هشدارها).",
+        ),
+        (
+            "غیرترجیحی",
+            "سایزهای داخل پرانتز در استاندارد، مثل (M14) — مجاز ولی کم‌مصرف.",
+        ),
         ("بازتولید", "python3 scripts/extract_skus.py  (ورودی: data/raw/*.xlsx)"),
     ]
     for a, b in lines:
