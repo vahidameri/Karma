@@ -1,0 +1,38 @@
+din,iso,gb,mechtool_page,relation,note
+DIN 94,ISO 1234,GB/T 91,cotterpin,identical,
+DIN 97,,GB/T 100,slottedcountersunkheadwoodscrews,identical,slotted countersunk wood screw
+DIN 95,,GB/T 101,slottedraisedcountersunkheadwoodscrews,identical,slotted raised countersunk wood screw
+DIN 96,,GB/T 99,woodscrew,identical,slotted round head wood screw
+DIN 7995,,GB/T 952,crossrecessedhalfcountersunkheadwoodscrews,identical,cross recessed raised countersunk wood screw
+DIN 7996,,GB/T 950,crossgrooveroundheadwoodscrew,identical,cross recessed round head wood screw
+DIN 7997,,GB/T 951,crossrecessedcountersunkheadwoodscrews,identical,cross recessed countersunk wood screw
+DIN 931,ISO 4014,GB/T 5782,hexagonheadedboltgbt5782,identical,
+DIN 933,ISO 4017,GB/T 5783,hexagonalheadboltwithfullthread,identical,
+DIN 558,ISO 4018,GB/T 5781,hexagonalheadboltfullthreadc-grade,identical,
+DIN 912,ISO 4762,GB/T 70.1,hexagonsocketcheeseheadscrews,identical,used to confirm ambiguous lengths and add weights
+DIN 1443,ISO 2340,GB/T 880,headlesspin,identical,form A without split-pin holes
+DIN 1,ISO 2339,GB/T 117,taperpin,identical,
+DIN 7,ISO 2338,GB/T 119.1,cylindricalpin,identical,
+DIN 7977,ISO 8737,GB/T 881,taperpinwiththreadedend,identical,
+DIN 7978,ISO 8736,GB/T 118,internalthreadtaperpin,identical,
+DIN 7979,ISO 8733,GB/T 120.1,internalthreadcylindricalpin,identical,
+DIN 835,,GB/T 900,doubleheadedboltbm=2d,identical,stud bm = 2d
+DIN 976,,GB/T 15389,threadedrod,close,full-thread stud / threaded rod
+DIN 7504 o,ISO 15483,GB/T 15856.3,crossgroovesemicountersunkselfdrillingselftappingscrew,identical,
+DIN 7504 otx,ISO 15483,GB/T 15856.3,crossgroovesemicountersunkselfdrillingselftappingscrew,close,TORX drive instead of cross recess
+DIN 7504 nsq,ISO 15481,GB/T 15856.1,crossgroovepanheadselfdrillingselftappingscrew,close,square drive instead of cross recess
+DIN 7504 ntx,ISO 15481,GB/T 15856.1,crossgroovepanheadselfdrillingselftappingscrew,close,TORX drive instead of cross recess
+DIN 7504 psq,ISO 15482,GB/T 15856.2,crossgroovecountersunkselfdrillingselftappingscrew,close,square drive instead of cross recess
+DIN 7504 ptx,ISO 15482,GB/T 15856.2,crossgroovecountersunkselfdrillingselftappingscrew,close,TORX drive instead of cross recess
+DIN 7984 tx,ISO 14580,GB/T 2671.1,hexagonalflowershapedlowcylindricalheadscrew,identical,
+DIN 7985 tx,ISO 14583,GB/T 2672,hexalobularsocketpanheadscrews,identical,
+DIN 7985 pz,ISO 7045,GB/T 818,crossrecessedpanheadscrews,close,DIN 7985 raised cheese head vs ISO 7045 pan head
+DIN 965 tx,ISO 14581,GB/T 2673,hexagonsocketcheeseheadcountersunkscrews,close,GB/T 2673 covers M6 and up only
+DIN 7991 tx,ISO 14581,GB/T 2673,hexagonsocketcheeseheadcountersunkscrews,close,DIN 7991 head geometry differs from ISO 14581
+DIN 7981 ctx,ISO 14585,GB/T 2670.1,hexagonalflowershapedpanheadselftappingscrew,identical,
+DIN 7983 tx,ISO 14587,GB/T 2670.3,hexagonalflowershapedsemicountersunkselftappingscrew,identical,
+DIN 7500 c,,GB/T 6560,crossgroovepanheadselftappinglockingscrew,close,raised cheese head vs pan head
+DIN 7500 e,,GB/T 6563,hexagonheadthreadformingscrews,identical,
+DIN 7500 m,,GB/T 6561,crossgroovecountersunkselftappinglockingscrew,identical,
+DIN 933 sz,,GB/T 29.1,hexagonalheadslottedboltsaandb,close,slotted hexagon head bolt
+DIN 787,,GB/T 37,t-groovebolt,close,T-slot bolt

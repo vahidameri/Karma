@@ -10,7 +10,9 @@ coating are not in the source data and are left for a later layer.
 
 Usage: python3 scripts/extract_skus.py  ->  output/DIN_SKU_list.xlsx
 """
+import csv
 import datetime
+import json
 import glob
 import math
 import os
@@ -524,7 +526,22 @@ def confidence(method, warnings, status):
     return "بالا"
 
 
+def load_gb_map():
+    """DIN -> GB/T equivalent with its mechtool.cn length x weight matrix."""
+    path = os.path.join(ROOT, "data", "din_to_gb.csv")
+    out = {}
+    if not os.path.exists(path):
+        return out
+    for m in csv.DictReader(open(path, encoding="utf-8")):
+        js = os.path.join(ROOT, "data", "external", "mechtool", m["mechtool_page"] + ".json")
+        if os.path.exists(js):
+            m["data"] = json.load(open(js, encoding="utf-8"))
+            out[m["din"]] = m
+    return out
+
+
 def main():
+    gb_map = load_gb_map()
     files = sorted(glob.glob(os.path.join(RAW, "*.xlsx")))
     skus, review, standards = [], [], []
     seen_std = {}
@@ -548,9 +565,48 @@ def main():
                         equivalents=sh.equivalents, priority="Part %s" % part, sheet=ws.title)
             explicit = [c for c in combos if c[3] == "explicit"]
             ambiguous = [c for c in combos if c[3] == "ambiguous"]
+
+            # GB/T equivalent (mechtool.cn): confirms ambiguous lengths, fills
+            # missing ones and gives the weight per 1000 pieces
+            gb = gb_map.get(std_key)
+            mass = gb["data"]["mass"] if gb else {}
+
+            def gb_key(sz):
+                return next((k for k in (sz, "ST" + sz) if k in mass), None)
+
+            def weight(sz, L):
+                k = gb_key(sz)
+                return mass[k].get(fmt_num(L)) if k else None
+
+            gb_filled = False
+            if gb:
+                if gb["relation"] == "identical":
+                    ok = [c for c in ambiguous if weight(c[0], c[1]) is not None]
+                    ambiguous = [c for c in ambiguous if c not in ok]
+                    explicit += [(a, b, c, "gb-confirmed") for a, b, c, _ in ok]
+                if not combos:
+                    for sz in sizes:
+                        k = gb_key(sz)
+                        for L in (mass.get(k, {}) if k else {}):
+                            c = (sz, float(L), False, "gb" if gb["relation"] == "identical" else "gb-close")
+                            (explicit if c[3] == "gb" else ambiguous).append(c)
+                            gb_filled = True
             sizes_with_len = {c[0] for c in explicit}
 
-            if combos:
+            def basis_of(conf):
+                if conf == "explicit":
+                    return "جدول قطر×طول منبع"
+                if conf == "gb-confirmed":
+                    return "جدول منبع (مبهم) + تأیید با %s" % gb["gb"]
+                if conf == "gb":
+                    return "طول از %s (معادل %s)" % (gb["gb"], gb["iso"] or "یکسان")
+                if conf == "gb-close":
+                    return "طول از %s — معادل نزدیک، نه یکسان: %s" % (gb["gb"], gb["note"])
+                return "سلول ادغام‌شده («full thread») که روی چند قطر کشیده شده؛ مجاز بودن این ترکیب قطعی نیست"
+
+            if gb_filled:
+                status = "قطر × طول از %s" % gb["gb"]
+            elif combos:
                 status = "قطر × طول از جدول منبع"
             elif lengths:
                 status = "طول‌ها در منبع هست ولی تطبیق قطر-طول نیست"
@@ -561,24 +617,18 @@ def main():
                 status = "فقط سایز (بدون طول)"
 
             seen = set()
-            for s, L, Lnp, conf in explicit:
-                code = sku_code(sh.code, sh.form, s, L)
-                if code in seen:
-                    continue
-                seen.add(code)
-                skus.append(dict(base, sku=code, size=s, length=L,
-                                 pitch=sizes.get(s, {}).get("pitch", ""),
-                                 nonpref="بله" if (sizes.get(s, {}).get("nonpref") or Lnp) else "",
-                                 basis="جدول قطر×طول منبع"))
-            for s, L, Lnp, conf in ambiguous:
-                code = sku_code(sh.code, sh.form, s, L)
-                if code in seen:
-                    continue
-                seen.add(code)
-                review.append(dict(base, sku=code, size=s, length=L,
-                                   pitch=sizes.get(s, {}).get("pitch", ""),
-                                   nonpref="بله" if (sizes.get(s, {}).get("nonpref") or Lnp) else "",
-                                   basis="سلول ادغام‌شده («full thread») که روی چند قطر کشیده شده؛ مجاز بودن این ترکیب قطعی نیست"))
+            for target, group in ((skus, explicit), (review, ambiguous)):
+                for s, L, Lnp, conf in sorted(group, key=lambda c: (list(sizes).index(c[0]) if c[0] in sizes else 0, c[1])):
+                    code = sku_code(sh.code, sh.form, s, L)
+                    if code in seen:
+                        continue
+                    seen.add(code)
+                    w = weight(s, L)
+                    target.append(dict(base, sku=code, size=s, length=L,
+                                       pitch=sizes.get(s, {}).get("pitch", ""),
+                                       nonpref="بله" if (sizes.get(s, {}).get("nonpref") or Lnp) else "",
+                                       basis=basis_of(conf), weight=w,
+                                       source=gb["data"]["url"] if gb and (conf.startswith("gb") or w is not None) else ""))
             # sizes that never got an explicit length become size-level SKUs
             for s, meta in sizes.items():
                 if s in sizes_with_len:
@@ -640,7 +690,8 @@ def write(skus, review, standards):
     sku_cols = [("sku", "SKU Code", 24), ("title", "SKU title", 26), ("standard", "Standard", 14), ("base_standard", "Base DIN", 11),
                 ("form", "Form", 7), ("name_en", "Product name (EN)", 42), ("size", "Size (d)", 10),
                 ("length", "Length L (mm)", 11), ("pitch", "Pitch P", 9), ("nonpref", "غیرترجیحی", 10),
-                ("basis", "مبنا", 34), ("confidence", "اطمینان استخراج", 12), ("current_norm", "Current norm", 22),
+                ("basis", "مبنا", 34), ("weight", "وزن kg/1000 عدد (فولاد)", 12),
+                ("confidence", "اطمینان استخراج", 12), ("source", "منبع طول/وزن", 30), ("current_norm", "Current norm", 22),
                 ("equivalents", "Equivalent norms", 40), ("priority", "Priority file", 11), ("sheet", "Source sheet", 12)]
     std_cols = [("standard", "Standard", 14), ("name_en", "Product name (EN)", 42), ("priority", "Priority file", 11),
                 ("n_sizes", "# sizes", 8), ("n_sku", "# SKU", 8), ("n_review", "# برای بازبینی", 10),
@@ -669,6 +720,9 @@ def write(skus, review, standards):
         ("", ""),
         ("ستون «مبنا»", ""),
         ("  جدول قطر×طول منبع", "ترکیب قطر و طول صریحاً در جدول منبع آمده است."),
+        ("  طول از GB/T …", "منبع اکسل نگفته بود کدام طول برای کدام قطر مجاز است؛ طول‌ها از استاندارد چینی معادل (همان ISO) در mechtool.cn آمده. جدول تطبیق: data/din_to_gb.csv"),
+        ("  … + تأیید با GB/T", "ترکیب مبهم در جدول منبع که استاندارد معادل آن را تأیید کرد."),
+        ("  معادل نزدیک، نه یکسان", "استاندارد چینی شبیه است ولی یکسان نیست (مثلاً آچارخور TORX به‌جای چهارسو) — این‌ها در برگه Review هستند."),
         ("  سایز؛ این محصول طول ندارد", "مهره، واشر، خار و … — SKU فقط با سایز کامل است."),
         ("  سایز؛ طول باید تعیین شود", "طول جزو مشخصات محصول است ولی منبع نگفته کدام طول برای کدام قطر مجاز است (مثل DIN 931 و DIN 933). طول‌ها باید از لیست فروش/انبار اضافه شوند."),
         ("", ""),
@@ -677,6 +731,8 @@ def write(skus, review, standards):
         ("  متوسط", "سایزها عدد خالی بودند (پین، خار، واشر خاص) و از روی برچسب ستون/ردیف تشخیص داده شدند."),
         ("  پایین", "هشدار دارد (کلید ترکیبی، اصلاح عدد خراب، جدول طول بدون نگاشت). ستون هشدارها در برگه Standards را ببینید."),
         ("", ""),
+        ("وزن kg/1000 عدد", "وزن ۱۰۰۰ عدد از جنس فولاد، از جدول وزن استاندارد معادل GB (هر جا موجود بود)."),
+        ("اعتبارسنجی منبع GB", "ISO 4014 (DIN 931) و ISO 4017 (DIN 933) با متن رسمی ISO و DIN 912 با جدول خود اکسل مقایسه شد؛ محدوده‌ها منطبق بودند."),
         ("غیرترجیحی", "سایزهای داخل پرانتز در استاندارد، مثل (M14) — مجاز ولی کم‌مصرف."),
         ("بازتولید", "python3 scripts/extract_skus.py  (ورودی: data/raw/*.xlsx)"),
     ]

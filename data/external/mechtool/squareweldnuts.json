@@ -1,0 +1,32 @@
+{
+ "title": "焊接方螺母(GB/T 13680—1992)",
+ "gb": "GB/T13680",
+ "url": "https://www.mechtool.cn/stdboltsandnuts/stdboltsandnuts_squareweldnuts.html",
+ "mass": {},
+ "range": {
+  "M4": [
+   0.3,
+   0.5
+  ],
+  "M5": [
+   0.3,
+   0.5
+  ],
+  "M6": [
+   0.3,
+   0.5
+  ],
+  "M8": [
+   0.5,
+   1.0
+  ],
+  "M10": [
+   0.5,
+   1.0
+  ],
+  "M12": [
+   0.5,
+   1.0
+  ]
+ }
+}

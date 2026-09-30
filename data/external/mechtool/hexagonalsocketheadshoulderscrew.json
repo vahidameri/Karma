@@ -1,0 +1,36 @@
+{
+ "title": "内六角圆柱头轴肩螺钉(GB/T 5281—1985)",
+ "gb": "GB/T5281",
+ "url": "https://www.mechtool.cn/stdboltsandnuts/stdboltsandnuts_hexagonalsocketheadshoulderscrew.html",
+ "mass": {},
+ "range": {
+  "M5": [
+   10.0,
+   40.0
+  ],
+  "M6": [
+   12.0,
+   50.0
+  ],
+  "M8": [
+   16.0,
+   120.0
+  ],
+  "M10": [
+   16.0,
+   120.0
+  ],
+  "M12": [
+   30.0,
+   120.0
+  ],
+  "M16": [
+   40.0,
+   120.0
+  ],
+  "M20": [
+   50.0,
+   120.0
+  ]
+ }
+}
