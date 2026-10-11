@@ -1,7 +1,7 @@
 """Schematic technical drawings for the ASTM fastener workbook.
 
 Drawings are proportional schematics (not to a specific size) labelled with the
-dimension symbols used in the dimension tables (ASME B18.2.x conventions).
+dimension symbols used in the dimension tables.
 """
 import math
 import os
@@ -96,7 +96,7 @@ def save(fig, path):
 # ---------------------------------------------------------------------------
 
 def dwg_heavy_hex_bolt(path):
-    fig, ax = new("DWG-01  Heavy Hex Structural Bolt — ASTM F3125 (A325 / A490)  ·  dims: ASME B18.2.6")
+    fig, ax = new("DWG-01  Heavy Hex Structural Bolt — ASTM F3125 (A325 / A490)")
     D, H, L, LT, F = 1.0, 0.62, 5.0, 1.9, 1.625
     G = F * 2 / math.sqrt(3)
     hex_side(ax, -H, H, G / 2, F / 2 * 0.5)
@@ -119,12 +119,12 @@ def dwg_heavy_hex_bolt(path):
     ax.text(cx, cy + r + 0.25, "Top view — grade mark + manufacturer ID\n(Type 3 weathering: grade mark underlined)", ha="center", fontsize=8, color=INK)
     ax.text(L - LT / 2, D / 2 + 0.15, "UNC 2A", ha="center", fontsize=8, color=THREAD)
     ax.set_xlim(-5, L + 1.6); ax.set_ylim(-2.3, 2.6)
-    footer(fig, "Schematic, not to scale. F = 1.5D + 1/8 in · heavy hex · washer face optional · threads per ASME B1.1 UNC class 2A (galvanized: overtapped nut)")
+    footer(fig, "Schematic, not to scale. F = 1.5D + 1/8 in · heavy hex · washer face optional · threads UNC class 2A (galvanized: overtapped nut)")
     save(fig, path)
 
 
 def dwg_hex_bolt(path):
-    fig, ax = new("DWG-02  Hex Bolt / Hex Cap Screw — ASTM A307, A449, A354, A394  ·  dims: ASME B18.2.1")
+    fig, ax = new("DWG-02  Hex Bolt / Hex Cap Screw — ASTM A307, A449, A354, A394")
     D, H, L, F = 0.8, 0.55, 5.4, 1.2
     G = F * 2 / math.sqrt(3)
     LT = 2 * D + 0.4
@@ -150,7 +150,7 @@ def dwg_hex_bolt(path):
 
 
 def dwg_nuts(path):
-    fig, ax = new("DWG-03  Hex & Heavy Hex Nuts — ASTM A563, A194, F594, F467  ·  dims: ASME B18.2.2")
+    fig, ax = new("DWG-03  Hex & Heavy Hex Nuts — ASTM A563, A194, F594, F467")
     for i, (F, T, name, mark) in enumerate([(1.5, 0.86, "Hex nut", "A"), (1.625, 0.98, "Heavy hex nut", "DH")]):
         ox = i * 5.0
         G = F * 2 / math.sqrt(3)
@@ -221,7 +221,7 @@ def dwg_stud(path):
     dim(ax, (L, -D / 2), (L, D / 2), 0.4, "D", vertical=True)
     ax.text(L / 2, -1.3, "B7: 8-UN thread series for D ≥ 1\"  ·  end marking 'B7' on one end (≥ 3/8\")", ha="center", fontsize=9, color=INK)
     ax.set_xlim(-0.8, L + 1.4); ax.set_ylim(-1.8, 2.2)
-    footer(fig, "Pressure / flange bolting (ASME B16.5 flanges). Heavy hex nuts per ASME B18.2.2. Coatings: plain/black oxide, PTFE, HDG (A153/F2329), zinc-nickel.")
+    footer(fig, "Pressure / flange bolting. Heavy hex nuts A194 2H. Coatings: plain/black oxide, PTFE, HDG (A153/F2329), zinc-nickel.")
     save(fig, path)
 
 
@@ -313,7 +313,7 @@ def dwg_dti(path):
 
 
 def dwg_shcs(path):
-    fig, ax = new("DWG-09  Socket Head Cap Screw — ASTM A574  ·  dims: ASME B18.3", 10, 5)
+    fig, ax = new("DWG-09  Socket Head Cap Screw — ASTM A574", 10, 5)
     A, H, D, L, J = 1.5, 1.0, 1.0, 4.5, 0.6
     ax.add_patch(Rectangle((-H, -A / 2), H, A, fc=FILL, ec=INK, lw=1.4))
     ax.add_patch(Rectangle((-H, -J / 2 * 1.15), H * 0.55, J * 1.15, fc="white", ec=INK, lw=0.8, ls="--"))
@@ -368,7 +368,7 @@ def dwg_markings(path):
 
 
 def dwg_joint(path):
-    fig, ax = new("DWG-11  Structural Bolted Joint Assembly — bolt + F436 washer + heavy hex nut (RCSC)", 11, 6)
+    fig, ax = new("DWG-11  Structural Bolted Joint Assembly — bolt + F436 washer + heavy hex nut (ASTM)", 11, 6)
     D, Hh = 0.75, 0.47
     plate_w = 3.0
     ax.add_patch(Rectangle((-plate_w / 2, 0), plate_w, 0.75, fc="#bdc3c7", ec=INK, hatch="//", lw=1.2))
@@ -383,16 +383,16 @@ def dwg_joint(path):
         ax.plot([-D / 2 - 0.05, D / 2 + 0.05], [y, y + 0.07], color=THREAD, lw=0.6); y += 0.13
     dim(ax, (0.9, -0.75), (0.9, 0.75), 1.0, "Grip (material thickness)", vertical=True, fs=9)
     ax.text(-0.0, 0.75 + Hh + 0.15, "bolt head (turn the nut, not the head)", ha="center", fontsize=8)
-    ax.text(-1.0, -0.82, "F436 washer\n(under turned element)", ha="right", va="center", fontsize=8)
-    ax.text(-1.0, -1.3, "A563 DH heavy hex nut", ha="right", va="center", fontsize=8)
+    ax.text(-1.4, -0.82, "F436 washer\n(under turned element)", ha="right", va="center", fontsize=8)
+    ax.text(-1.4, -1.3, "A563 DH heavy hex nut", ha="right", va="center", fontsize=8)
     ax.text(-0.0, -1.85, "stick-out ≥ flush with nut face", ha="center", fontsize=8)
-    tx = 3.6
-    rows = ["Joint types (RCSC 2020):", "• Snug-tight (ST)", "• Pretensioned (PT)", "• Slip-critical (SC) — Class A / B faying surfaces", "",
-            "Pretension methods:", "• Turn-of-nut  (1/3, 1/2, 2/3 turn by L/D)", "• Calibrated wrench", "• Twist-off TC bolt (F1852/F2280)",
-            "• DTI (F959)", "", "Thread condition in shear plane:", "• N = threads iNcluded", "• X = threads eXcluded"]
+    tx = 5.0
+    rows = ["Assembly components (ASTM):", "• Bolt: F3125 Gr A325 / A490", "• Nut: A563 DH / A194 2H", "• Washer: F436 Type 1 / Type 3",
+            "• Tension indicator (optional): F959", "", "Twist-off alternative:", "• F3125 Gr F1852 / F2280 assembly", "",
+            "Coatings:", "• F2329 hot-dip / B695 mechanical zinc", "• F1136 Gr 3 / F2833 Gr 1 (A490 only)"]
     for i, t in enumerate(rows):
         ax.text(tx, 1.3 - i * 0.24, t, fontsize=9, fontweight="bold" if t.endswith(":") else "normal", color=INK)
-    ax.set_xlim(-3.2, 8.6); ax.set_ylim(-2.2, 1.6)
+    ax.set_xlim(-3.6, 9.8); ax.set_ylim(-2.2, 1.6)
     footer(fig, "Schematic. Select length so that threads stick out of nut and nut does not bottom on thread run-out (L = grip + table allowance).")
     save(fig, path)
 
