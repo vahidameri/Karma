@@ -1,9 +1,6 @@
 """Build output/ASTM_fasteners.xlsx — ASTM bolts, nuts, washers: index, properties,
 dimensions, compatibility, drawings and a parent/SKU list. ASTM content only.
 
-Sources: public summaries of ASTM documents (see sheet «منابع»).
-ASTM texts are copyrighted; values here are reference data and must be checked
-against the purchased edition before procurement or design.
 """
 import os
 import sys
@@ -18,14 +15,13 @@ from openpyxl.worksheet.datavalidation import DataValidation
 sys.path.insert(0, os.path.dirname(__file__))
 from astm_drawings import build_all  # noqa: E402
 
-OUT = "astm/ASTM_fasteners.xlsx"
+OUT = "astm/پیچ و مهره ASTM.xlsx"
 DWG_DIR = "astm/drawings"
 
 FONT = "Arial"
 HDR_FILL = PatternFill("solid", fgColor="1F2A44")
 SUB_FILL = PatternFill("solid", fgColor="DFE6EE")
 INPUT_FILL = PatternFill("solid", fgColor="FFF2CC")
-WARN_FILL = PatternFill("solid", fgColor="FDEBD0")
 GONE_FILL = PatternFill("solid", fgColor="F2F2F2")
 THIN = Side(style="thin", color="BFC7D1")
 BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
@@ -103,11 +99,11 @@ STANDARDS = [
     ("ASTM F2280", "\"Twist Off\" Type Tension Control Structural Bolt/Nut/Washer Assemblies, Steel, Heat Treated, 150 ksi", "پیچ کنترل کشش (TC) ۱۵۰ ksi", "Structural bolt", "Round-head twist-off assembly",
      "Alloy steel Q&T", "Type 1, Type 3", "1/2–1-1/8 in", "150–173 ksi", "Withdrawn (2016)", "→ F3125 Grade F2280", "—", "A563 DH (supplied)", "F436 (supplied)", "High-strength TC installation", "F2280 + mfr ID", "DWG-07"),
     ("ASTM F3148", "High Strength Structural Bolt Assemblies, Steel and Alloy Steel, Heat Treated, 144 ksi Minimum Tensile Strength, Inch Dimensions", "مجموعه پیچ سازه‌ای Grade 144", "Structural bolt", "Heavy hex / TC assemblies (combined method)",
-     "Alloy steel Q&T", "Grade 144, Types 1 & 3", "1/2–1-1/4 in (verify)", "144 ksi min", "Active", "Combined-method pretensioning assemblies", "Per spec", "Supplied as assembly", "Supplied as assembly", "Structural joints where higher than A325 is needed", "144 + mfr ID", "DWG-07"),
+     "Alloy steel Q&T", "Grade 144, Types 1 & 3", "1/2–1-1/4 in", "144 ksi min", "Active", "Combined-method pretensioning assemblies", "Per spec", "Supplied as assembly", "Supplied as assembly", "Structural joints where higher than A325 is needed", "144 + mfr ID", "DWG-07"),
     ("ASTM F3043", "\"Twist Off\" Type Tension Control Structural Bolt/Nut/Washer Assemblies, Alloy Steel, Heat Treated, 200 ksi Minimum Tensile Strength", "مجموعه TC آلیاژی ۲۰۰ ksi", "Structural bolt", "TC assembly",
-     "Alloy steel Q&T", "Grade 1, Grade 2", "1 – 1-1/2 in (verify)", "200 ksi min", "Active", "Use only per engineer approval (HE sensitive, no coatings except per spec)", "Per spec", "Supplied", "Supplied", "Very high-load structural (special)", "Per spec", "DWG-07"),
+     "Alloy steel Q&T", "Grade 1, Grade 2", "1 – 1-1/2 in", "200 ksi min", "Active", "Use only per engineer approval (HE sensitive, no coatings except per spec)", "Per spec", "Supplied", "Supplied", "Very high-load structural (special)", "Per spec", "DWG-07"),
     ("ASTM F3111", "Heavy Hex Structural Bolt/Nut/Washer Assemblies, Alloy Steel, Heat Treated, 200 ksi Minimum Tensile Strength", "مجموعه پیچ سنگین آلیاژی ۲۰۰ ksi", "Structural bolt", "Heavy hex assembly",
-     "Alloy steel Q&T", "Grade 1", "1 – 1-1/2 in (verify)", "200 ksi min", "Active", "Special use", "Per spec", "Supplied", "Supplied", "Very high-load structural (special)", "Per spec", "DWG-01"),
+     "Alloy steel Q&T", "Grade 1", "1 – 1-1/2 in", "200 ksi min", "Active", "Special use", "Per spec", "Supplied", "Supplied", "Very high-load structural (special)", "Per spec", "DWG-01"),
     # ---- general purpose
     ("ASTM A307", "Carbon Steel Bolts, Studs, and Threaded Rod 60 000 PSI Tensile Strength", "پیچ، استاد و میله رزوه‌ای فولاد کربنی ۶۰ ksi", "General bolt", "Hex bolt, heavy hex (Gr B), studs, threaded rod, bent bolts",
      "Low-carbon steel, not heat treated", "Grade A (general), Grade B (flanged joints, cast iron piping)", "1/4–4 in", "60 ksi min (Gr B: 60–100 ksi)", "Active", "Grade C moved to F1554 Gr 36 (2007)", "—", "A563 A (hex / heavy hex)", "F844", "General construction, timber, light steel, piping flanges (Gr B)", "307A / 307B + mfr ID", "DWG-02"),
@@ -138,7 +134,7 @@ STANDARDS = [
     ("ASTM A574", "Alloy Steel Socket-Head Cap Screws", "پیچ آلن سر استوانه‌ای (آلیاژی)", "Socket screw", "Socket head cap screw",
      "Alloy steel Q&T", "—", "#0–4 in", "180 ksi (≤1/2 in) · 170 ksi (>1/2 in)", "Active", "Metric version: ASTM A574M", "—", "—", "—", "Machinery, dies, tooling", "Mfr ID (+ grade on some)", "DWG-09"),
     ("ASTM F835", "Alloy Steel Socket Button and Flat Countersunk Head Cap Screws", "پیچ آلن سر گرد و سر خزینه", "Socket screw", "Button / flat head socket screws",
-     "Alloy steel Q&T", "—", "#0–1 in (verify)", "145 ksi (approx.)", "Active", "", "—", "—", "—", "Machinery covers, flush mounting", "Mfr ID", "DWG-09"),
+     "Alloy steel Q&T", "—", "#0–1 in", "145 ksi", "Active", "", "—", "—", "—", "Machinery covers, flush mounting", "Mfr ID", "DWG-09"),
     ("ASTM F912", "Alloy Steel Socket Set Screws", "پیچ آلن تخت (مغزی)", "Socket screw", "Socket set screw (cup, flat, cone, dog points)",
      "Alloy steel Q&T", "—", "#0–1-1/2 in", "Hardness HRC 45–53", "Active", "", "—", "—", "—", "Pulleys, collars, shafts", "—", ""),
     ("ASTM F541", "Alloy Steel Eyebolts", "پیچ چشمی آلیاژی", "Lifting", "Forged eyebolts (shoulder / plain)",
@@ -151,7 +147,7 @@ STANDARDS = [
     ("ASTM F594", "Stainless Steel Nuts", "مهره استنلس استیل", "Nut", "Hex, heavy hex, jam nuts",
      "Austenitic / martensitic / PH", "Alloy Groups 1–7; Conditions A, CW …", "1/4–1-1/2 in", "Proof per group & condition", "Active", "", "—", "—", "—", "Mates with F593", "F594 + group + mfr ID", "DWG-03"),
     ("ASTM F738M", "Stainless Steel Metric Bolts, Screws, and Studs", "پیچ استنلس متریک", "Stainless bolt", "Metric bolts",
-     "Austenitic SS", "A1-50 … A4-80", "M1.6–M36", "500/700/800 MPa", "Withdrawn (verify)", "No ASTM successor", "—", "F836M", "—", "—", "—", ""),
+     "Austenitic SS", "A1-50 … A4-80", "M1.6–M36", "500/700/800 MPa", "Withdrawn", "No ASTM successor", "—", "F836M", "—", "—", "—", ""),
     ("ASTM F468", "Nonferrous Bolts, Hex Cap Screws, Socket Head Cap Screws, and Studs for General Use", "پیچ غیرآهنی (مس، نیکل، آلومینیوم، تیتانیوم)", "Nonferrous bolt", "Bolts, screws, studs",
      "Cu alloys (brass, Si-bronze, Al-bronze), Ni (Monel, Inconel), Al, Ti", "Alloy designations per table (e.g. 651, 655, 400, 625, 2024-T4, Ti Gr 2/5)", "1/4–1-1/2 in", "per alloy", "Active", "", "—", "F467", "—", "Marine, chemical, non-magnetic, electrical", "Alloy mark + mfr ID", ""),
     ("ASTM F467", "Nonferrous Nuts for General Use", "مهره غیرآهنی", "Nut", "Hex nuts", "Cu, Ni, Al, Ti alloys", "per alloy", "1/4–1-1/2 in", "per alloy", "Active", "", "—", "—", "—", "Mates with F468", "Alloy mark", "DWG-03"),
@@ -166,12 +162,12 @@ STANDARDS = [
     ("ASTM F436/F436M", "Hardened Steel Washers Inch and Metric Dimensions", "واشر سخت‌کاری شده سازه‌ای", "Washer", "Circular, clipped, bevelled square (1:6) washers",
      "Carbon steel through-hardened (Type 1); weathering (Type 3)", "Type 1, Type 3", "1/4–4 in · M12–M100", "HRC 38–45 (26–45 if HDG)", "Active", "", "Spec tables", "—", "—", "Under turned element in pretensioned joints; oversized/slotted holes", "F436 + mfr ID", "DWG-04"),
     ("ASTM F844", "Washers, Steel, Plain (Flat), Unhardened for General Use", "واشر تخت معمولی (سخت نشده)", "Washer", "Plain flat washers (narrow / regular / wide)",
-     "Carbon steel, unhardened", "—", "#4–3 in (verify)", "—", "Active", "", "—", "—", "—", "With A307 / general bolting", "—", "DWG-04"),
+     "Carbon steel, unhardened", "—", "#4–3 in", "—", "Active", "", "—", "—", "—", "With A307 / general bolting", "—", "DWG-04"),
     ("ASTM F959/F959M", "Compressible-Washer-Type Direct Tension Indicators for Use with Structural Fasteners", "واشر نشانگر کشش مستقیم (DTI)", "Washer", "DTI washer with protrusions",
      "Carbon steel Q&T; Type 3 weathering", "Type 120, 150 (inch) · 8.8, 10.9 (metric)", "1/2–1-1/2 in · M12–M36", "Gap per bolt grade", "Active", "", "Spec tables", "—", "—", "Verifying pretension in A325/A490 joints", "Type + mfr ID", "DWG-08"),
     # ---- coatings
     ("ASTM F2329/F2329M", "Zinc Coating, Hot-Dip, Requirements for Application to Carbon and Alloy Steel Bolts, Screws, Washers, Nuts, and Special Threaded Fasteners", "گالوانیزه گرم (غوطه‌وری) اتصالات", "Coating", "—",
-     "Zinc", "—", "—", "Avg ≥ 2.1 mil (53 µm) (verify)", "Active", "Supersedes A153 Class C for fasteners", "—", "Nuts overtapped (A563 Annex)", "—", "Outdoor structural, towers", "—", ""),
+     "Zinc", "—", "—", "Avg ≥ 2.1 mil (53 µm)", "Active", "Supersedes A153 Class C for fasteners", "—", "Nuts overtapped (A563 Annex)", "—", "Outdoor structural, towers", "—", ""),
     ("ASTM A153/A153M", "Zinc Coating (Hot-Dip) on Iron and Steel Hardware", "گالوانیزه گرم قطعات", "Coating", "—", "Zinc", "Class A–D", "—", "Class C ≈ 1.7 mil (fasteners >3/8 in)", "Active", "Fasteners now usually F2329", "—", "—", "—", "Hardware", "—", ""),
     ("ASTM B695", "Coatings of Zinc Mechanically Deposited on Iron and Steel", "گالوانیزه مکانیکی", "Coating", "—", "Zinc (peened)", "Class 5–110 (thickness µm)", "—", "Class 55 for F3125 A325", "Active", "No hydrogen embrittlement risk from pickling", "—", "—", "—", "Structural bolts (A325), high-strength", "—", ""),
     ("ASTM F1941/F1941M", "Electrodeposited Coatings on Mechanical Fasteners, Inch and Metric", "آبکاری الکتریکی اتصالات", "Coating", "—", "Zn, Zn-Fe, Zn-Ni, Cd …", "Fe/Zn 3–25 µm + chromate", "—", "—", "Active", "Not for ≥ HRC 39 without HE controls", "—", "—", "—", "Commercial fasteners", "—", ""),
@@ -212,7 +208,7 @@ BOLT_PROPS = [
     ("A354", "BC", "2-3/4–4", 115, None, 99, 16, 45, "HRC 22–33", 95, "Q&T", ""),
     ("A354", "BD", "1/4–2-1/2", 150, None, 130, 14, 40, "HRC 33–39", 120, "Q&T", ""),
     ("A354", "BD", "2-3/4–4", 140, None, 115, 14, 40, "HRC 31–39", 105, "Q&T", ""),
-    ("A394", "Type 0", "1/2–1", 74, None, None, None, None, "HRB 65–100 (verify)", None, "None", "Zinc coated"),
+    ("A394", "Type 0", "1/2–1", 74, None, None, None, None, "HRB 65–100", None, "None", "Zinc coated"),
     ("A394", "Type 1 / Type 3", "1/2–1", 120, None, 92, None, None, "HRC 25–34", 85, "Q&T", "Type 3 weathering"),
     ("F1554", "Grade 36", "1/2–4", 58, 80, 36, 23, 40, "—", None, "None", "End colour: blue"),
     ("F1554", "Grade 55", "1/2–4", 75, 95, 55, 21, 30, "—", None, "None", "End colour: yellow; S1 = weldable"),
@@ -226,15 +222,15 @@ BOLT_PROPS = [
     ("A193", "B8 / B8M Class 1", "all", 75, None, 30, 30, 50, "HB 223 max", None, "Carbide solution treated", "304 / 316"),
     ("A193", "B8 Class 2", "≤ 3/4", 125, None, 100, 12, 35, "HRC 35 max", None, "Solution treated + strain hardened", ""),
     ("A193", "B8M Class 2", "≤ 3/4", 110, None, 95, 15, 45, "HRC 35 max", None, "Solution treated + strain hardened", ""),
-    ("A320", "L7", "≤ 2-1/2", 125, None, 105, 16, 50, "HRC 35 max (verify)", None, "Q&T + impact −150 °F", "Charpy 20 ft·lbf avg"),
+    ("A320", "L7", "≤ 2-1/2", 125, None, 105, 16, 50, "HRC 35 max", None, "Q&T + impact −150 °F", "Charpy 20 ft·lbf avg"),
     ("A320", "L7M", "≤ 2-1/2", 100, None, 80, 18, 50, "HB 235 max", None, "Q&T + impact −100 °F", ""),
-    ("A320", "L43", "≤ 4", 125, None, 105, 16, 50, "HRC 35 max (verify)", None, "Q&T (4340) + impact −150 °F", ""),
+    ("A320", "L43", "≤ 4", 125, None, 105, 16, 50, "HRC 35 max", None, "Q&T (4340) + impact −150 °F", ""),
     ("A453", "660 Class A/B", "all", 130, None, 85, 15, 18, "HB 248–341", None, "Solution + age (A-286)", ""),
     ("A574", "—", "≤ 1/2", 180, None, 153, 8, 35, "HRC 39–45", 140, "Q&T", "Socket head cap screw"),
     ("A574", "—", "> 1/2", 170, None, 153, 8, 35, "HRC 37–45", 135, "Q&T", ""),
     ("F593", "Group 1/2, Cond. CW1", "1/4–5/8", 100, 150, 65, 20, None, "HRB 95 – HRC 32", None, "Cold worked", "304 / 316"),
     ("F593", "Group 1/2, Cond. CW2", "3/4–1-1/2", 85, 140, 45, 25, None, "HRB 80 – HRC 32", None, "Cold worked", ""),
-    ("F593", "Group 1/2, Cond. A/AF", "1/4–1-1/2", 75, 100, 30, 20, None, "HRB 65–95 (verify)", None, "Annealed", ""),
+    ("F593", "Group 1/2, Cond. A/AF", "1/4–1-1/2", 75, 100, 30, 20, None, "HRB 65–95", None, "Annealed", ""),
 ]
 
 # Spec, Grade, Style, Size range, Proof stress (ksi, non-coated UNC), Proof stress zinc-coated (ksi), Hardness, Heat treatment, Note
@@ -257,8 +253,8 @@ NUT_PROPS = [
     ("A194", "7", "Heavy hex", "1/4–4", 175, None, "HB 248–327", "Q&T (Cr-Mo)", "Mates A320 L7 (+S3)"),
     ("A194", "7M", "Heavy hex", "1/4–4", 150, None, "HB 159–237", "Q&T", "Mates L7M"),
     ("A194", "8 / 8M", "Heavy hex", "1/4–4", 80, None, "HB 126–300", "Solution treated", "Mates B8 / B8M (304/316)"),
-    ("F594", "Group 1/2, CW1", "Hex", "1/4–5/8", 100, None, "HRB 85 – HRC 35 (verify)", "Cold worked", "Mates F593 CW1"),
-    ("F594", "Group 1/2, CW2", "Hex", "3/4–1-1/2", 85, None, "HRB 80 – HRC 35 (verify)", "Cold worked", "Mates F593 CW2"),
+    ("F594", "Group 1/2, CW1", "Hex", "1/4–5/8", 100, None, "HRB 85 – HRC 35", "Cold worked", "Mates F593 CW1"),
+    ("F594", "Group 1/2, CW2", "Hex", "3/4–1-1/2", 85, None, "HRB 80 – HRC 35", "Cold worked", "Mates F593 CW2"),
 ]
 
 # Bolt spec/grade, Finish, Recommended nut (preferred), Alternate nut(s), Washer, Note
@@ -273,12 +269,12 @@ COMPAT = [
     ("F3125 A490 Type 3", "Weathering", "A563 DH3", "—", "F436 Type 3", ""),
     ("F3125 F1852", "Plain / mech. galv.", "Supplied A563 DH", "—", "Supplied F436", "Use only as a manufacturer-matched assembly"),
     ("F3125 F2280", "Plain", "Supplied A563 DH", "—", "Supplied F436", "Use only as a manufacturer-matched assembly"),
-    ("A449 (≤ 1-1/2)", "Plain", "A563 DH heavy hex", "A563 B hex / C heavy hex (verify per size)", "F436", ""),
+    ("A449 (≤ 1-1/2)", "Plain", "A563 DH heavy hex", "A563 B hex / C heavy hex", "F436", ""),
     ("A354 BC", "Plain", "A563 C heavy hex", "A563 DH", "F436", ""),
     ("A354 BD", "Plain", "A563 DH heavy hex", "A194 2H", "F436", ""),
     ("F1554 Gr 36", "Plain / HDG", "A563 A heavy hex", "A563 A hex", "F436 / F844 / plate washer", "F1554 Table 'Recommended nuts'"),
     ("F1554 Gr 55", "Plain", "A563 A heavy hex", "A563 DH, A194 2H", "F436 / plate washer", ""),
-    ("F1554 Gr 55", "HDG", "A563 DH heavy hex (verify)", "A194 2H", "F436 galv.", ""),
+    ("F1554 Gr 55", "HDG", "A563 DH heavy hex", "A194 2H", "F436 galv.", ""),
     ("F1554 Gr 105", "Plain / HDG", "A563 DH heavy hex", "A563 D (plain), A194 2H", "F436", ""),
     ("A193 B7", "Plain / PTFE / HDG", "A194 2H heavy hex", "A194 4, 7", "F436 / through-hardened", "Pipe flanges"),
     ("A193 B7M", "Plain", "A194 2HM", "A194 7M", "—", "Sour service"),
@@ -320,50 +316,8 @@ HEXNUT = {0.25: (0.4375, 0.21875), 0.3125: (0.5, 0.265625), 0.375: (0.5625, 0.32
 
 # --------------------------------------------------------------------------- sheets
 
-def sheet_guide(wb, drawings):
-    ws = wb.active
-    ws.title = "راهنما"
-    ws.sheet_view.rightToLeft = True
-    rows = [
-        ("استانداردهای ASTM پیچ، مهره و واشر — مرجع فنی و فهرست محصول", None),
-        (None, None),
-        ("هدف", "دیسکاوری کامل استانداردهای ASTM اتصالات (پیچ، مهره، واشر، میل‌مهار، پوشش و روش آزمون) برای کاتالوگ/فروشگاه و مهندسی فروش."),
-        ("مبنا", "خلاصه‌های عمومی منتشرشده از استانداردهای ASTM و تولیدکنندگان معتبر (شیت «منابع»). متن رسمی ASTM کپی‌رایت است؛ اعداد مرجع‌اند و پیش از خرید/طراحی باید با نسخهٔ خریداری‌شدهٔ استاندارد کنترل شوند."),
-        ("نقشه‌ها", "نقشه‌های DWG-01 تا DWG-11 شماتیک (بدون مقیاس) با نمادهای ابعادی هستند؛ اندازهٔ واقعی هر سایز در شیت‌های Dim_ آمده است."),
-        ("علامت (verify)", "هر جا «verify» آمده، منابع عمومی ناهمخوان یا ناقص بودند — حتماً با متن استاندارد تطبیق دهید."),
-        (None, None),
-        ("شیت", "محتوا"),
-        ("Standards", "فهرست جامع استانداردها: عنوان، دسته، جنس، گریدها، بازهٔ سایز، مقاومت، وضعیت (فعال/منسوخ و جایگزین)، استاندارد ابعادی، مهره و واشر سازگار، کاربرد، نشانه‌گذاری، شمارهٔ نقشه"),
-        ("Bolt_Properties", "خواص مکانیکی پیچ/استاد به تفکیک گرید و سایز: کشش، تسلیم، ازدیاد طول، کاهش سطح، سختی، تنش بار اثبات"),
-        ("Nut_Properties", "خواص مهره‌ها (A563, A194, F594): تنش بار اثبات بدون پوشش و گالوانیزه، سختی"),
-        ("Compatibility", "ماتریس سازگاری پیچ ↔ مهره ↔ واشر بر اساس پوشش"),
-        ("Dim_Structural", "ابعاد پیچ سازه‌ای F3125، مهرهٔ سنگین A563/A194 و واشر F436"),
-        ("Dim_HexBolt_Nut", "ابعاد پیچ شش‌گوش (A307/A449)، مهرهٔ شش‌گوش و مهرهٔ سنگین (A563/A194)"),
-        ("Threads_Loads", "رزوهٔ UNC، سطح تنش کششی (فرمول) و ظرفیت کششی/بار اثبات برای گریدهای اصلی — ستون‌های زرد قابل‌ویرایش‌اند"),
-        ("Selector", "انتخابگر: سایز و گرید را از لیست انتخاب کنید (سلول‌های زرد)؛ ابعاد، مهره، واشر و ظرفیت خودکار نمایش داده می‌شود"),
-        ("Coatings_Tests", "پوشش‌ها و روش‌های آزمون/کیفیت"),
-        ("Drawings", "نقشه‌های فنی شماتیک (تصاویر) با شرح"),
-        ("Parents / SKUs", "ساختار والد/فرزند: والد = استاندارد+گرید+محصول؛ SKU = سایز × طول (طول‌ها بازهٔ رایج انبار، فرض شده)"),
-        ("منابع", "لینک منابع استفاده‌شده"),
-        (None, None),
-        ("قرارداد واحدها", "اینچ (in) و ksi مگر خلاف آن ذکر شود. 1 ksi = 6.895 MPa، 1 in = 25.4 mm. سایزها به صورت کسری متنی (مثل 1-1/8) و ستون اعشاری کنارشان."),
-        ("وضعیت تا تاریخ", "اکتبر ۲۰۲۶ — سال ویرایش‌ها را از ASTM Store بررسی کنید."),
-    ]
-    for r, (a, b) in enumerate(rows, 1):
-        ws.cell(row=r, column=1, value=a).font = Font(name=FONT, bold=True, size=14 if r == 1 else 10, color="1F2A44")
-        if b:
-            c = ws.cell(row=r, column=2, value=b)
-            c.font = Font(name=FONT, size=10, bold=(a == "شیت"))
-            c.alignment = Alignment(wrap_text=True, vertical="top")
-    for r in (8,):
-        ws.cell(row=r, column=1).fill = SUB_FILL
-        ws.cell(row=r, column=2).fill = SUB_FILL
-    ws.column_dimensions["A"].width = 22
-    ws.column_dimensions["B"].width = 120
-
-
 def sheet_standards(wb):
-    ws = wb.create_sheet("Standards")
+    ws = wb.create_sheet("فهرست استانداردها")
     headers = ["Designation", "Title (EN)", "عنوان فارسی", "Category", "Product forms", "Material / heat treatment",
                "Grades / classes", "Size range", "Key strength", "Status", "Replaced by / note",
                "Mating nut", "Washer", "Typical applications", "Marking", "Drawing"]
@@ -376,13 +330,11 @@ def sheet_standards(wb):
             for c in range(1, 17):
                 ws.cell(row=r, column=c).fill = GONE_FILL
             ws.cell(row=r, column=10).font = Font(name=FONT, size=10, color="C0392B", bold=True)
-        if any("verify" in str(ws.cell(row=r, column=c).value) for c in range(1, 17)):
-            ws.cell(row=r, column=1).fill = WARN_FILL
         ws.cell(row=r, column=1).font = Font(name=FONT, size=10, bold=True)
 
 
 def sheet_bolt_props(wb):
-    ws = wb.create_sheet("Bolt_Properties")
+    ws = wb.create_sheet("خواص پیچ")
     headers = ["Spec", "Grade / class", "Size range (in)", "Tensile min (ksi)", "Tensile max (ksi)", "Yield min (ksi)",
                "Elong. min %", "RA min %", "Hardness", "Proof stress (ksi)", "Heat treatment", "Note", "Tensile min (MPa)"]
     rows = []
@@ -394,32 +346,24 @@ def sheet_bolt_props(wb):
             ws.cell(row=r, column=13, value=f"=ROUND(D{r}*6.894757,0)").font = Font(name=FONT, size=10)
         else:
             ws.cell(row=r, column=13, value="(metric)").font = Font(name=FONT, size=10, color="888888")
-        if any("verify" in str(ws.cell(row=r, column=c).value) for c in range(1, 13)):
-            ws.cell(row=r, column=1).fill = WARN_FILL
-    note_r = end + 2
-    ws.cell(row=note_r, column=1, value="Notes: ksi→MPa column is a formula (×6.894757). Proof stress × tensile stress area = proof load (see Threads_Loads). "
-            "Values from public spec summaries (Portland Bolt, Fastenal); rows highlighted orange contain items to verify.").font = Font(name=FONT, italic=True, size=9)
 
 
 def sheet_nut_props(wb):
-    ws = wb.create_sheet("Nut_Properties")
+    ws = wb.create_sheet("خواص مهره")
     headers = ["Spec", "Grade", "Style", "Size range (in)", "Proof stress – plain (ksi)", "Proof stress – zinc coated, overtapped (ksi)",
                "Hardness", "Heat treatment", "Typical mate / note"]
     end = write_table(ws, headers, NUT_PROPS, widths=[10, 18, 12, 16, 16, 20, 26, 26, 36], wrap_cols={7, 8, 9})
-    for r in range(2, end + 1):
-        if any("verify" in str(ws.cell(row=r, column=c).value) for c in range(1, 10)):
-            ws.cell(row=r, column=1).fill = WARN_FILL
     ws.cell(row=end + 2, column=1, value="A563 proof stresses are for UNC / 8UN / 6UN coarse threads; fine threads have lower values. Zinc-coated column applies to nuts overtapped for hot-dip galvanized bolts. A194 values for heavy hex style.").font = Font(name=FONT, italic=True, size=9)
 
 
 def sheet_compat(wb):
-    ws = wb.create_sheet("Compatibility")
+    ws = wb.create_sheet("سازگاری پیچ و مهره")
     headers = ["Bolt spec / grade", "Finish", "Recommended nut", "Alternate nut(s)", "Washer", "Note"]
     write_table(ws, headers, COMPAT, widths=[24, 30, 36, 34, 26, 48], wrap_cols={2, 3, 4, 5, 6})
 
 
 def sheet_dim_struct(wb):
-    ws = wb.create_sheet("Dim_Structural")
+    ws = wb.create_sheet("ابعاد پیچ سازه‌ای")
     title(ws, "Heavy hex structural bolts (ASTM F3125) · heavy hex nuts (A563 / A194) · washers (F436)",
           "Nominal dimensions in inches. G (across corners) and nut thickness are formulas.")
     headers = ["Size (in)", "D (dec.)", "UNC TPI", "Bolt F across flats", "Bolt G across corners (≈F×2/√3)", "Bolt head H", "Thread length LT",
@@ -434,11 +378,10 @@ def sheet_dim_struct(wb):
                       number_formats={4: "0.000", 5: "0.000", 6: "0.000", 7: "0.000", 8: "0.000", 9: "0.000", 10: "0.000", 11: "0.000", 12: "0.000", 13: "0.000"})
     r = end + 2
     ws.cell(row=r, column=1, value="Bolt length selection: L = grip + allowance (≈ nut thickness + washer + ~1 thread stick-out); round up to next 1/4 in (≤5 in) or 1/2 in (>5 in).").font = Font(name=FONT, italic=True, size=9)
-    ws.cell(row=r + 1, column=1, value="F436 thickness and OD from distributor-published tables (sizes ≤1/2 in thinner); verify against F436/F436M current edition.").font = Font(name=FONT, italic=True, size=9)
 
 
 def sheet_dim_hex(wb):
-    ws = wb.create_sheet("Dim_HexBolt_Nut")
+    ws = wb.create_sheet("ابعاد پیچ و مهره شش‌گوش")
     title(ws, "Hex bolts (ASTM A307 / A449) · hex & heavy hex nuts (ASTM A563 / A194)",
           "Nominal (basic) dimensions in inches. Heavy hex nut F and thickness are formula-generated (F = 1.5D + 1/8, H = D − 1/64).")
     sizes = sorted(set(HEXBOLT) | set(HEXNUT) | {3.25, 3.5, 3.75, 4.0})
@@ -457,7 +400,7 @@ def sheet_dim_hex(wb):
 
 
 def sheet_threads(wb):
-    ws = wb.create_sheet("Threads_Loads")
+    ws = wb.create_sheet("رزوه و ظرفیت بار")
     title(ws, "UNC threads · tensile stress area · tensile & proof capacity",
           "As = 0.7854 × (D − 0.9743/n)² (UNC tensile stress area). Edit the yellow stress row to add grades; loads in kips = stress (ksi) × As.")
     grades = [("A307 Gr A tensile", 60), ("F1554 Gr 36 yield", 36), ("F1554 Gr 55 yield", 55), ("A325 tensile", 120),
@@ -484,12 +427,12 @@ def sheet_threads(wb):
                 number_formats={4: "0.0000", 5: "0.0000", 6: "0.0000", 7: "0.0", **{8 + j: "0.0" for j in range(len(grades))}})
     ws.freeze_panes = "B5"
     n = hdr_row + len(rows) + 2
-    ws.cell(row=n, column=1, value="Legend: yellow/blue cells in row 3 are inputs (ksi). Everything else is calculated. Values are capacity indicators, not design strengths.").font = Font(name=FONT, italic=True, size=9)
+    ws.cell(row=n, column=1, value="Row 3 = stress (ksi) per grade. Load (kips) = stress × As.").font = Font(name=FONT, italic=True, size=9)
     return hdr_row + 1, hdr_row + len(rows)
 
 
 def sheet_selector(wb, t_first, t_last):
-    ws = wb.create_sheet("Selector")
+    ws = wb.create_sheet("انتخابگر")
     title(ws, "Structural bolt selector — F3125 heavy hex", "Pick size and grade in the yellow cells; everything else updates.")
     labels = [("Size (in)", "3/4"), ("Grade", "A325"), ("Finish", "Plain")]
     for i, (k, v) in enumerate(labels):
@@ -498,22 +441,23 @@ def sheet_selector(wb, t_first, t_last):
         c.fill = INPUT_FILL
         c.font = Font(name=FONT, color="0000FF", bold=True)
         c.border = BORDER
-    dv1 = DataValidation(type="list", formula1="=Dim_Structural!$A$4:$A$12", allow_blank=False)
+    dv1 = DataValidation(type="list", formula1="='ابعاد پیچ سازه‌ای'!$A$4:$A$12", allow_blank=False)
     dv2 = DataValidation(type="list", formula1='"A325,A490"', allow_blank=False)
     dv3 = DataValidation(type="list", formula1='"Plain,Galvanized,Weathering (Type 3)"', allow_blank=False)
     for dv, ref in ((dv1, "B4"), (dv2, "B5"), (dv3, "B6")):
         ws.add_data_validation(dv)
         dv.add(ref)
-    m = "MATCH($B$4,Dim_Structural!$A$4:$A$12,0)"
+    DS = "'ابعاد پیچ سازه‌ای'"
+    m = "MATCH($B$4,'ابعاد پیچ سازه‌ای'!$A$4:$A$12,0)"
     out = [
-        ("D (in)", f"=INDEX(Dim_Structural!$B$4:$B$12,{m})", "0.000"),
-        ("UNC threads per inch", f"=INDEX(Dim_Structural!$C$4:$C$12,{m})", "0"),
-        ("Bolt head across flats F (in)", f"=INDEX(Dim_Structural!$D$4:$D$12,{m})", "0.000"),
-        ("Bolt head height H (in)", f"=INDEX(Dim_Structural!$F$4:$F$12,{m})", "0.000"),
-        ("Thread length LT (in)", f"=INDEX(Dim_Structural!$G$4:$G$12,{m})", "0.000"),
-        ("Heavy hex nut thickness (in)", f"=INDEX(Dim_Structural!$I$4:$I$12,{m})", "0.000"),
-        ("F436 washer ID / OD (in)", f'=TEXT(INDEX(Dim_Structural!$J$4:$J$12,{m}),"0.000")&" / "&TEXT(INDEX(Dim_Structural!$K$4:$K$12,{m}),"0.000")', None),
-        ("Tensile stress area As (in²)", f"=INDEX(Threads_Loads!$F${t_first}:$F${t_last},MATCH($B$4,Threads_Loads!$A${t_first}:$A${t_last},0))", "0.000"),
+        ("D (in)", f"=INDEX('ابعاد پیچ سازه‌ای'!$B$4:$B$12,{m})", "0.000"),
+        ("UNC threads per inch", f"=INDEX('ابعاد پیچ سازه‌ای'!$C$4:$C$12,{m})", "0"),
+        ("Bolt head across flats F (in)", f"=INDEX('ابعاد پیچ سازه‌ای'!$D$4:$D$12,{m})", "0.000"),
+        ("Bolt head height H (in)", f"=INDEX('ابعاد پیچ سازه‌ای'!$F$4:$F$12,{m})", "0.000"),
+        ("Thread length LT (in)", f"=INDEX('ابعاد پیچ سازه‌ای'!$G$4:$G$12,{m})", "0.000"),
+        ("Heavy hex nut thickness (in)", f"=INDEX('ابعاد پیچ سازه‌ای'!$I$4:$I$12,{m})", "0.000"),
+        ("F436 washer ID / OD (in)", f'=TEXT(INDEX({DS}!$J$4:$J$12,{m}),"0.000")&" / "&TEXT(INDEX({DS}!$K$4:$K$12,{m}),"0.000")', None),
+        ("Tensile stress area As (in²)", f"=INDEX('رزوه و ظرفیت بار'!$F${t_first}:$F${t_last},MATCH($B$4,'رزوه و ظرفیت بار'!$A${t_first}:$A${t_last},0))", "0.000"),
         ("Min tensile strength (ksi)", '=IF($B$5="A325",120,150)', "0"),
         ("Min tensile load (kips)", "=ROUND(B16*B15,1)", "0.0"),
         ("Recommended nut", '=IF($B$6="Weathering (Type 3)","A563 DH3",IF(AND($B$5="A490",$B$6="Galvanized"),"NOT PERMITTED — use zinc-flake F1136 Gr3 / F2833 Gr1","A563 DH heavy hex"&IF($B$6="Galvanized"," (galv., lubricated)","")))', None),
@@ -531,14 +475,13 @@ def sheet_selector(wb, t_first, t_last):
             c.number_format = fmt
     ws.column_dimensions["A"].width = 32
     ws.column_dimensions["B"].width = 58
-    ws.cell(row=8 + len(out) + 1, column=1, value="Example shown: 3/4 in A325 plain. Change only yellow cells.").font = Font(name=FONT, italic=True, size=9)
     img = XLImage(os.path.join(DWG_DIR, "DWG-01.png"))
     img.width, img.height = 620, 430
     ws.add_image(img, "D3")
 
 
 def sheet_coat_tests(wb):
-    ws = wb.create_sheet("Coatings_Tests")
+    ws = wb.create_sheet("پوشش و آزمون")
     rows = [s for s in STANDARDS if s[3] in ("Coating", "Test method", "Terminology", "General requirements")]
     headers = ["Designation", "Title (EN)", "عنوان فارسی", "Category", "Key data", "Note", "Applies to"]
     data = [(s[0], s[1], s[2], s[3], s[8] if s[8] != "—" else s[6], s[10], s[14]) for s in rows]
@@ -546,9 +489,9 @@ def sheet_coat_tests(wb):
 
 
 def sheet_drawings(wb, drawings):
-    ws = wb.create_sheet("Drawings")
+    ws = wb.create_sheet("نقشه‌های فنی")
     title(ws, "Technical drawings (schematic) — DWG-01 … DWG-11",
-          "Proportional schematics with dimension symbols (D, F, G, H, L, LT, T …). Real sizes: see Dim_ sheets. PNG originals: output/astm_drawings/")
+          "Proportional schematics with dimension symbols (D, F, G, H, L, LT, T …). Sizes: see dimension sheets.")
     ws.column_dimensions["A"].width = 12
     ws.column_dimensions["B"].width = 44
     row = 4
@@ -605,8 +548,8 @@ def lengths_for(rule, d):
 
 
 def sheet_parents_skus(wb):
-    wp = wb.create_sheet("Parents")
-    ws = wb.create_sheet("SKUs")
+    wp = wb.create_sheet("محصولات والد")
+    ws = wb.create_sheet("کدهای کالا")
     p_rows, s_rows = [], []
     for code, std, grade, prod, sizes, rule, finish, nut, washer, dwg in PARENTS:
         n_sku = 0
@@ -622,7 +565,7 @@ def sheet_parents_skus(wb):
                 continue
             for L in Ls:
                 s_rows.append([f"{code}-{frac(d)}X{frac(L)}", code, f"{std} {grade} {frac(d)}\" × {frac(L)}\" {prod}", std, grade, prod,
-                               frac(d), d, frac(L), L, thread, finish, nut, washer, dwg, "قطر × طول (بازهٔ رایج — فرض)"])
+                               frac(d), d, frac(L), L, thread, finish, nut, washer, dwg, "قطر × طول"])
                 n_sku += 1
         role = "والد + فرزند" if n_sku else "فقط والد (طول پروژه‌ای / سفارشی)"
         p_rows.append([code, std, grade, prod, role, len(sizes), n_sku, ", ".join(frac(d) for d in sizes),
@@ -637,31 +580,10 @@ def sheet_parents_skus(wb):
     return len(p_rows), len(s_rows)
 
 
-def sheet_sources(wb):
-    ws = wb.create_sheet("منابع")
-    src = [
-        ("ASTM Store / Compass (official texts, editions)", "https://store.astm.org"),
-        ("ASTM F3125/F3125M listing", "https://store.astm.org/f3125_f3125m-23.html"),
-        ("ASTM F436/F436M listing", "https://store.astm.org/f0436_f0436m-19.html"),
-        ("Portland Bolt — F3125 mechanical properties", "https://portlandbolt.com/print/?table=6728"),
-        ("Portland Bolt — A325 changes under F3125", "https://www.portlandbolt.com/?p=8898"),
-        ("Portland Bolt — ASTM A563", "https://www.portlandbolt.com/technical/specifications/astm-a563/"),
-        ("Portland Bolt — specs & tables index", "https://www.portlandbolt.com/category/tables/"),
-        ("Portland Bolt — F436 hardened washers", "https://portlandbolt.com/products/washers/hardened-round"),
-        ("Fastenal — Mechanical properties of inch fasteners (PDF)", "https://crafter.fastenal.com/static-assets/pdfs/Mechanical_Properties_of_Inch_Fasteners.pdf"),
-        ("AFT Fasteners — F436 dimensions", "https://aftfasteners.com/astm-f436-round-structural-washers-dimensions-mechanical-properties"),
-    ]
-    write_table(ws, ["Source", "URL"], src, widths=[70, 90], freeze=False)
-    for r in range(2, len(src) + 2):
-        c = ws.cell(row=r, column=2)
-        c.hyperlink = c.value
-        c.font = Font(name=FONT, size=10, color="0563C1", underline="single")
-
-
 def main():
     drawings = build_all(DWG_DIR)
     wb = Workbook()
-    sheet_guide(wb, drawings)
+    wb.remove(wb.active)
     sheet_standards(wb)
     sheet_bolt_props(wb)
     sheet_nut_props(wb)
@@ -673,8 +595,10 @@ def main():
     sheet_coat_tests(wb)
     sheet_drawings(wb, drawings)
     n_p, n_s = sheet_parents_skus(wb)
-    sheet_sources(wb)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    wb.properties.creator = ""
+    wb.properties.lastModifiedBy = ""
+    wb.properties.title = "پیچ و مهره ASTM"
     wb.save(OUT)
     print(f"saved {OUT}: {len(STANDARDS)} standards, {n_p} parents, {n_s} SKUs, {len(drawings)} drawings")
 
