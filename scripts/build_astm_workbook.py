@@ -1,5 +1,5 @@
 """Build output/ASTM_fasteners.xlsx — ASTM bolts, nuts, washers: index, properties,
-dimensions, compatibility, drawings and a parent/SKU list (mirrors the DIN workbook).
+dimensions, compatibility, drawings and a parent/SKU list. ASTM only (ASME referenced where ASTM specs cite it for dimensions).
 
 Sources: public summaries of ASTM / ASME / RCSC documents (see sheet «منابع»).
 ASTM texts are copyrighted; values here are reference data and must be checked
@@ -111,10 +111,10 @@ STANDARDS = [
     # ---- general purpose
     ("ASTM A307", "Carbon Steel Bolts, Studs, and Threaded Rod 60 000 PSI Tensile Strength", "پیچ، استاد و میله رزوه‌ای فولاد کربنی ۶۰ ksi", "General bolt", "Hex bolt, heavy hex (Gr B), studs, threaded rod, bent bolts",
      "Low-carbon steel, not heat treated", "Grade A (general), Grade B (flanged joints, cast iron piping)", "1/4–4 in", "60 ksi min (Gr B: 60–100 ksi)", "Active", "Grade C moved to F1554 Gr 36 (2007)", "ASME B18.2.1", "A563 A (hex / heavy hex)", "F844", "General construction, timber, light steel, piping flanges (Gr B)", "307A / 307B + mfr ID", "DWG-02"),
-    ("ASTM A449", "Hex Cap Screws, Bolts and Studs, Steel, Heat Treated, 120/105/90 ksi Minimum Tensile Strength, General Use", "پیچ، پیچ کلاهک و استاد عملیات حرارتی شده (مشابه SAE Gr5)", "General bolt", "Hex cap screw, hex bolt, studs, rod",
-     "Medium carbon steel Q&T", "Type 1 (Type 2 withdrawn)", "1/4–3 in", "120 / 105 / 90 ksi by size", "Active", "Inch equivalent of SAE J429 Gr 5 (approx.)", "ASME B18.2.1", "A563 (grade per size)", "F436 / F844", "Machinery, anchor rods (non-structural), general high strength", "3 radial lines (± A449) + mfr ID", "DWG-02"),
+    ("ASTM A449", "Hex Cap Screws, Bolts and Studs, Steel, Heat Treated, 120/105/90 ksi Minimum Tensile Strength, General Use", "پیچ، پیچ کلاهک و استاد عملیات حرارتی شده", "General bolt", "Hex cap screw, hex bolt, studs, rod",
+     "Medium carbon steel Q&T", "Type 1 (Type 2 withdrawn)", "1/4–3 in", "120 / 105 / 90 ksi by size", "Active", "Type 2 withdrawn", "ASME B18.2.1", "A563 (grade per size)", "F436 / F844", "Machinery, anchor rods (non-structural), general high strength", "3 radial lines (± A449) + mfr ID", "DWG-02"),
     ("ASTM A354", "Quenched and Tempered Alloy Steel Bolts, Studs, and Other Externally Threaded Fasteners", "پیچ و استاد فولاد آلیاژی Q&T", "General bolt", "Bolts, studs, rod",
-     "Alloy steel Q&T", "BC, BD (BD ≈ SAE Gr 8)", "1/4–4 in", "BC 125/115 ksi · BD 150/140 ksi", "Active", "BD used for high-strength anchor rods", "ASME B18.2.1", "BC: A563 C/DH · BD: A563 DH, A194 2H", "F436", "Anchor rods, machinery, high-load fasteners", "BC / BD + mfr ID", "DWG-02"),
+     "Alloy steel Q&T", "BC, BD", "1/4–4 in", "BC 125/115 ksi · BD 150/140 ksi", "Active", "BD used for high-strength anchor rods", "ASME B18.2.1", "BC: A563 C/DH · BD: A563 DH, A194 2H", "F436", "Anchor rods, machinery, high-load fasteners", "BC / BD + mfr ID", "DWG-02"),
     ("ASTM A394", "Steel Transmission Tower Bolts, Zinc-Coated and Bare", "پیچ دکل انتقال نیرو", "Tower bolt", "Hex head bolts with hex nuts",
      "Low/medium carbon (Type 0), Q&T (Type 1), weathering (Type 3)", "Type 0, 1, 3", "1/2–1 in", "Type 0: 74 ksi · Type 1/3: 120 ksi", "Active", "", "ASME B18.2.1 (special thread length)", "A563 (per type)", "—", "Lattice transmission towers, substations", "Type mark + mfr ID", "DWG-02"),
     ("ASTM F1554", "Anchor Bolts, Steel, 36, 55, and 105-ksi Yield Strength", "میل مهار (انکر بولت) ۳۶/۵۵/۱۰۵", "Anchor rod", "Headed, bent (L/J), straight threaded rods",
@@ -136,7 +136,7 @@ STANDARDS = [
      "—", "—", "—", "—", "Active", "Umbrella spec for A193, A194, A320, A453 …", "—", "—", "—", "Ordering, testing, marking rules", "—", ""),
     # ---- socket & special
     ("ASTM A574", "Alloy Steel Socket-Head Cap Screws", "پیچ آلن سر استوانه‌ای (آلیاژی)", "Socket screw", "Socket head cap screw",
-     "Alloy steel Q&T", "—", "#0–4 in", "180 ksi (≤1/2 in) · 170 ksi (>1/2 in)", "Active", "Metric equivalent: A574M (ISO 4762 class 12.9 style)", "ASME B18.3", "—", "—", "Machinery, dies, tooling", "Mfr ID (+ grade on some)", "DWG-09"),
+     "Alloy steel Q&T", "—", "#0–4 in", "180 ksi (≤1/2 in) · 170 ksi (>1/2 in)", "Active", "Metric version: ASTM A574M", "ASME B18.3", "—", "—", "Machinery, dies, tooling", "Mfr ID (+ grade on some)", "DWG-09"),
     ("ASTM F835", "Alloy Steel Socket Button and Flat Countersunk Head Cap Screws", "پیچ آلن سر گرد و سر خزینه", "Socket screw", "Button / flat head socket screws",
      "Alloy steel Q&T", "—", "#0–1 in (verify)", "145 ksi (approx.)", "Active", "", "ASME B18.3", "—", "—", "Machinery covers, flush mounting", "Mfr ID", "DWG-09"),
     ("ASTM F912", "Alloy Steel Socket Set Screws", "پیچ آلن تخت (مغزی)", "Socket screw", "Socket set screw (cup, flat, cone, dog points)",
@@ -147,16 +147,16 @@ STANDARDS = [
      "Carbon steel forged", "Type 1, 2", "1/4–2-1/2 in", "per size (WLL)", "Active", "", "ASME B18.15", "—", "—", "Lifting", "Mfr + WLL", ""),
     # ---- stainless & non-ferrous
     ("ASTM F593", "Stainless Steel Bolts, Hex Cap Screws, and Studs", "پیچ و استاد استنلس استیل", "Stainless bolt", "Hex bolts, cap screws, studs, socket screws",
-     "Austenitic (303/304/305/316…), martensitic, PH (630), duplex", "Alloy Groups 1–7; Conditions A, AF, CW, SH, H, AH", "1/4–1-1/2 in", "Gr1/2 CW1: 100–150 ksi · CW2: 85–140 ksi", "Active", "Metric: ISO 3506-1 (F738M withdrawn)", "ASME B18.2.1", "F594 (same group)", "Stainless F844-style", "Corrosive environments, food, marine", "F593 + group/condition letter + mfr ID", "DWG-10"),
+     "Austenitic (303/304/305/316…), martensitic, PH (630), duplex", "Alloy Groups 1–7; Conditions A, AF, CW, SH, H, AH", "1/4–1-1/2 in", "Gr1/2 CW1: 100–150 ksi · CW2: 85–140 ksi", "Active", "Metric ASTM F738M withdrawn", "ASME B18.2.1", "F594 (same group)", "Stainless F844-style", "Corrosive environments, food, marine", "F593 + group/condition letter + mfr ID", "DWG-10"),
     ("ASTM F594", "Stainless Steel Nuts", "مهره استنلس استیل", "Nut", "Hex, heavy hex, jam nuts",
      "Austenitic / martensitic / PH", "Alloy Groups 1–7; Conditions A, CW …", "1/4–1-1/2 in", "Proof per group & condition", "Active", "", "ASME B18.2.2", "—", "—", "Mates with F593", "F594 + group + mfr ID", "DWG-03"),
     ("ASTM F738M", "Stainless Steel Metric Bolts, Screws, and Studs", "پیچ استنلس متریک", "Stainless bolt", "Metric bolts",
-     "Austenitic SS", "A1-50 … A4-80", "M1.6–M36", "500/700/800 MPa", "Withdrawn (verify)", "→ ISO 3506-1", "ASME B18.2.3.xM", "F836M / ISO 3506-2", "—", "—", "—", ""),
+     "Austenitic SS", "A1-50 … A4-80", "M1.6–M36", "500/700/800 MPa", "Withdrawn (verify)", "No ASTM successor", "ASME B18.2.3.xM", "F836M", "—", "—", "—", ""),
     ("ASTM F468", "Nonferrous Bolts, Hex Cap Screws, Socket Head Cap Screws, and Studs for General Use", "پیچ غیرآهنی (مس، نیکل، آلومینیوم، تیتانیوم)", "Nonferrous bolt", "Bolts, screws, studs",
      "Cu alloys (brass, Si-bronze, Al-bronze), Ni (Monel, Inconel), Al, Ti", "Alloy designations per table (e.g. 651, 655, 400, 625, 2024-T4, Ti Gr 2/5)", "1/4–1-1/2 in", "per alloy", "Active", "", "ASME B18.2.1 / B18.3", "F467", "—", "Marine, chemical, non-magnetic, electrical", "Alloy mark + mfr ID", ""),
     ("ASTM F467", "Nonferrous Nuts for General Use", "مهره غیرآهنی", "Nut", "Hex nuts", "Cu, Ni, Al, Ti alloys", "per alloy", "1/4–1-1/2 in", "per alloy", "Active", "", "ASME B18.2.2", "—", "—", "Mates with F468", "Alloy mark", "DWG-03"),
     ("ASTM F568M", "Carbon and Alloy Steel Externally Threaded Metric Fasteners", "پیچ متریک فولادی (کلاس 4.6 تا 12.9)", "General bolt", "Metric bolts, screws, studs",
-     "Carbon / alloy steel", "Property classes 4.6, 4.8, 5.8, 8.8, 9.8, 10.9, 12.9", "M1.6–M100", "400–1200 MPa", "Withdrawn (2012)", "→ ISO 898-1", "ASME B18.2.3.xM", "A563M", "F436M", "—", "Class number", ""),
+     "Carbon / alloy steel", "Property classes 4.6, 4.8, 5.8, 8.8, 9.8, 10.9, 12.9", "M1.6–M100", "400–1200 MPa", "Withdrawn (2012)", "No ASTM successor", "ASME B18.2.3.xM", "A563M", "F436M", "—", "Class number", ""),
     # ---- nuts
     ("ASTM A563/A563M", "Carbon and Alloy Steel Nuts (Inch and Metric)", "مهره فولاد کربنی و آلیاژی", "Nut", "Hex, heavy hex, square, hex jam",
      "Carbon steel; C/D/DH Q&T; C3/DH3 weathering", "O, A, B, C, C3, D, DH, DH3 · Metric: 5, 9, 10, 12, 8S, 8S3, 10S, 10S3", "1/4–4 in · M6–M100", "Proof 69–175 ksi", "Active", "A563M merged into A563/A563M (2021)", "ASME B18.2.2 / B18.2.4.xM", "—", "—", "Mates with A307, A449, F3125, F1554 …", "Grade mark (C, D, DH …) + mfr ID", "DWG-03, DWG-10"),
@@ -165,7 +165,7 @@ STANDARDS = [
     # ---- washers & DTI
     ("ASTM F436/F436M", "Hardened Steel Washers Inch and Metric Dimensions", "واشر سخت‌کاری شده سازه‌ای", "Washer", "Circular, clipped, bevelled square (1:6) washers",
      "Carbon steel through-hardened (Type 1); weathering (Type 3)", "Type 1, Type 3", "1/4–4 in · M12–M100", "HRC 38–45 (26–45 if HDG)", "Active", "", "Spec tables", "—", "—", "Under turned element in pretensioned joints; oversized/slotted holes", "F436 + mfr ID", "DWG-04"),
-    ("ASTM F844", "Washers, Steel, Plain (Flat), Unhardened for General Use", "واشر تخت معمولی (سخت نشده)", "Washer", "Plain flat washers (SAE / USS patterns)",
+    ("ASTM F844", "Washers, Steel, Plain (Flat), Unhardened for General Use", "واشر تخت معمولی (سخت نشده)", "Washer", "Plain flat washers (narrow / regular / wide)",
      "Carbon steel, unhardened", "—", "#4–3 in (verify)", "—", "Active", "", "ASME B18.21.1 dims", "—", "—", "With A307 / general bolting", "—", "DWG-04"),
     ("ASTM F959/F959M", "Compressible-Washer-Type Direct Tension Indicators for Use with Structural Fasteners", "واشر نشانگر کشش مستقیم (DTI)", "Washer", "DTI washer with protrusions",
      "Carbon steel Q&T; Type 3 weathering", "Type 120, 150 (inch) · 8.8, 10.9 (metric)", "1/2–1-1/2 in · M12–M36", "Gap per bolt grade", "Active", "", "Spec tables", "—", "—", "Verifying pretension in A325/A490 joints", "Type + mfr ID", "DWG-08"),
@@ -205,12 +205,12 @@ BOLT_PROPS = [
     ("A325 (legacy)", "> 1 in", "1-1/8–1-1/2", 105, None, 81, 14, 35, "HRC 19–31 (HB 223–286)", 74, "Q&T", "Withdrawn 2016 — for old drawings"),
     ("F3148", "Grade 144", "1/2–1-1/4", 144, None, None, None, None, "per spec", None, "Q&T", "Values to confirm in standard"),
     ("F3043 / F3111", "Grade 1 / 2", "1–1-1/2", 200, None, None, None, None, "per spec", None, "Q&T", "Special; HE-sensitive"),
-    ("A449", "Type 1", "1/4–1", 120, None, 92, 14, 35, "HRC 25–34", 85, "Q&T", "≈ SAE Gr 5"),
+    ("A449", "Type 1", "1/4–1", 120, None, 92, 14, 35, "HRC 25–34", 85, "Q&T", ""),
     ("A449", "Type 1", "1-1/8–1-1/2", 105, None, 81, 14, 35, "HRC 19–30", 74, "Q&T", ""),
     ("A449", "Type 1", "1-3/4–3", 90, None, 58, 14, 35, "HB 183–235", 55, "Q&T", ""),
     ("A354", "BC", "1/4–2-1/2", 125, None, 109, 16, 50, "HRC 26–36", 105, "Q&T", ""),
     ("A354", "BC", "2-3/4–4", 115, None, 99, 16, 45, "HRC 22–33", 95, "Q&T", ""),
-    ("A354", "BD", "1/4–2-1/2", 150, None, 130, 14, 40, "HRC 33–39", 120, "Q&T", "≈ SAE Gr 8"),
+    ("A354", "BD", "1/4–2-1/2", 150, None, 130, 14, 40, "HRC 33–39", 120, "Q&T", ""),
     ("A354", "BD", "2-3/4–4", 140, None, 115, 14, 40, "HRC 31–39", 105, "Q&T", ""),
     ("A394", "Type 0", "1/2–1", 74, None, None, None, None, "HRB 65–100 (verify)", None, "None", "Zinc coated"),
     ("A394", "Type 1 / Type 3", "1/2–1", 120, None, 92, None, None, "HRC 25–34", 85, "Q&T", "Type 3 weathering"),
@@ -346,7 +346,7 @@ def sheet_guide(wb, drawings):
         ("Selector", "انتخابگر: سایز و گرید را از لیست انتخاب کنید (سلول‌های زرد)؛ ابعاد، مهره، واشر و ظرفیت خودکار نمایش داده می‌شود"),
         ("Coatings_Tests", "پوشش‌ها و روش‌های آزمون/کیفیت"),
         ("Drawings", "نقشه‌های فنی شماتیک (تصاویر) با شرح"),
-        ("Parents / SKUs", "ساختار والد/فرزند مانند فایل DIN: والد = استاندارد+گرید+محصول؛ SKU = سایز × طول (طول‌ها بازهٔ رایج انبار، فرض شده)"),
+        ("Parents / SKUs", "ساختار والد/فرزند: والد = استاندارد+گرید+محصول؛ SKU = سایز × طول (طول‌ها بازهٔ رایج انبار، فرض شده)"),
         ("منابع", "لینک منابع استفاده‌شده"),
         (None, None),
         ("قرارداد واحدها", "اینچ (in) و ksi مگر خلاف آن ذکر شود. 1 ksi = 6.895 MPa، 1 in = 25.4 mm. سایزها به صورت کسری متنی (مثل 1-1/8) و ستون اعشاری کنارشان."),
@@ -664,7 +664,7 @@ def sheet_sources(wb):
         ("AFT Fasteners — F436 dimensions", "https://aftfasteners.com/astm-f436-round-structural-washers-dimensions-mechanical-properties"),
         ("RCSC Specification for Structural Joints Using High-Strength Bolts (2020)", "https://www.boltcouncil.org"),
         ("AISC 360 — Specification for Structural Steel Buildings (Ch. J3)", "https://www.aisc.org/publications/steel-standards/"),
-        ("ASME B18.2.1 / B18.2.2 / B18.2.6 / B1.1 (dimensions, threads)", "https://www.asme.org/codes-standards"),
+        ("ASME B18.2.1 / B18.2.2 / B18.2.6 / B1.1 (dimensions cited by ASTM specs)", "https://www.asme.org/codes-standards"),
     ]
     write_table(ws, ["Source", "URL"], src, widths=[70, 90], freeze=False)
     for r in range(2, len(src) + 2):
