@@ -22,6 +22,8 @@ import openpyxl
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 
+import drawings
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.path.join(ROOT, "data", "raw")
 OUT = os.path.join(ROOT, "output", "DIN_SKU_list.xlsx")
@@ -778,6 +780,7 @@ def write(skus, review, standards):
     std_cols = [
         ("parent_code", "Parent code", 14),
         ("standard", "Standard", 14),
+        ("drawing", "نقشه", 23),
         ("name_en", "Product name (EN)", 42),
         ("priority", "Priority file", 11),
         ("role", "نقش", 12),
@@ -794,7 +797,12 @@ def write(skus, review, standards):
         ("equivalents", "Equivalent norms", 40),
         ("sheet", "Source sheet", 12),
         ("warnings", "هشدارها", 50),
+        ("drawing_match", "تطبیق نقشه", 22),
+        ("drawing_file", "Drawing file", 22),
+        ("drawing_title", "Drawing title (REYHER)", 50),
+        ("reyher_codes", "REYHER article codes", 40),
     ]
+    n_drawn = drawings.annotate(standards)
     wb.remove(wb.active)
     guide = wb.create_sheet("راهنما")
     guide.sheet_view.rightToLeft = True
@@ -805,7 +813,7 @@ def write(skus, review, standards):
         ("", ""),
         (
             "مبنا",
-            "فقط داده‌های DIN موجود در data/raw. از هیچ منبع بیرونی استفاده نشده است.",
+            "فقط داده‌های DIN موجود در data/raw. از هیچ منبع بیرونی استفاده نشده است (به‌جز تصویر نقشه‌ها از کاتالوگ REYHER).",
         ),
         (
             "والد (Parent)",
@@ -831,6 +839,7 @@ def write(skus, review, standards):
         ("   ├ با قطر × طول", n_len),
         ("   └ فقط سایز (محصول بدون طول)", len(skus) - n_len),
         ("ترکیب‌های مبهم (برگه Review)", len(review)),
+        ("والد با نقشه", n_drawn),
         ("", ""),
         (
             "برگه Review",
@@ -844,6 +853,10 @@ def write(skus, review, standards):
             "غیرترجیحی",
             "سایزهای داخل پرانتز در استاندارد، مثل (M14) — مجاز ولی کم‌مصرف.",
         ),
+        (
+            "نقشه",
+            "ستون «نقشه» در برگه Parents: نقشه‌ی فنی از کاتالوگ REYHER (data/drawings/reyher). تطبیق نقشه: فرم دقیق = همان فرم والد | فرم نزدیک = بخشی از کد فرم | استاندارد = نقشه‌ی عمومی همان استاندارد | فرم دیگر = نقشه‌ی فرم دیگری از همان استاندارد | مشابه = کاتالوگ آن را «~similar» زده.",
+        ),
         ("بازتولید", "python3 scripts/extract_skus.py  (ورودی: data/raw/*.xlsx)"),
     ]
     for a, b in lines:
@@ -853,7 +866,11 @@ def write(skus, review, standards):
     guide.column_dimensions["B"].width = 110
     for row in guide.iter_rows(min_row=2):
         row[1].alignment = Alignment(wrap_text=True, vertical="top")
-    sheet("Parents", std_cols, standards)
+    parents = sheet("Parents", std_cols, standards)
+    keys = [c[0] for c in std_cols]
+    drawings.embed(
+        parents, keys.index("drawing") + 1, keys.index("drawing_file") + 1
+    )
     sheet("SKUs", sku_cols, skus)
     sheet("Review", sku_cols, review)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)

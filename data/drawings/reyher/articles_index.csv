@@ -1,0 +1,941 @@
+﻿standard,number,reyher_code,material_variant,title,page,image_file
+DIN 1,1,00001.002,Steel type B,"Taper pins, taper 1 : 50, B = turned",67,DIN_1.png
+DIN 7,7,00007.000,Steel m6,"Parallel pins, tolerance zone m6",68,DIN_7.png
+DIN 84,84,00084.004,Steel turned bare,Slotted cheese head screws,69,DIN_84.png
+DIN 84,84,00084.400,4.8,Slotted cheese head screws,69,DIN_84.png
+DIN 84,84,00084.410,4.8,Slotted cheese head screws,70,DIN_84.png
+DIN 84,84,00084.430,4.8,Slotted cheese head screws,71,DIN_84.png
+DIN 85,85,00085.400,4.8,Slotted pan head screws,71,DIN_85.png
+DIN 85,85,00085.410,4.8,Slotted pan head screws,72,DIN_85.png
+DIN 93 (~similar),93,00093.000,Steel,Tap washers with a long tap,72,DIN_93_sim.png
+DIN 93 (~similar),93,00093.010,Steel,Tap washers with a long tap,72,DIN_93_sim.png
+DIN 94,94,00094.010,Steel,Split pins,73,DIN_94.png
+DIN 95,95,00095.010,Steel,Slotted raised countersunk head wood screws,74,DIN_95.png
+DIN 96,96,00096.010,Steel,Slotted round head wood screws,74,DIN_96.png
+DIN 97,97,00097.010,Steel,Slotted countersunk head wood screws,74,DIN_97.png
+DIN 98,98,00098.004,Steel type E,"Rotatable ball handles with hexagon socket, E = with threaded shank",74,DIN_98.png
+DIN 99,99,00099.007,Steel type N,"Tapered handles with handle bracket via thread, N = tilted handle",74,DIN_99.png
+DIN 99,99,00099.017,Steel type N,"Tapered handles with handle bracket via thread, N = tilted handle",74,DIN_99.png
+DIN 125-1,125-1,00125.001,Steel 140 HV type A,"Plain washers, A = without chamfer",74,DIN_125_1.png
+DIN 125-1,125-1,00125.011,Steel 140 HV type A,"Plain washers, A = without chamfer",75,DIN_125_1.png
+DIN 125-1,125-1,00125.021,Steel 140 HV type A,"Plain washers, A = without chamfer",75,DIN_125_1.png
+DIN 125-1,125-1,00125.031,Steel 140 HV type A,"Plain washers, A = without chamfer",75,DIN_125_1.png
+DIN 125-1,125-1,00125.004,Steel 140 HV type B,"Plain washers, B = with chamfer (turned)",75,DIN_125_1_v2.png
+DIN 125-1,125-1,00125.002,Steel 140 HV type B,"Plain washers, B = with chamfer (punched)",76,DIN_125_1_v2.png
+DIN 125-1,125-1,00125.012,Steel 140 HV type B,"Plain washers, B = with chamfer (punched)",76,DIN_125_1_v2.png
+DIN 125-1,125-1,00125.022,Steel 140 HV type B,"Plain washers, B = with chamfer (punched)",76,DIN_125_1_v2.png
+DIN 126,126,00126.000,Steel 100 HV,"Plain washers, punched",76,DIN_126.png
+DIN 126,126,00126.010,Steel 100 HV,"Plain washers, punched",77,DIN_126.png
+DIN 127 (~similar),127,00127.001,Spring steel type A,"Spring lock washers, A = bent end",77,DIN_127_sim.png
+DIN 127 (~similar),127,00127.011,Spring steel type A,"Spring lock washers, A = bent end",77,DIN_127_sim.png
+DIN 127 (~similar),127,00127.041,Spring steel type A,"Spring lock washers, A = bent end",78,DIN_127_sim.png
+DIN 127 (~similar),127,00127.021,Spring steel type A,"Spring lock washers, A = bent end",78,DIN_127_sim.png
+DIN 127 (~similar),127,00127.002,Spring steel type B,"Spring lock washers, B = flat end",78,DIN_127_sim.png
+DIN 127 (~similar),127,00127.012,Spring steel type B,"Spring lock washers, B = flat end",78,DIN_127_sim.png
+DIN 127 (~similar),127,00127.043,Spring steel type B,"Spring lock washers, B = flat end",79,DIN_127_sim.png
+DIN 127 (~similar),127,00127.022,Spring steel type B,"Spring lock washers, B = flat end",79,DIN_127_sim.png
+DIN 128 (~similar),128,00128.001,Spring steel type A,"Spring lock washers, A = curved",79,DIN_128_sim.png
+DIN 128 (~similar),128,00128.011,Spring steel type A,"Spring lock washers, A = curved",79,DIN_128_sim.png
+DIN 128 (~similar),128,00128.021,Spring steel type A,"Spring lock washers, A = curved",79,DIN_128_sim.png
+DIN 128 (~similar),128,00128.012,Spring steel type B,"Spring lock washers, B = waved",79,DIN_128_sim_v2.png
+DIN 137 (~similar),137,00137.001,Spring steel type A,"Spring washers, A = curved",80,DIN_137_sim.png
+DIN 137 (~similar),137,00137.011,Spring steel type A,"Spring washers, A = curved",80,DIN_137_sim.png
+DIN 137 (~similar),137,00137.002,Spring steel type B,"Spring washers, B = waved",80,DIN_137_sim_v2.png
+DIN 137 (~similar),137,00137.012,Spring steel type B,"Spring washers, B = waved",80,DIN_137_sim_v2.png
+DIN 186,186,00186.402,Mu 4.6 type B,"T-head bolts with square neck, B = with long thread, Mu = with hexagon nut",81,DIN_186.png
+DIN 258,258,00258.000,Steel,Taper pins with external thread and constant taper lengths,81,DIN_258.png
+DIN 261,261,00261.400,Mu 4.6,"T-head bolts, Mu = with hexagon nut",81,DIN_261.png
+DIN 315,315,00315.000,Malleable iron / steel,"Wing nuts, rounded wings, product grade C (g)",81,DIN_315.png
+DIN 315,315,00315.010,Malleable iron / steel,"Wing nuts, rounded wings, product grade C (g)",82,DIN_315.png
+DIN 315 (~similar),315,88215.010,Steel article 88215,"Wing nuts, edged wings, small ""American"" type, product grade C (g)",82,DIN_315_sim.png
+DIN 316,316,00316.010,Malleable iron / steel,"Wing screws, rounded wings, product grade C (g)",82,DIN_316.png
+DIN 404,404,00404.500,5.8,Slotted capstan screws,82,DIN_404.png
+DIN 404,404,00404.510,5.8,Slotted capstan screws,82,DIN_404.png
+DIN 417,417,00417.000,14 H,Slotted grub screws with full dog point,83,DIN_417.png
+DIN 427,427,00427.000,14 H,Slotted headless screws with chamfered end,83,DIN_427.png
+DIN 427,427,00427.010,14 H,Slotted headless screws with chamfered end,83,DIN_427.png
+DIN 431,431,00431.002,14 H type B,"Pipe nuts with inch pipe thread G, B = thread one-sided countersunk",84,DIN_431.png
+DIN 431,431,00431.012,14 H type B,"Pipe nuts with inch pipe thread G, B = thread one-sided countersunk",84,DIN_431.png
+DIN 432 (~similar),432,00432.000,Steel,Washers with external tap,84,DIN_432_sim.png
+DIN 432 (~similar),432,00432.010,Steel,Washers with external tap,84,DIN_432_sim.png
+DIN 433-1,433-1,00433.000,Steel 140 HV,Washers,84,DIN_433_1.png
+DIN 433-1,433-1,00433.010,Steel 140 HV,Washers,85,DIN_433_1.png
+DIN 434,434,00434.000,Steel,"Square taper washers for U beams, taper 8  %",85,DIN_434.png
+DIN 434,434,00434.010,Steel,"Square taper washers for U beams, taper 8  %",85,DIN_434.png
+DIN 434,434,00434.020,Steel,"Square taper washers for U beams, taper 8  %",85,DIN_434.png
+DIN 435,435,00435.000,Steel,"Square taper washers for double-T beams, taper 14  %",85,DIN_435.png
+DIN 435,435,00435.020,Steel,"Square taper washers for double-T beams, taper 14  %",85,DIN_435.png
+DIN 436,436,00436.000,Steel,"Square washers, especially for wood constructions",86,DIN_436.png
+DIN 436,436,00436.010,Steel,"Square washers, especially for wood constructions",86,DIN_436.png
+DIN 436,436,00436.020,Steel,"Square washers, especially for wood constructions",86,DIN_436.png
+DIN 439,439,00439.402,04 type B,"Hexagon thin nuts, B = with chamfers",86,DIN_439.png
+DIN 439,439,00439.412,04 type B,"Hexagon thin nuts, B = with chamfers",86,DIN_439.png
+DIN 439,439,00439.304,04 type B,"Hexagon thin nuts, B = with chamfers",87,DIN_439.png
+DIN 439,439,00439.352,04 type B,"Hexagon thin nuts, B = with chamfers",87,DIN_439.png
+DIN 439,439,00439.422,04 type B,"Hexagon thin nuts, B = with chamfers",87,DIN_439.png
+DIN 439,439,00439.407,04 type B - fine,"Hexagon thin nuts with metric fine pitch thread, B = with chamfers",87,DIN_439.png
+DIN 439,439,00439.417,04 type B - fine,"Hexagon thin nuts with metric fine pitch thread, B = with chamfers",88,DIN_439.png
+DIN 439,439,00439.415,04 type B - left,"Hexagon thin nuts with metric left hand thread, B = with chamfers",88,DIN_439.png
+DIN 440,440,00440.008,Steel 100 HV type R,"Washers, R = with round hole",88,DIN_440.png
+DIN 440,440,00440.018,Steel 100 HV type R,"Washers, R = with round hole",88,DIN_440.png
+DIN 440,440,00440.028,Steel 100 HV type R,"Washers, R = with round hole",88,DIN_440.png
+DIN 440,440,00440.004,Steel 100 HV type V,"Washers, V = with square hole",89,DIN_440_v2.png
+DIN 440,440,00440.014,Steel 100 HV type V,"Washers, V = with square hole",89,DIN_440_v2.png
+DIN 443,443,00443.000,Steel,Sealing push-in caps,89,DIN_443.png
+DIN 444,444,00444.402,4.6 type B,"Eye bolts, B = product grade B (mg)",89,DIN_444.png
+DIN 444,444,00444.412,4.6 type B,"Eye bolts, B = product grade B (mg)",90,DIN_444.png
+DIN 444,444,00444.414,4.6 type LB,"Eye bolts, L = long thread, B = product grade B (mg)",90,DIN_444.png
+DIN 462,462,00462.000,Steel,Internal tab washers,91,DIN_462.png
+DIN 463 (~similar),463,00463.000,Steel,Washers with 2 taps,91,DIN_463_sim.png
+DIN 463 (~similar),463,00463.010,Steel,Washers with 2 taps,91,DIN_463_sim.png
+DIN 464,464,00464.500,Steel,"Knurled thumb screws, high type",91,DIN_464.png
+DIN 464,464,00464.510,Steel,"Knurled thumb screws, high type",92,DIN_464.png
+DIN 466,466,00466.500,5,"Knurled nuts, high type",92,DIN_466.png
+DIN 466,466,00466.510,5,"Knurled nuts, high type",92,DIN_466.png
+DIN 467,467,00467.500,5,"Knurled nuts, low type",92,DIN_467.png
+DIN 467,467,00467.510,5,"Knurled nuts, low type",92,DIN_467.png
+DIN 470,470,00470.000,Steel,Sealing discs,93,DIN_470.png
+DIN 471,471,00471.000,Spring steel normal,"Retaining rings for shafts, normal type",93,DIN_471.png
+DIN 471,471,00471.004,Spring steel heavy,"Retaining rings for shafts, heavy type",94,DIN_471_v2.png
+DIN 471,471,00471.318,Spring steel normal,"Retaining rings for shafts, normal type",94,DIN_471.png
+DIN 472,472,00472.000,Spring steel normal,"Retaining rings for bores, normal type",94,DIN_472.png
+DIN 472,472,00472.318,Spring steel normal,"Retaining rings for bores, normal type",95,DIN_472.png
+DIN 478,478,00478.100,10.9,Square head bolts with collar,95,DIN_478.png
+DIN 479,479,00479.800,8.8,Square head bolts with short dog point,95,DIN_479.png
+DIN 480,480,00480.100,10.9,Square head bolts with collar and short dog point with rounded end,96,DIN_480.png
+DIN 508,508,00508.100,10,T-slot nuts,96,DIN_508.png
+DIN 525,525,00525.000,Mu 3.6,"Studs for welding, Mu = with hexagon nuts",96,DIN_525.png
+DIN 529,529,00529.013,Mu steel type C,"Masonry bolts, C = with split swivels, Mu = with hexagon nut",96,DIN_529.png
+DIN 546,546,00546.500,Steel,Slotted round nuts,96,DIN_546.png
+DIN 546,546,00546.510,Steel,Slotted round nuts,97,DIN_546.png
+DIN 551,551,00551.000,14 H,Slotted grub screws with flat point,97,DIN_551.png
+DIN 551,551,00551.010,14 H,Slotted grub screws with flat point,97,DIN_551.png
+DIN 553,553,00553.000,14 H,Slotted grub screws with cone point,98,DIN_553.png
+DIN 555,555,00555.504,5 Ww-BSW,Hexagon nuts with Whitworth thread,98,DIN_555.png
+DIN 557,557,00557.500,5,Square nuts,99,DIN_557.png
+DIN 557,557,00557.510,5,Square nuts,99,DIN_557.png
+DIN 561,561,00561.801,22 H (8.8) Ri,"Hexagon head set screws with dog point and small hexagon, with undercut",99,DIN_561.png
+DIN 561,561,00561.811,22 H (8.8) Ri,"Hexagon head set screws with dog point and small hexagon, with undercut",99,DIN_561.png
+DIN 561,561,00561.802,22 H (8.8),"Hexagon head set screws with dog point and small hexagon, with thread run-out",100,DIN_561_v2.png
+DIN 561,561,00561.812,22 H (8.8),"Hexagon head set screws with dog point and small hexagon, with thread run-out",100,DIN_561_v2.png
+DIN 562,562,00562.400,04,"Square thin nuts, product grade B",101,DIN_562.png
+DIN 562,562,00562.410,04,"Square thin nuts, product grade B",101,DIN_562.png
+DIN 564,564,00564.801,22 H (8.8) Ri,"Hexagon head set screws with small hexagon and short dog point with turncoated cone, with thread undercut",101,DIN_564.png
+DIN 564,564,00564.802,22 H (8.8),"Hexagon head set screws with short dog point with turncoated and small hexagon, with thread run-out",101,DIN_564_v2.png
+DIN 571,571,00571.000,Steel,Hexagon head wood screws,102,DIN_571.png
+DIN 571,571,00571.010,Steel,Hexagon head wood screws,102,DIN_571.png
+DIN 571,571,00571.020,Steel,Hexagon head wood screws,102,DIN_571.png
+DIN 580,580,00580.300,C 15 E,Lifting eye bolts,103,DIN_580.png
+DIN 580,580,00580.310,C 15 E,Lifting eye bolts,103,DIN_580.png
+DIN 580,580,00580.320,C 15 E,Lifting eye bolts,103,DIN_580.png
+DIN 582,582,00582.300,C 15 E,Lifting eye nuts,103,DIN_582.png
+DIN 582,582,00582.310,C 15 E,Lifting eye nuts,103,DIN_582.png
+DIN 582,582,00582.320,C 15 E,Lifting eye nuts,104,DIN_582.png
+DIN 601,601,00601.400,Mu steel,"Hexagon head bolts, Mu = with hexagon nut",104,DIN_601.png
+DIN 601,601,00601.410,Mu steel,"Hexagon screws, Mu = with hexagon nut",105,DIN_601.png
+DIN 601,601,00601.420,Mu steel,"Hexagon screws, Mu = with hexagon nut",107,DIN_601.png
+DIN 603,603,00603.400,Mu steel,"Cup head square neck bolts, Mu = with hexagon nut",107,DIN_603.png
+DIN 603,603,00603.410,Mu steel,"Cup head square neck bolts, Mu = with hexagon nut",108,DIN_603.png
+DIN 603,603,00603.404,Mu steel F,"Cup head square neck bolts, Mu = with hexagon nut, F = thread up to square neck",109,DIN_603.png
+DIN 603,603,00603.814,8.8,Cup head square neck bolts,109,DIN_603.png
+DIN 603,603,00603.824,8.8,Cup head square neck bolts,109,DIN_603.png
+DIN 604,604,00604.400,Mu steel,"Flat countersunk nib bolts, Mu = with hexagon nut",110,DIN_604.png
+DIN 605,605,00605.400,Mu steel,"Flat countersunk square neck bolts with long square, Mu = with hexagon nut",110,DIN_605.png
+DIN 607,607,00607.400,Mu steel,"Cup head nib bolts, Mu = with hexagon nut",110,DIN_607.png
+DIN 608,608,00608.800,Mu 8.8,"Flat countersunk square neck bolts with short square, Mu = with hexagon nut",110,DIN_608.png
+DIN 609,609,00609.800,8.8,Hexagon fit bolts with long thread,111,DIN_609.png
+DIN 609,609,00609.100,10.9,Hexagon fit bolts with long thread,111,DIN_609.png
+DIN 610 (~similar),610,00610.800,8.8,Hexagon fit bolts with short thread,112,DIN_610_sim.png
+DIN 610 (~similar),610,00610.100,10.9,Hexagon fit bolts with short thread,112,DIN_610_sim.png
+DIN 653,653,00653.000,Steel,"Knurled thumb screws, low type",112,DIN_653.png
+DIN 660,660,00660.000,Steel,Round head rivets,113,DIN_660.png
+DIN 661,661,00661.000,Steel,Countersunk head rivets,113,DIN_661.png
+DIN 662,662,00662.000,Steel,Mushroom head rivest (sheet metal rivets),114,DIN_662.png
+DIN 674,674,00674.000,Steel,Flat round head rivets,114,DIN_674.png
+DIN 703 (~similar),703,00703.000,Steel,"Adjusting rings, heavy range, with set screw acc. to DIN 914 / ISO 4027",114,DIN_703_sim.png
+DIN 705,705,00705.001,Steel type A,"Adjusting rings, light range, A = with grub screw acc. to DIN 553 / ISO 7434",114,DIN_705.png
+DIN 705,705,00705.011,Steel type A,"Adjusting rings, light range, A = with grub screw acc. to DIN 553 / ISO 7434",115,DIN_705.png
+DIN 705,705,00705.002,Steel type B,"Adjusting rings, light range, B = with drilling for taper pin",115,DIN_705_v2.png
+DIN 741 (~similar),741,00741.010,Steel,Clips for free ends of wire ropes,115,DIN_741_sim.png
+DIN 787,787,00787.800,8.8,T-slot screws,115,DIN_787.png
+DIN 835,835,00835.500,5.8,"Studs, metal end",116,DIN_835.png
+DIN 835,835,00835.800,8.8,"Studs, metal end",116,DIN_835.png
+DIN 906,906,00906.500,Steel taper fine,Hexagon socket pipe plugs with taper fine pitch thread,116,DIN_906.png
+DIN 906,906,00906.510,Steel taper fine,Hexagon socket pipe plugs with taper fine pitch thread,116,DIN_906.png
+DIN 906,906,00906.504,Steel taper pipe R,"Hexagon socket pipe plugs, R = with taper pipe thread",116,DIN_906.png
+DIN 906,906,00906.514,Steel taper pipe R,"Hexagon socket pipe plugs, R = with taper pipe thread",117,DIN_906.png
+DIN 908,908,00908.500,Steel cyl. fine,Hexagon socket screw plugs with cylindrical fine pitch thread,117,DIN_908.png
+DIN 908,908,00908.510,Steel cyl. fine,Hexagon socket screw plugs with cylindrical fine pitch thread,117,DIN_908.png
+DIN 908,908,00908.504,Steel cyl. pipe G,"Hexagon socket screw plugs, G = with cylindrical pipe thread",117,DIN_908.png
+DIN 908,908,00908.514,Steel cyl. pipe G,"Hexagon socket screw plugs, G = with cylindrical pipe thread",117,DIN_908.png
+DIN 909,909,00909.500,Steel taper fine,Hexagon head pipe plugs with taper fine pitch thread,117,DIN_909.png
+DIN 909,909,00909.504,Steel taper pipe R,"Hexagon head pipe plugs, R = with taper pipe thread",118,DIN_909.png
+DIN 910,910,00910.500,Steel cyl. fine,"Hexagon head screw plugs, heavy type, cylindrical fine pitch thread",118,DIN_910.png
+DIN 910,910,00910.510,Steel cyl. fine,"Hexagon head screw plugs, heavy type, cylindrical fine pitch thread",118,DIN_910.png
+DIN 910,910,00910.504,Steel cyl. pipe G,"Hexagon head screw plugs, heavy type, G = with cylindrical pipe thread",118,DIN_910.png
+DIN 910,910,00910.514,Steel cyl. pipe G,"Hexagon head screw plugs, heavy type, G = with cylindrical pipe thread",118,DIN_910.png
+DIN 912,912,00912.800,8.8,Hexagon socket head cap screws,119,DIN_912.png
+DIN 912,912,00912.810,8.8,Hexagon socket head cap screws,122,DIN_912_v2.png
+DIN 912 (~similar),912,00912.814,8.8 ISR,"Hexalobular socket head cap screws, ISR = hexalobular socket",125,DIN_912_sim.png
+DIN 912,912,00912.362,8.8,Hexagon socket head cap screws,125,DIN_912_v2.png
+DIN 912,912,00912.422,8.8,Hexagon socket head cap screws,126,DIN_912.png
+DIN 912,912,00912.453,8.8,Hexagon socket head cap screws,126,DIN_912_v2.png
+DIN 912 (~similar),912,00912.807,8.8 FT,"Hexagon socket head cap screws, FT = full thread (thread up to head)",127,DIN_912_sim.png
+DIN 912 (~similar),912,00912.815,8.8 FT,"Hexagon socket head cap screws, FT = full thread (thread up to head)",127,DIN_912_sim.png
+DIN 912,912,00912.805,8.8 fine,Hexagon socket head cap screws with metrical fine pitch thread,128,DIN_912_v2.png
+DIN 912,912,00912.100,10.9,Hexagon socket head cap screws,128,DIN_912_v2.png
+DIN 912,912,00912.110,10.9,Hexagon socket head cap screws,131,DIN_912_v2.png
+DIN 912,912,00912.454,10.9,Hexagon socket head cap screws,133,DIN_912_v2.png
+DIN 912,912,00912.435,10.9,Hexagon socket head cap screws,133,DIN_912.png
+DIN 912,912,00912.200,12.9,Hexagon socket head cap screws,134,DIN_912_v2.png
+DIN 912,912,00912.201,12.9,Hexagon socket head cap screws,137,DIN_912_v2.png
+DIN 912,912,00912.205,12.9 fine,Hexagon socket head cap screws with metric fine pitch thread,138,DIN_912_v2.png
+DIN 913,913,00913.200,45 H,Hexagon socket set screws with flat point,138,DIN_913.png
+DIN 913,913,00913.210,45 H,Hexagon socket set screws with flat point,139,DIN_913.png
+DIN 913 (~similar),913,00913.205,45 H fine,"Hexagon socket set screws with flat point, with metric fine pitch thread",140,DIN_913_sim.png
+DIN 914,914,00914.200,45 H,Hexagon socket set screws with cone point,141,DIN_914.png
+DIN 914,914,00914.210,45 H,Hexagon socket set screws with cone point,142,DIN_914.png
+DIN 915,915,00915.200,45 H,Hexagon socket set screws with full dog point,142,DIN_915.png
+DIN 915,915,00915.210,45 H,Hexagon socket set screws with full dog point,143,DIN_915.png
+DIN 916,916,00916.200,45 H,Hexagon socket set screws with cup point,143,DIN_916.png
+DIN 916,916,00916.210,45 H,Hexagon socket set screws with cup point,144,DIN_916.png
+DIN 916,916,00916.302,45 H fine,"Hexagon socket set screws with cup point, with metric fine pitch thread",145,DIN_916.png
+DIN 917,917,00917.300,6,"Hexagon cap nuts, low type",145,DIN_917.png
+DIN 917,917,00917.310,6,"Hexagon cap nuts, low type",145,DIN_917.png
+DIN 917,917,00917.305,6 fine,"Hexagon cap nuts, low type, with metric fine pitch thread",145,DIN_917.png
+DIN 920,920,00920.500,4.8/5.8,Slotted small cheese head screws,145,DIN_920.png
+DIN 920,920,00920.510,4.8/5.8,Slotted small cheese head screws,146,DIN_920.png
+DIN 921,921,00921.500,4.8/5.8,"Slotted large cheese head screws, pressed finish",146,DIN_921.png
+DIN 921,921,00921.510,4.8/5.8,Slotted large cheese head screws,146,DIN_921.png
+DIN 923,923,00923.500,4.8/5.8,"Slotted cheese head shoulder screws, without undercut",146,DIN_923.png
+DIN 923,923,00923.510,4.8/5.8,"Slotted cheese head shoulder screws, without undercut",147,DIN_923.png
+DIN 927,927,00927.000,14 H,Slotted shoulder screws,147,DIN_927.png
+DIN 928,928,00928.000,Steel,Square weld nuts,147,DIN_928.png
+DIN 929,929,00929.000,Steel,Hexagon weld nuts,147,DIN_929.png
+DIN 931,931,00931.800,8.8,Hexagon head bolts,147,DIN_931.png
+DIN 931,931,00931.810,8.8,Hexagon head bolts,150,DIN_931.png
+DIN 931,931,00931.328,8.8,Hexagon head bolts,152,DIN_931.png
+DIN 931,931,00931.428,8.8,Hexagon head bolts,153,DIN_931_v2.png
+DIN 931,931,00931.353,8.8,Hexagon head bolts,154,DIN_931.png
+DIN 931,931,00931.820,8.8,Hexagon head bolts,154,DIN_931.png
+DIN 931,931,00931.100,10.9,Hexagon head bolts,155,DIN_931_v2.png
+DIN 931,931,00931.110,10.9,Hexagon head bolts,157,DIN_931.png
+DIN 931,931,00931.354,10.9,Hexagon head bolts,158,DIN_931.png
+DIN 931,931,00931.132,10.9,Hexagon head bolts,159,DIN_931_v2.png
+DIN 931,931,00931.200,12.9,Hexagon head bolts,159,DIN_931.png
+DIN 933,933,00933.800,8.8,Hexagon head screws,160,DIN_933.png
+DIN 933,933,00933.810,8.8,Hexagon head screws,162,DIN_933.png
+DIN 933,933,00933.349,8.8,Hexagon head screws,165,DIN_933.png
+DIN 933,933,00933.428,8.8,Hexagon head screws,166,DIN_933_v2.png
+DIN 933,933,00933.353,8.8,Hexagon head screws,166,DIN_933.png
+DIN 933,933,00933.820,8.8,Hexagon head screws,167,DIN_933.png
+DIN 933,933,00933.814,8.8 Sz,"Hexagon head screws, Sz = slotted head as per DIN 962",168,DIN_933.png
+DIN 933,933,00933.100,10.9,Hexagon head screws,168,DIN_933.png
+DIN 933,933,00933.110,10.9,Hexagon head screws,169,DIN_933.png
+DIN 933,933,00933.354,10.9,Hexagon head screws,170,DIN_933.png
+DIN 933,933,00933.132,10.9,hexagon head screws,171,DIN_933_v2.png
+DIN 933,933,00933.200,12.9,Hexagon head screws,171,DIN_933.png
+DIN 934,934,00934.300,1.7218* (KG),Hexagon nuts with certificate EN 10204/3.1 (3.1B),172,DIN_934.png
+DIN 934,934,00934.301,6 AU,Hexagon nuts,172,DIN_934.png
+DIN 934,934,00934.305,6 AU fine,Hexagon nuts with fine pitch thread,172,DIN_934.png
+DIN 934,934,00934.304,6 AU left,Hexagon nuts with metric left hand thread,173,DIN_934.png
+DIN 934,934,00934.307,6 AU left fine,Hexagon nuts with metric left hand fine pitch thread,173,DIN_934.png
+DIN 934,934,00934.306,6 AU Ww-BSW,Hexagon nuts with Whitworth thread,173,DIN_934.png
+DIN 934,934,00934.800,8*,Hexagon nuts,173,DIN_934.png
+DIN 934,934,00934.810,8*,Hexagon nuts,174,DIN_934.png
+DIN 934,934,00934.337,8*,Hexagon nuts,174,DIN_934.png
+DIN 934,934,00934.428,8,Hexagon nuts,174,DIN_934.png
+DIN 934,934,00934.820,8,Hexagon nuts,175,DIN_934.png
+DIN 934,934,00934.830,8*,Hexagon nuts,175,DIN_934.png
+DIN 934,934,00934.835,8 fine,Hexagon nuts with metric fine pitch thread,175,DIN_934.png
+DIN 934,934,00934.815,8 fine,Hexagon nuts with metric fine pitch thread,175,DIN_934.png
+DIN 934,934,00934.804,8 left,Hexagon nuts with metric left hand thread,176,DIN_934.png
+DIN 934,934,00934.814,8 left,Hexagon nuts with metric left hand thread,176,DIN_934.png
+DIN 934,934,00934.100,10,Hexagon nuts,176,DIN_934.png
+DIN 934,934,00934.110,10,Hexagon nuts,176,DIN_934.png
+DIN 934,934,00934.105,10 fine,Hexagon nuts with metric fine pitch thread,176,DIN_934.png
+DIN 934,934,00934.115,10 fine,Hexagon nuts with metric fine pitch thread,177,DIN_934.png
+DIN 934,934,00934.200,12,Hexagon nuts,177,DIN_934.png
+DIN 935-1,935-1,00935.300,6/6 AU,Hexagon slotted and castle nuts,177,DIN_935_1.png
+DIN 935-1,935-1,00935.305,6/6 AU fine,Hexagon slotted and castle nuts with metric fine pitch thread,177,DIN_935_1.png
+DIN 935-1,935-1,00935.800,8,Hexagon slotted and castle nuts,178,DIN_935_1.png
+DIN 935-1,935-1,00935.810,8,Hexagon slotted and castle nuts,178,DIN_935_1.png
+DIN 935-1,935-1,00935.100,10,Hexagon slotted and castle nuts,178,DIN_935_1.png
+DIN 936,936,00936.000,14 H,Hexagon thin nuts,178,DIN_936.png
+DIN 936,936,00936.800,17 H,Hexagon thin nuts,178,DIN_936.png
+DIN 936,936,00936.810,17 H,Hexagon thin nuts,178,DIN_936.png
+DIN 936,936,00936.352,17 H,Hexagon thin nuts,179,DIN_936.png
+DIN 936,936,00936.005,14 H fine,Hexagon thin nuts with metric fine pitch thread,179,DIN_936.png
+DIN 936,936,00936.004,14 H left,Hexagon thin nuts with metric left hand thread,179,DIN_936.png
+DIN 936,936,00936.014,14 H left,Hexagon thin nuts with metric left hand thread,179,DIN_936.png
+DIN 936,936,00936.006,14 H left fine,Hexagon thin nuts with metric left hand fine pitch thread,179,DIN_936.png
+DIN 936,936,00936.805,17 H fine,Hexagon thin nuts with metric fine pitch thread,180,DIN_936.png
+DIN 936,936,00936.815,17 H fine,Hexagon thin nuts with metric fine pitch thread,180,DIN_936.png
+DIN 936,936,00936.100,22 H,Hexagon thin nuts,180,DIN_936.png
+DIN 936,936,00936.105,22 H fine,Hexagon thin nuts with metric fine pitch thread,180,DIN_936.png
+DIN 937 (~similar),937,00937.800,17 H,Hexagon thin slotted and castle nuts,180,DIN_937_sim.png
+DIN 937 (~similar),937,00937.805,17 H fine,Hexagon thin slotted and castle nuts with metric fine pitch thread,180,DIN_937_sim.png
+DIN 938,938,00938.504,5.6 AD W7,"Studs, metal end",181,DIN_938.png
+DIN 938,938,00938.514,5.6 AD W7,"Studs, metal end",181,DIN_938.png
+DIN 938,938,00938.500,5.8,"Studs, metal end",181,DIN_938.png
+DIN 938,938,00938.510,5.8,"Studs, metal end",182,DIN_938.png
+DIN 938,938,00938.800,8.8,"Studs, metal end",182,DIN_938.png
+DIN 938,938,00938.810,8.8,"Studs, metal end",183,DIN_938.png
+DIN 939,939,00939.504,5.6 AD W7,"Studs, metal end",183,DIN_939.png
+DIN 939,939,00939.500,5.8,"Studs, metal end",183,DIN_939.png
+DIN 939,939,00939.510,5.8,"Studs, metal end",184,DIN_939_v2.png
+DIN 939,939,00939.800,8.8,"Studs, metal end",184,DIN_939.png
+DIN 939,939,00939.810,8.8,"Studs, metal end",185,DIN_939.png
+DIN 939,939,00939.100,10.9,"Studs, metal end",185,DIN_939_v2.png
+DIN 960,960,00960.800,8.8,"Hexagon head bolts, with fine pitch thread",186,DIN_960.png
+DIN 960,960,00960.810,8.8,"Hexagon head bolts, with fine pitch thread",186,DIN_960.png
+DIN 960,960,00960.100,10.9,"Hexagon head bolts, with fine pitch thread",187,DIN_960.png
+DIN 960,960,00960.110,10.9,"Hexagon head bolts, with fine pitch thread",188,DIN_960.png
+DIN 961,961,00961.800,8.8,"Hexagon head screws, with fine pitch thread",188,DIN_961.png
+DIN 961,961,00961.810,8.8,"Hexagon head screws, with fine pitch thread",189,DIN_961.png
+DIN 961,961,00961.100,10.9,"Hexagon head screws, with fine pitch thread",190,DIN_961.png
+DIN 961,961,00961.110,10.9,"Hexagon head screws, with fine pitch thread",191,DIN_961.png
+DIN 963,963,00963.004,Steel turned bare,Slotted countersunk head screws,191,DIN_963.png
+DIN 963,963,00963.400,4.8,Slotted countersunk head screws,191,DIN_963.png
+DIN 963,963,00963.410,4.8,Slotted countersunk head screws,192,DIN_963.png
+DIN 964,964,00964.400,4.8,Slotted raised countersunk head screws,193,DIN_964.png
+DIN 964,964,00964.410,4.8,Slotted raised countersunk head screws,193,DIN_964.png
+DIN 965,965,00965.404,4.8 H,Countersunk head screws with Phillips cross recess H,194,DIN_965.png
+DIN 965,965,00965.414,4.8 H,Countersunk head screws with Phillips cross recess H,194,DIN_965.png
+DIN 965,965,00965.301,4.8 Z,Countersunk head screws with Pozidriv cross recess Z,195,DIN_965_v2.png
+DIN 965 (~similar),965,00965.415,4.8 ISR,"Countersunk head screws, ISR = hexalobular socket",195,DIN_965_sim.png
+DIN 966,966,00966.414,4.8 H,Raised countersunk head screws with Phillips cross recess H,196,DIN_966.png
+DIN 975 (~similar),975,00975.000,Steel,"Threaded rods, length 1000 mm",196,DIN_975_sim.png
+DIN 975 (~similar),975,00975.010,Steel,"Threaded rods, length 1000 mm",196,DIN_975_sim.png
+DIN 975 (~similar),975,00975.016,Steel 2000,"Threaded rods, length 2000 mm",197,DIN_975_sim.png
+DIN 975 (~similar),975,00975.030,Steel,"Threaded rods, length 1000 mm",197,DIN_975_sim.png
+DIN 975 (~similar),975,00975.005,Steel fine,"Threaded rods, length 1000 mm, with metric fine pitch thread",197,DIN_975_sim.png
+DIN 975 (~similar),975,00975.015,Steel fine,"Threaded rods, length 1000 mm, with metric fine pitch thread",197,DIN_975_sim.png
+DIN 975 (~similar),975,00975.004,Steel left,"Threaded rods, length 1000 mm, with metric left hand thread",198,DIN_975_sim.png
+DIN 975 (~similar),975,00975.014,Steel left,"Threaded rods, length 1000 mm, with metric left hand thread",198,DIN_975_sim.png
+DIN 975 (~similar),975,00975.007,Steel BSW,"Threaded rods, length 1000 mm, with Whitworth thread",198,DIN_975_sim.png
+DIN 975 (~similar),975,00975.500,5.6,"Threaded rods, length 1000 mm",198,DIN_975_sim.png
+DIN 975 (~similar),975,00975.510,5.6,"Threaded rods, length 1000 mm",198,DIN_975_sim.png
+DIN 975 (~similar),975,00975.800,8.8,"Threaded rods, length 1000 mm",198,DIN_975_sim.png
+DIN 975 (~similar),975,00975.810,8.8,"Threaded rods, length 1000 mm",199,DIN_975_sim.png
+DIN 975 (~similar),975,00975.816,8.8 2000,"Threaded rods, length 2000 mm",199,DIN_975_sim.png
+DIN 975 (~similar),975,00975.820,8.8,"Threaded rods, length 1000 mm",199,DIN_975_sim.png
+DIN 975 (~similar),975,00975.826,8.8 2000,"Threaded rods, length 2.000 mm",199,DIN_975_sim.png
+DIN 975 (~similar),975,00975.805,8.8 fine,"Threaded rods, length 1000 mm, with metric fine pitch thread",199,DIN_975_sim.png
+DIN 975 (~similar),975,00975.804,8.8 left,"Threaded rods, length 1000 mm, with metric left hand thread",200,DIN_975_sim.png
+DIN 975 (~similar),975,00975.814,8.8 left,"Threaded rods, length 1000 mm, with metric left hand thread",200,DIN_975_sim.png
+DIN 975 (~similar),975,00975.100,10.9,"Threaded rods, length 1000 mm",200,DIN_975_sim.png
+DIN 975 (~similar),975,00975.110,10.9,"Threaded rods, length 1000 mm",200,DIN_975_sim.png
+DIN 975 (~similar),975,00975.120,10.9,"Threaded rods, length 1000 mm",200,DIN_975_sim.png
+DIN 975 (~similar),975,00975.200,12.9,"Threaded rods, length 1000 mm",201,DIN_975_sim.png
+DIN 975 (~similar),975,00975.006,Steel trapezoid,"Threaded rods, length 1000 mm, with normal trapezoidal thread*",201,DIN_975_sim_v2.png
+DIN 976-1,976-1,00976.012,Steel type B,"Stud bolts, B = with flat point",201,DIN_976_1.png
+DIN 976-1,976-1,00976.829,8.8 type A,"Stud bolts, A = without flat point, threaded rod, length 2000 mm",202,DIN_976_1.png
+DIN 979,979,00979.400,04,Hexagon thin slotted and castle nuts,202,DIN_979.png
+DIN 979,979,00979.405,04 fine,Hexagon thin slotted and castle nuts with metric fine pitch thread,202,DIN_979.png
+DIN 980,980,00980.815,8 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",202,DIN_980.png
+DIN 980,980,00980.428,8 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",202,DIN_980.png
+DIN 980,980,00980.353,8 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",202,DIN_980.png
+DIN 980,980,00980.826,8 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",203,DIN_980.png
+DIN 980,980,00980.818,8 type V fine,"Prevailing torque type hexagon nuts with metric fine pitch thread, V = all-metal nuts, single component",203,DIN_980.png
+DIN 980,980,00980.114,10 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",203,DIN_980.png
+DIN 980,980,00980.135,10 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",203,DIN_980.png
+DIN 980,980,00980.118,10 type V fine,"Prevailing torque type hexagon nuts with metric fine pitch thread, V = all-metal nuts, single component",203,DIN_980.png
+DIN 980 (~similar),980,88105.030,Steel article 88105,"THERMAG nuts, prevailing torque type hexagon nuts, V = all-metal nuts, single component",203,DIN_980_sim.png
+DIN 981,981,00981.000,Steel,Locknuts for rolling bearings,204,DIN_981.png
+DIN 982,982,00982.810,8 ( Œ M 4 = 6 - 8),"Prevailing torque type hexagon nuts with non-metallic insert, high type",204,DIN_982.png
+DIN 982,982,00982.110,10,"Prevailing torque type hexagon nuts with non-metallic insert, high type",204,DIN_982.png
+DIN 982,982,00982.115,10 fine,"Prevailing torque type hexagon nuts with non-metallic insert, high type with metric fine pitch thread",205,DIN_982.png
+DIN 983,983,00983.000,Spring steel,Retaining rings with lugs for shafts (retainer rings),205,DIN_983.png
+DIN 985,985,00985.810,8 ( Œ M 5 = 6 - 8),"Prevailing torque type hexagon nuts with non-metallic insert, low type",205,DIN_985.png
+DIN 985,985,00985.850,8 ( Œ M 5 = 6),"Prevailing torque type hexagon nuts with non-metallic insert, low type",205,DIN_985.png
+DIN 985,985,00985.428,8,"Prevailing torque type hexagon nuts with non-metallic insert, low type",206,DIN_985.png
+DIN 985,985,00985.353,8,"Prevailing torque type hexagon nuts with non-metallic insert, low type",206,DIN_985.png
+DIN 985,985,00985.815,8 ( Œ M 5 = 6 - 8) fine,"Prevailing torque type hexagon nuts with non-metallic insert, low type, with metric fine pitch thread",206,DIN_985.png
+DIN 985,985,00985.110,10,"Prevailing torque type hexagon nuts with non-metallic insert, low type",206,DIN_985.png
+DIN 985,985,00985.115,10 fine,"Prevailing torque type hexagon nuts with non-metallic insert, low type, with metric fine pitch thread",206,DIN_985.png
+DIN 986,986,00986.310,6,Prevailing torque type hexagon domed cap nuts with non-metallic insert,207,DIN_986.png
+DIN 988,988,00988.000,Steel,Shim rings,207,DIN_988.png
+DIN 988,988,00988.004,Spring steel,Supporting rings,208,DIN_988_v2.png
+DIN 1052,1052,01052.015,Temp. cast iron,"Timber connectors, spikes one sided",208,DIN_1052.png
+DIN 1052,1052,01052.024,Steel plate,"Timber connectors, spikes one sided",208,DIN_1052_v2.png
+DIN 1052,1052,01052.016,Temp. cast iron,"Timber connectors, spikes two sided",209,DIN_1052_v3.png
+DIN 1052,1052,01052.025,Steel plate,"Timber connectors, spikes two sided",209,DIN_1052_v4.png
+DIN 1052,1052,01052.004,Steel,"Washers for timber connectors, heavy, round type",209,DIN_1052_v5.png
+DIN 1052,1052,01052.014,Steel,"Washers for timber connectors, heavy, round type",209,DIN_1052_v5.png
+DIN 1052,1052,01052.026,Steel,"Washers for timber connectors, heavy, round type",209,DIN_1052_v5.png
+DIN 1440,1440,01440.000,Steel,"Washers for clevis pins, product grade A (m)",212,DIN_1440.png
+DIN 1440,1440,01440.010,Steel,"Washers for clevis pins, product grade A (m)",213,DIN_1440.png
+DIN 1441,1441,01441.000,Steel,"Washers for clevis pins, product grade C (g)",213,DIN_1441.png
+DIN 1441,1441,01441.010,Steel,"Washers for clevis pins, product grade C (g)",213,DIN_1441.png
+DIN 1444,1444,01444.014,Steel type B,"Clevis pins with head, B = with pin hole, tolerance h11 for pin",214,DIN_1444.png
+DIN 1471,1471,01471.000,Steel,"Grooved pins, full-length taper grooved",214,DIN_1471.png
+DIN 1472,1472,01472.000,Steel,"Grooved pins, half length taper grooved",215,DIN_1472.png
+DIN 1473,1473,01473.000,Steel,"Grooved pins, full length parallel grooved",215,DIN_1473.png
+DIN 1474,1474,01474.000,Steel,"Grooved pins, half length reverse grooved",216,DIN_1474.png
+DIN 1475,1475,01475.000,Steel,"Grooved pins, third length centre grooved",216,DIN_1475.png
+DIN 1476,1476,01476.000,Steel,Round head grooved pins,217,DIN_1476.png
+DIN 1477,1477,01477.000,Steel,Countersunk head grooved pins,217,DIN_1477.png
+DIN 1478,1478,01478.010,Steel SP,"Turnbuckles made from tubes, closed type",218,DIN_1478.png
+DIN 1478,1478,01478.310,Steel SP,"Turnbuckles made from tubes, closed type",218,DIN_1478.png
+DIN 1478,1478,01478.014,Steel SP-AE,"Turnbuckles made from tubes, closed type, AE = with 2 welding studs acc. to DIN 34828",218,DIN_1478_v2.png
+DIN 1479,1479,01479.010,Steel,Hexagon turnbuckles,218,DIN_1479.png
+DIN 1479,1479,01479.310,Steel,Hexagon turnbuckles,218,DIN_1479.png
+DIN 1480,1480,01480.010,Steel SP,"Turnbuckles, forged, open type",219,DIN_1480.png
+DIN 1480,1480,01480.310,Steel SP,"Turnbuckles, forged, open type",219,DIN_1480.png
+DIN 1480,1480,01480.020,Steel SP,"Turnbuckles, forged, open type",219,DIN_1480.png
+DIN 1480,1480,01480.320,Steel SP,"Turnbuckles, forged, open type",220,DIN_1480.png
+DIN 1480,1480,01480.014,Steel SP-AE,"Turnbuckles, forged, open type, AE = with 2 welding studs acc. to DIN 34828",220,DIN_1480_v2.png
+DIN 1480,1480,01480.311,Steel SP-AE,"Turnbuckles, forged, open type, AE = with 2 welding studs acc. to DIN 34828",220,DIN_1480_v2.png
+DIN 1480,1480,01480.016,Steel SP-RR,"Turnbuckles, forged, open type, RR = with 2 eye bolts",220,DIN_1480_v3.png
+DIN 1480,1480,01480.015,Steel SP-RH,"Turnbuckles, forged, open type, RH = with eye bolt and hook bolt",220,DIN_1480_v4.png
+DIN 1480,1480,01480.018,Steel SP-HH,"Turnbuckles, forged, open type, HH = with 2 hook bolts",220,DIN_1480_v5.png
+DIN 1480,1480,01480.301,Steel SP-BS,"Turnbuckles, forged, open type, BS = with 2 flat leaf screws",221,DIN_1480_v6.png
+DIN 1480,1480,01480.315,Steel SP-BS-S,"Turnbuckles, forged, open type, BS = with 2 flat leaf screws, S = heavy version",221,DIN_1480_v7.png
+DIN 1480,1480,01480.325,Steel SP-BS-S,"Turnbuckles, forged, open type, BS = with 2 flat leaf screws, S = heavy version",221,DIN_1480_v7.png
+DIN 1481,1481,01481.000,Spring steel,"Spring type straight pins (clamping sleeves), slotted, heavy duty",221,DIN_1481.png
+DIN 1498,1498,01498.004,Spring steel type EG,"Tension bush for internal application, EG = without inner chamfer, with straight slot",224,DIN_1498.png
+DIN 1587,1587,01587.300,6,"Hexagon domed cap nuts, high type",225,DIN_1587.png
+DIN 1587,1587,01587.310,6,"Hexagon domed cap nuts, high type",225,DIN_1587.png
+DIN 1587,1587,01587.330,6,"Hexagon domed cap nuts, high type",226,DIN_1587.png
+DIN 1587,1587,01587.305,6 fine,"Hexagon domed cap nuts, high type, with metric fine pitch thread",226,DIN_1587.png
+DIN 1804,1804,,04 AU/14 H* type w,"Slotted round nuts, w = untempered, unpolished",228,DIN_1804.png
+DIN 1816,1816,,04 AU/14 H* type w,"Round nuts with set pin holes inside, w = untempered, unpolished",229,DIN_1816.png
+DIN 2093,2093,02093.000,Spring steel,Disc springs,231,DIN_2093.png
+DIN 2510,2510,02510.304,Mu 1.7709 type L,"Bolts with waisted shank, L = with long thread, Mu = with 2 nuts mat. 1.7218",236,DIN_2510.png
+DIN 2510,2510,02510.305,1.7218 type NF,"Hexagon nuts for bolts with waisted shank, NF = standard type",237,DIN_2510_v2.png
+DIN 3016,3016,03016.014,Steel (W1) type D1,"Fastening clamps, type D 1, with rubber profile",237,DIN_3016.png
+DIN 3017,3017,03017.011,Steel (W1) type A,"Hose clamps, A = with worm gear drive",238,DIN_3017.png
+DIN 3017,3017,03017.013,Steel (W1) type C1,"Hose clamps, C1 = with hinge bolts, one-piece",238,DIN_3017_v2.png
+DIN 3404,3404,03404.510,5.8 MF,"Lubricating nipples, button head, hexagon drive, MF = with metric fine pitch thread",238,DIN_3404.png
+DIN 3404,3404,03404.514,5.8 G,"Lubricating nipples, button head, hexagon drive, G = with inch pipe thread",238,DIN_3404.png
+DIN 3405,3405,03405.011,Steel type A,"Lubricating nipples, cupped type",239,DIN_3405.png
+DIN 3567,3567,03567.001,Steel type A,"Pipe clamps, A = equal sided",239,DIN_3567.png
+DIN 3567,3567,03567.021,Steel type A,"Pipe clamps, A = equal sided",239,DIN_3567.png
+DIN 3568,3568,03568.020,Steel,Clamping plates for pipe fixings for double-T-carriers,239,DIN_3568.png
+DIN 3570,3570,03570.011,Steel type A,"Stirrup bolts without nuts, A = double-sided fixing thread",239,DIN_3570.png
+DIN 3570,3570,03570.021,Steel type A,"Stirrup bolts without nuts, A = double-sided fixing thread",239,DIN_3570.png
+DIN 4109 (~similar),4109,04109.010,Steel + insulating insert,"Screwed tubular clamps, comb. thread connector M8/M10, noise protection inlay ~ DIN 4109",290,DIN_4109_sim.png
+DIN 5299,5299,05299.013,Steel type C,Snap hooks C = pear-shaped,310,DIN_5299.png
+DIN 5406,5406,05406.000,Steel MB,Lockwashers/safety plates for locknuts acc. to DIN 981,310,DIN_5406.png
+DIN 5586,5586,05586.014,Steel type B,"Hexagon head screw plugs with collar and vent, B = with melted sealing",310,DIN_5586.png
+DIN 6304,6304,06304.534,5.8 type E,"Tommy screws with fixed clamping bolt, E = without thrust pad",310,DIN_6304.png
+DIN 6305,6305,06305.530,5,Tommy nuts with fixed clamping bolt,311,DIN_6305.png
+DIN 6306,6306,06306.534,5.8 type D,"Tommy screws with movable clamping bolt, D = without thrust pad",311,DIN_6306.png
+DIN 6307,6307,06307.530,5,Tommy nuts with movable clamping bolt,311,DIN_6307.png
+DIN 6311,6311,06311.004,Steel type S,"Thrust pads, S = with snap ring",311,DIN_6311.png
+DIN 6319,6319,06319.003,Steel type C,"Spherical washers, case hardened",311,DIN_6319.png
+DIN 6319,6319,06319.013,Steel type C,"Spherical washers, case hardened",311,DIN_6319.png
+DIN 6319,6319,06319.004,Steel type D,"Conical seats, case hardened",311,DIN_6319_v2.png
+DIN 6319,6319,06319.014,Steel type D,"Conical seats, case hardened",312,DIN_6319_v2.png
+DIN 6319,6319,06319.005,Steel type G,"Conical seats, quenched and tempered",312,DIN_6319_v3.png
+DIN 6325,6325,06325.000,"Steel, hardened m6","Parallel pins, tolerance m6",312,DIN_6325.png
+DIN 6330,6330,06330.102,10 type B,"Hexagon nuts with a height of 1,5 d, B = with one spherical bearing face",313,DIN_6330.png
+DIN 6330,6330,06330.112,10 type B,"Hexagon nuts with a height of 1,5 d, B = with one spherical bearing face",313,DIN_6330.png
+DIN 6331,6331,06331.100,10,"Hexagon nuts with collar with a height of 1,5 d",313,DIN_6331.png
+DIN 6331,6331,06331.110,10,"Hexagon nuts with collar with a height of 1,5 d",313,DIN_6331.png
+DIN 6332,6332,06332.534,5.8 type IS,"Grub screws with thrust point, with hardened adaptor end, IS = with hexagon socket",314,DIN_6332.png
+DIN 6334 (~similar),6334,06334.100,10,Hexagon nuts with a height of 3 d,314,DIN_6334_sim.png
+DIN 6334 (~similar),6334,06334.110,10,Hexagon nuts with a height of 3 d,314,DIN_6334_sim.png
+DIN 6335,6335,06335.004,Cast iron type D,"Palm grips, D = with continuous thread",314,DIN_6335.png
+DIN 6336,6336,06336.004,Cast iron type D,"Star grips, D = with continuous thread",314,DIN_6336.png
+DIN 6340,6340,06340.000,"Steel, QT","Washers for clamping devices, quenched and tempered",315,DIN_6340.png
+DIN 6340,6340,06340.010,"Steel, QT","Washers for clamping devices, quenched and tempered",315,DIN_6340.png
+DIN 6796,6796,06796.030,Spring steel,Conical spring washers for screwed fastenings,315,DIN_6796.png
+DIN 6796,6796,06796.014,Spring steel,Conical spring washers for screwed fastenings,315,DIN_6796.png
+DIN 6796,6796,06796.309,Spring steel,Conical spring washers for screwed fastenings,315,DIN_6796.png
+DIN 6797 (~similar),6797,06797.001,Spring steel type A,"Toothed lock washers, A = external teeth",315,DIN_6797_sim.png
+DIN 6797 (~similar),6797,06797.011,Spring steel type A,"Toothed lock washers, A = external teeth",316,DIN_6797_sim.png
+DIN 6797 (~similar),6797,06797.081,Spring steel type A,"Toothed lock washers, A = external teeth",316,DIN_6797_sim.png
+DIN 6797 (~similar),6797,06797.004,Spring steel type I,"Toothed lock washers, I = internal teeth",316,DIN_6797_sim_v2.png
+DIN 6797 (~similar),6797,06797.014,Spring steel type I,"Toothed lock washers, I = internal teeth",316,DIN_6797_sim_v2.png
+DIN 6797 (~similar),6797,06797.015,Spring steel type V,"Toothed lock washers, V = countersunk",316,DIN_6797_sim_v3.png
+DIN 6798 (~similar),6798,06798.001,Spring steel type A,"Serrated lock washers, A = external teeth",317,DIN_6798_sim.png
+DIN 6798 (~similar),6798,06798.011,Spring steel type A,"Serrated lock washers, A = external teeth",317,DIN_6798_sim.png
+DIN 6798 (~similar),6798,06798.081,Spring steel type A,"Serrated lock washers, A = external teeth",317,DIN_6798_sim.png
+DIN 6798 (~similar),6798,06798.004,Spring steel type I,"Serrated lock washers, I = internal teeth",317,DIN_6798_sim_v2.png
+DIN 6798 (~similar),6798,06798.014,Spring steel type I,"Serrated lock washers, I = internal teeth",317,DIN_6798_sim_v2.png
+DIN 6798 (~similar),6798,06798.005,Spring steel type V,"Serrated lock washers, V = countersunk",318,DIN_6798_sim_v3.png
+DIN 6798 (~similar),6798,06798.015,Spring steel type V,"Serrated lock washers, V = countersunk",318,DIN_6798_sim_v3.png
+DIN 6799,6799,06799.000,Spring steel,Retaining rings for shafts,318,DIN_6799.png
+DIN 6799,6799,06799.010,Spring steel,Retaining rings for shafts,318,DIN_6799.png
+DIN 6880,6880,06880.000,Steel C45+C,Key steel,318,DIN_6880.png
+DIN 6885,6885,06885.001,Steel C45+C type A,"Parallel keys, deep pattern, A = round-ended without holes",319,DIN_6885.png
+DIN 6887,6887,06887.000,Steel C45+C,Taper keys with gib head,320,DIN_6887.png
+DIN 6888,6888,06888.000,Steel C45+C,Woodruff keys,320,DIN_6888.png
+DIN 6899,6899,06899.010,Steel type BF,"Thimbles, BF = medium heavy, with deep groove for fibre ropes",320,DIN_6899.png
+DIN 6911,6911,06911.000,"Steel, QT",Hexagon socket screw keys with pilot,321,DIN_6911.png
+DIN 6912,6912,06912.800,08.8,"Hexagon socket head cap screws, low head, with centre",321,DIN_6912.png
+DIN 6912,6912,06912.810,08.8,"Hexagon socket head cap screws, low head, with centre",322,DIN_6912.png
+DIN 6912,6912,06912.100,010.9,"Hexagon socket head cap screws, low head, with centre",323,DIN_6912.png
+DIN 6912,6912,06912.110,010.9,"Hexagon socket head cap screws, low head, with centre",323,DIN_6912.png
+DIN 6917,6917,06917.000,"Steel, QT",S for friction grip bolts on double-T-beams in steel constructions,323,DIN_6917.png
+DIN 6917,6917,06917.020,"Steel, QT","Square taper washers,  wedge angle 14  %, for friction grip bolts on double-T-beams in steel constructions",323,DIN_6917.png
+DIN 6918,6918,06918.000,"Steel, QT","Square taper washers, wedge angle 8  %, for friction grip bolts on U-beams in steel constructions",324,DIN_6918.png
+DIN 6918,6918,06918.020,"Steel, QT","Square taper washers, wedge angle 8  %, for friction grip bolts on U-beams in steel constructions",324,DIN_6918.png
+DIN 6921,6921,06921.800,8.8,Hexagon flange bolts,324,DIN_6921.png
+DIN 6921,6921,06921.810,8.8,Hexagon flange bolts,324,DIN_6921.png
+DIN 6921,6921,06921.100,10.9,Hexagon flange bolts,325,DIN_6921.png
+DIN 6921,6921,06921.110,10.9,Hexagon flange bolts,325,DIN_6921.png
+DIN 6923,6923,06923.800,8,Hexagon flange nuts,325,DIN_6923.png
+DIN 6923 (~similar),6923,06923.804,8 locking,Hexagon locking nuts with flange,325,DIN_6923_sim.png
+DIN 6923,6923,06923.810,8,Hexagon flange nuts,326,DIN_6923.png
+DIN 6923 (~similar),6923,06923.814,8 locking,Hexagon locking nuts with flange,326,DIN_6923_sim.png
+DIN 6923,6923,06923.100,10,Hexagon flange nuts,326,DIN_6923.png
+DIN 6923 (~similar),6923,06923.104,10 locking,Hexagon locking nuts with flange,326,DIN_6923_sim.png
+DIN 6923,6923,06923.110,10,Hexagon flange nuts,326,DIN_6923.png
+DIN 6923 (~similar),6923,06923.114,10 locking,Hexagon locking nuts with flange,326,DIN_6923_sim.png
+DIN 6924,6924,06924.810,8,"Prevailing torque type hexagon nuts with non-metallic insert, high type",327,DIN_6924.png
+DIN 6924,6924,06924.110,10,"Prevailing torque type hexagon nuts with non-metallic insert, high type",327,DIN_6924.png
+DIN 6924,6924,06924.115,10 fine,"Prevailing torque type hexagon nuts with non-metallic insert, high type, with metric fine pitch thread",327,DIN_6924.png
+DIN 6925,6925,06925.810,8,"Prevailing torque type hexagon nuts, all metal nuts",327,DIN_6925.png
+DIN 6925,6925,06925.840,8,"Prevailing torque type hexagon nuts, all metal nuts",327,DIN_6925.png
+DIN 6925,6925,06925.815,8 fine,"Prevailing torque type hexagon nuts, all metal nuts, with metric fine pitch thread",327,DIN_6925.png
+DIN 6925,6925,06925.110,10,"Prevailing torque type hexagon nuts, all metal nuts",328,DIN_6925.png
+DIN 6925,6925,06925.140,10,Prevailing torque type hexagon nuts all metal nuts,328,DIN_6925.png
+DIN 6925,6925,06925.115,10 fine,"Prevailing torque type hexagon nuts, all metal nuts, with metric fine pitch thread",328,DIN_6925.png
+DIN 6926,6926,06926.810,8,"Prevailing torque type hexagon nuts with flange, with non metallic insert",328,DIN_6926.png
+DIN 6927,6927,06927.810,8,"Prevailing torque type hexagon nuts with flange, all metal nuts",328,DIN_6927.png
+DIN 7343,7343,07343.000,Spring steel,"Spring-type straight pins, coiled, standard duty",343,DIN_7343.png
+DIN 7344,7344,07344.000,Spring steel,"Spring-type straight pins, coiled, heavy duty",343,DIN_7344.png
+DIN 7346,7346,07346.000,Spring steel,"Spring-type straight pins, slotted, light duty",344,DIN_7346.png
+DIN 7349,7349,07349.000,Steel 100 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7349,7349,07349.010,Steel 100 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7349,7349,07349.080,Steel 100 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7349,7349,07349.020,Steel 100 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7349,7349,07349.001,Steel 200 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7349,7349,07349.011,Steel 200 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7349,7349,07349.081,Steel 200 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7349,7349,07349.021,Steel 200 HV,Washers for screws with heavy spring-type straight pins,345,DIN_7349.png
+DIN 7500,7500,07500.014,Steel type C-Z,"Thread rolling screws, with metric thread, C = pan head acc. to DIN 7985 Z = with Pozidriv cross recess Z",350,DIN_7500.png
+DIN 7500,7500,07500.017,Steel type CE-ISR/PE,"Thread rolling screws, with metric thread, CE/PE = pan head acc. to ISO 14583 ISR = hexalobular socket",350,DIN_7500.png
+DIN 7500 (~similar),7500,07500.015,Steel ~ type D,"Thread rolling screws, with metric thread, ~D = hexagon head with collar",350,DIN_7500_sim.png
+DIN 7500 (~similar),7500,07500.018,Steel type E,"Thread rolling screws, with metric thread, E = hexagon socket head cap*",351,DIN_7500_sim_v2.png
+DIN 7500,7500,07500.016,Steel type M-Z,"Thread rolling screws, with metric thread, M = counters head acc. to DIN 965 Z = with Pozidriv cross recess Z",351,DIN_7500_v2.png
+DIN 7504,7504,07504.014,Steel type K,"Drilling screws, with tapping screw thread, K = hexagon head with collar*",351,DIN_7504.png
+DIN 7504,7504,07504.015,Steel type N-H,"Drilling screws, with tapping screw thread, N = pan head acc. to DIN 7981 H = with Phillips cross recess H",352,DIN_7504_v2.png
+DIN 7504 (~similar),7504,07504.301,Steel type N-ISR,"Drilling screws, with tapping screw thread, N = pan head acc. to ISO 14585 ISR = hexalobular socket",352,DIN_7504_sim.png
+DIN 7504,7504,07504.016,Steel type P-H,"Drilling screws, with tapping screw thread, P = countersunk head* H = with Phillips cross recess H",353,DIN_7504_v2.png
+DIN 7504,7504,07504.019,Steel type P-T,"Drilling screws, with tapping screw thread, P = countersunk head* T = hexalobular socket",353,DIN_7504_v2.png
+DIN 7513,7513,07513.011,Steel,"Thread cutting screws, A = hexagon head acc. to DIN 933",353,DIN_7513.png
+DIN 7513,7513,07513.012,Steel type B,"Thread cutting screws, B = slotted cheese head acc. to DIN 84",353,DIN_7513_v2.png
+DIN 7516,7516,07516.011,Steel type A-H,"Thread cutting screws, A = pan head acc. to DIN 7985 H = with Phillips cross recess H",354,DIN_7516.png
+DIN 7516,7516,07516.014,Steel type D-H,"Thread cutting screws, D = counters. head acc. to DIN 965 H = with Phillips cross recess H",354,DIN_7516_v2.png
+DIN 7516,7516,07516.015,Steel type E-H,"Thread cutting screws, E = raised countersunk head acc. to DIN 966 H = with Phillips cross recess H",354,DIN_7516_v3.png
+DIN 7516 (~similar),7516,07516.018,Steel type AE-ISR,"Thread cutting screws, AE = pan head acc. to ISO 7045 ISR = hexalobular socket",355,DIN_7516_sim.png
+DIN 7516 (~similar),7516,07516.017,Steel type DE-ISR,"Thread cutting screws, DE = countersunk head acc. to ISO 7046-1 ISR = hexalobular socket",355,DIN_7516_sim_v2.png
+DIN 7604,7604,07604.001,Steel type A,"Hexagon head screw plugs with collar, light type, with cylindrical fine pitch thread, A = short stud end",355,DIN_7604.png
+DIN 7604,7604,07604.011,Steel type A,"Hexagon head screw plugs with collar, light type, with cylindrical fine pitch thread, A = short stud end",355,DIN_7604_v2.png
+DIN 7604,7604,07604.003,Steel type C,"Hexagon head screw plugs with collar, light type, with cylindrical fine pitch thread, C = long stud end",355,DIN_7604_v3.png
+DIN 7643,7643,07643.010,Steel,"Hollow screws for ring type banjos, short thread length",356,DIN_7643.png
+DIN 7965,7965,07965.010,Steel,"Screwed inserts ""RAMPA""",356,DIN_7965.png
+DIN 7967 (~similar),7967,07967.000,Spring steel,Self locking counter nuts,356,DIN_7967_sim.png
+DIN 7967 (~similar),7967,07967.010,Spring steel,Self locking counter nuts,356,DIN_7967_sim.png
+DIN 7967 (~similar),7967,07967.020,Spring steel,Self locking counter nuts,356,DIN_7967_sim.png
+DIN 7968,7968,07968.500,Mu 5.6 SB,"Hexagon fit bolts for steel structures, Mu = with hexagon nut",356,DIN_7968.png
+DIN 7968,7968,07968.510,Mu 5.6 SB,"Hexagon fit bolts for steel structures, Mu = with hexagon nut",357,DIN_7968.png
+DIN 7968,7968,07968.520,Mu 5.6 SB,"Hexagon fit bolts for steel structures, Mu = with hexagon nut",357,DIN_7968.png
+DIN 7968,7968,07968.804,Mu 8.8 SB,"Hexagon fit bolts for steel structures, Mu = with hexagon nut",358,DIN_7968.png
+DIN 7969,7969,07969.410,Mu 4.6 SB,"Slotted countersunk head bolts for steel structures, Mu = with hexagon nut",358,DIN_7969.png
+DIN 7969,7969,07969.420,Mu 4.6 SB,"Slotted countersunk head bolts for steel structures, Mu = with hexagon nut",358,DIN_7969.png
+DIN 7976,7976,07976.013,"Steel, hard. type C","Hexagon head tapping screws, C = with cone end",358,DIN_7976.png
+DIN 7976,7976,07976.015,"Steel, hard. type F","Hexagon head tapping screws, F = with flat end",359,DIN_7976_v2.png
+DIN 7977,7977,07977.000,Steel,"Taper pins with external thread and constant threaded part, taper 1 : 50",359,DIN_7977.png
+DIN 7978,7978,07978.001,Steel type A,"Taper pins with internal thread, A = grounded, taper 1 : 50",359,DIN_7978.png
+DIN 7979,7979,07979.004,Steel type D/m6,"Parallel pins with internal thread, D = hardened, tolerance m6",360,DIN_7979.png
+DIN 7980 (~similar),7980,07980.000,Spring steel,Spring lock washers for cheese head screws,361,DIN_7980_sim.png
+DIN 7980 (~similar),7980,07980.010,Spring steel,Spring lock washers for cheese head screws,361,DIN_7980_sim.png
+DIN 7981,7981,07981.014,Steel type C-H,"Pan head tapping screws with Phillips cross recess H, C = with cone end",361,DIN_7981.png
+DIN 7981,7981,07981.016,Steel type C-Z,"Pan head tapping screws, with Pozidriv cross recess Z, C = with cone point",362,DIN_7981.png
+DIN 7981 (~similar),7981,07981.308,Steel type C-ISR,"Pan head tapping screws, ISR = hexalobular socket C = with cone end",363,DIN_7981_sim.png
+DIN 7981,7981,07981.015,Steel type F-H,"Pan head tapping screws with Phillips cross recess H, F = with flat end",363,DIN_7981_v2.png
+DIN 7982,7982,07982.014,Steel type C-H,"Countersunk head tapping screws with Phillips cross recess H, C = with cone end",364,DIN_7982.png
+DIN 7982 (~similar),7982,07982.016,Steel type C-ISR,"Countersunk head tapping screws, ISR = hexalobular socket C = with cone end",365,DIN_7982_sim.png
+DIN 7983,7983,07983.014,Steel type C-H,"Raised csk. head tapping screws with Phillips cross recess H, C = with cone end",366,DIN_7983.png
+DIN 7984,7984,07984.800,08.8,Hexagon socket head cap screws with low head,366,DIN_7984.png
+DIN 7984,7984,07984.810,08.8,Hexagon socket head cap screws with low head,367,DIN_7984.png
+DIN 7984 (~similar),7984,07984.814,08.8 ISR,"Hexalobular socket head cap screws with low head, ISR = hexalobular socket",368,DIN_7984_sim.png
+DIN 7984,7984,07984.100,010.9,Hexagon socket head cap screws with low head,368,DIN_7984.png
+DIN 7985,7985,07985.404,4.8 H,Cheese head screws with Phillips cross recess H,368,DIN_7985.png
+DIN 7985,7985,07985.414,4.8 H,Cheese head screws with Phillips cross recess H,369,DIN_7985.png
+DIN 7985,7985,07985.415,4.8 Z,Cheese head screws with Pozidriv cross recess Z,370,DIN_7985.png
+DIN 7985,7985,07985.436,4.8 H,Cheese head screws with Phillips cross recess H,370,DIN_7985.png
+DIN 7985 (~similar),7985,07985.416,4.8 ISR,"Pan head screws, ISR = hexalobular socket",370,DIN_7985_sim.png
+DIN 7989-1,7989-1,07989.003,Steel 100 HV PK C,"Washers for steel structures, product grade C",371,DIN_7989_1.png
+DIN 7989-1,7989-1,07989.023,Steel 100 HV PK C,"Washers for steel structures, product grade C",371,DIN_7989_1.png
+DIN 7989-2,7989-2,07989.004,Steel 100 HV PK A,"Washers for steel structures, product grade A",371,DIN_7989_2.png
+DIN 7989-2,7989-2,07989.024,Steel 100 HV PK A,"Washers for steel structures, product grade A",371,DIN_7989_2.png
+DIN 7990,7990,07990.400,Mu 4.6 SB,"Hexagon head bolts for steel structures, Mu = with hexagon nut",371,DIN_7990.png
+DIN 7990,7990,07990.420,Mu 4.6 SB,"Hexagon head bolts for steel structures, Mu = with hexagon nut",372,DIN_7990.png
+DIN 7990,7990,07990.520,Mu 5.6 SB,"Hexagon head bolts for steel structures, Mu = with hexagon nut",372,DIN_7990.png
+DIN 7993,7993,07993.001,Spring steel type A,"Snap rings, A = for shafts",373,DIN_7993.png
+DIN 7993,7993,07993.002,Spring steel type B,"Snap rings, B = for bores",373,DIN_7993.png
+DIN 9021,9021,09021.000,Steel 140/100 HV**,"Washers, outside product grade A/C*",391,DIN_9021.png
+DIN 9021,9021,09021.010,Steel 140/100 HV**,"Washers, outside product grade A/C*",391,DIN_9021.png
+DIN 9021,9021,09021.020,Steel 140/100 HV**,"Washers, outside product grade A/C*",392,DIN_9021.png
+DIN 9925,9925,09925.000,Spring steel,Snap rings for shafts,392,DIN_9925.png
+DIN 9926,9926,09926.000,Spring steel,Snap rings for bores,392,DIN_9926.png
+DIN 11023,11023,11023.080,Steel,"Linch pins, with third hole for security chain",398,DIN_11023.png
+DIN 11023 (~similar),11023,11023.010,Steel,"Linch pins, without third hole",398,DIN_11023_sim.png
+DIN 11024,11024,11024.010,Steel,Spring cotters for a bolt,399,DIN_11024.png
+DIN 11024 (~similar),11024,11024.012,Steel,"Spring cotters for a bolt, single type",399,DIN_11024_sim.png
+DIN 15058,15058,15058.000,Steel,Axle holder (for lifting appliances),411,DIN_15058.png
+DIN 15237,15237,15237.000,Mu 3.6,"Seating screws with cupped washer, Mu = with hexagon nut",411,DIN_15237.png
+DIN 22424,22424,22424.801,8.8 type A,"Triangle head bolts, A = with full shank",412,DIN_22424.png
+DIN 28129,28129,28129.014,C35E AD W7,Clamp nuts (lifting nuts),412,DIN_28129.png
+DIN 70852,70852,70852.800,17 H,Locknuts for hook spanners,412,DIN_70852.png
+DIN 70952,70952,70952.001,Steel type A,Lockwasher / safety plates,413,DIN_70952.png
+DIN 71412,71412,71412.511,5.8 type A-M,"Lubricating nipples, cone type, with hexagon, A = cone head straight/axial M = with taper fine pitch thread",413,DIN_71412.png
+DIN 71412,71412,71412.514,5.8 type A-R,"Lubricating nipples, cone type, with hexagon, A = cone head straight / axial R = with inch pipe thread",413,DIN_71412.png
+DIN 71412,71412,71412.512,5.8 type B-M,"Lubricating nipples, cone type, with hexagon or square, B = cone head 45° angled M = with taper fine pitch thread",413,DIN_71412_v2.png
+DIN 71412,71412,71412.513,5.8 type C-M,"Lubricating nipples, cone type, with hexagon or square, C = cone head 90° angled M = with taper fine pitch thread",413,DIN_71412_v3.png
+DIN 71752,71752,71752.014,Steel type G,"Fork joints, G = yokes, for spring flap bolts (article 88752)",413,DIN_71752.png
+DIN 71752 (~similar),71752,88752.010,Steel article 88752,"Spring flap bolts (""ES bolts"") for yokes DIN 71752",414,DIN_71752_sim.png
+DIN 71802,71802,71802.014,Steel type AS,"Angle joints (ball joints) with threaded shank, hexagon nuts and circlips",414,DIN_71802.png
+DIN 74361,74361,74361.801,8 type A,Nuts with spherical collar,414,DIN_74361.png
+DIN 74361,74361,74361.102,10 type B,Flat collar nuts,414,DIN_74361_v2.png
+DIN 74361,74361,74361.013,Spring steel type C,Spherical springwashers,414,DIN_74361_v3.png
+DIN 82101,82101,82101.011,Steel type A,"D-shackles, forged",414,DIN_82101.png
+DIN 1,1,00001.912,A 1 type B,"Taper pins, taper 1 : 50, B = turned",457,DIN_1.png
+DIN 7,7,00007.910,A 1 m6,"Parallel pins, tolerance zone m6",457,DIN_7.png
+DIN 7,7,00007.940,A 4 m6,"Parallel pins, tolerance zone m6",458,DIN_7.png
+DIN 84,84,00084.914,A 1 turned,Slotted cheese head screws,459,DIN_84.png
+DIN 84,84,00084.920,A 2,Slotted cheese head screws,459,DIN_84.png
+DIN 84,84,00084.940,A 4,Slotted cheese head screws,460,DIN_84.png
+DIN 85,85,00085.920,A 2,Slotted pan head screws,461,DIN_85.png
+DIN 85,85,00085.940,A 4,Slotted pan head screws,462,DIN_85.png
+DIN 93 (~similar),93,00093.920,A 2,Tap washers with a long tap,462,DIN_93_sim.png
+DIN 93 (~similar),93,00093.940,A 4,Tap washers with a long tap,462,DIN_93_sim.png
+DIN 94,94,00094.300,A 2,Split pins,462,DIN_94.png
+DIN 94,94,00094.940,A 4,Split pins,463,DIN_94.png
+DIN 95,95,00095.920,A 2,Slotted raised countersunk head wood screws,463,DIN_95.png
+DIN 96,96,00096.920,A 2,Slotted round head wood screws,464,DIN_96.png
+DIN 97,97,00097.920,A 2,Slotted countersunk head wood screws,464,DIN_97.png
+DIN 99,99,00099.927,A 2 type N,"Tapered handles with handle bracket via thread, N = tilted griffith",464,DIN_99.png
+DIN 125-1,125-1,00125.921,A 2 140 HV type A,"Plain washers, A = without chamfer",465,DIN_125_1.png
+DIN 125-1,125-1,00125.922,A 2 140 HV type B,"Plain washers, B = with chamfer",465,DIN_125_1_v2.png
+DIN 125-1,125-1,00125.941,A 4 140 HV type A,"Plain washers, A = without chamfer",465,DIN_125_1.png
+DIN 125-1,125-1,00125.942,A 4 140 HV type B,"Plain washers, B = with chamfer",465,DIN_125_1_v2.png
+DIN 125-1,125-1,00125.951,1.4571 (A 5) type A,"Plain washer, A = without chamfer",466,DIN_125_1.png
+DIN 127 (~similar),127,00127.961,1.4310 type A,"Spring lock washers, A = bent end",466,DIN_127_sim.png
+DIN 127 (~similar),127,00127.941,A 4 type A,"Spring lock washers, A = bent end",466,DIN_127_sim.png
+DIN 127 (~similar),127,00127.962,1.4310 type B,"Spring lock washers, B = flat end",466,DIN_127_sim.png
+DIN 127 (~similar),127,00127.942,A 4 type B,"Spring lock washers, B = flat end",466,DIN_127_sim.png
+DIN 128 (~similar),128,00128.961,1.4310 type A,"Spring lock washers, A = curved",467,DIN_128_sim.png
+DIN 128 (~similar),128,00128.962,1.4310 type B,"Spring lock washers, B = waved",467,DIN_128_sim_v2.png
+DIN 128 (~similar),128,00128.941,A 4 type A,"Spring lock washers, A = curved",467,DIN_128_sim.png
+DIN 137 (~similar),137,00137.961,1.4310 type A,"Spring washers, A = curved",467,DIN_137_sim.png
+DIN 137 (~similar),137,00137.941,A 4 type A,"Spring washers, A = curved",467,DIN_137_sim.png
+DIN 137 (~similar),137,00137.962,1.4310 type B,"Spring washers, B = waved",467,DIN_137_sim_v2.png
+DIN 137 (~similar),137,00137.942,A 4 type B,"Spring washers, B = waved",468,DIN_137_sim_v2.png
+DIN 315,315,00315.920,A 2,"Wing nuts, rounded wings, product grade C (g)",468,DIN_315.png
+DIN 315,315,00315.940,A 4,"Wing nuts, rounded wings, product grade C (g)",468,DIN_315.png
+DIN 315 (~similar),315,88215.920,A 2 article 88215,"Wing nuts, edged wings, small ""American"" type, product grade C (g)",468,DIN_315_sim.png
+DIN 315 (~similar),315,88215.940,A 4 article 88215,"Wing nuts, edged wings, small ""American"" type, product grade C (g)",468,DIN_315_sim.png
+DIN 316 (~similar),316,00316.920,A 2,"Wing screws, edged wings, small ""American"" type, product grade C (g)",468,DIN_316_sim.png
+DIN 316 (~similar),316,00316.940,A 4,"Wing screws, edged wings, small ""American"" type, product grade C (g)",469,DIN_316_sim.png
+DIN 404,404,00404.910,A 1,Slotted capstan screws,469,DIN_404.png
+DIN 427,427,00427.910,A 1,"Slotted headless screws, with chamfered end",469,DIN_427.png
+DIN 431,431,00431.942,A 4 type B,"Pipe nuts with inch pipe thread G, B = thread one-sided countersunk",469,DIN_431.png
+DIN 432 (~similar),432,00432.920,A 2,Washers with external tap,469,DIN_432_sim.png
+DIN 432 (~similar),432,00432.940,A 4,Washers with external tap,470,DIN_432_sim.png
+DIN 433-1,433-1,00433.920,A 2,Washers,470,DIN_433_1.png
+DIN 433-1,433-1,00433.940,A 4,Washers,470,DIN_433_1.png
+DIN 434,434,00434.920,A 2,"Square taper washers for U beams, taper 8  %",470,DIN_434.png
+DIN 434,434,00434.940,A 4,"Square taper washers for U beams, taper 8  %",470,DIN_434.png
+DIN 435,435,00435.920,A 2,"Square taper washers for double-T beams, taper 14  %",470,DIN_435.png
+DIN 436,436,00436.920,A 2,Square washers,471,DIN_436.png
+DIN 439,439,00439.922,A 2 type B,"Hexagon thin nuts, B = with chamfers",471,DIN_439.png
+DIN 439,439,00439.942,A 4 type B,"Hexagon thin nuts, B = with chamfers",471,DIN_439.png
+DIN 439,439,00439.927,A 2 type B - fine,"Hexagon thin nuts, with metric fine pitch thread B = with chamfers",471,DIN_439.png
+DIN 439,439,00439.947,A 4 type B - fine,"Hexagon thin nuts, with metric fine pitch thread B = with chamfers",471,DIN_439.png
+DIN 440,440,00440.928,A 2 type R,"Washers, R = with round hole",471,DIN_440.png
+DIN 440,440,00440.948,A 4 type R,"Washers, R = with round hole",472,DIN_440.png
+DIN 444,444,00444.922,A 2 type B,"Eye bolts, B = product grade B (mg)",472,DIN_444.png
+DIN 444,444,00444.942,A 4 type B,"Eye bolts, B = product grade B (mg)",472,DIN_444.png
+DIN 463 (~similar),463,00463.940,A 4,Washers with 2 taps,473,DIN_463_sim.png
+DIN 464,464,00464.910,A 1/A 2,"Knurled thumb screws, high type",473,DIN_464.png
+DIN 466,466,00466.910,A 1/A 2,"Knurled nuts, high type",473,DIN_466.png
+DIN 467,467,00467.910,A 1/A 2,"Knurled nuts, low type",473,DIN_467.png
+DIN 471 (~similar),471,00471.300,1.4122 normal,"Retaining rings for shafts, normal type",473,DIN_471_sim.png
+DIN 472 (~similar),472,00472.300,1.4122/1.4310 normal,"Retaining rings for bores, normal type",474,DIN_472_sim.png
+DIN 546,546,00546.940,A 4,Slotted round nuts,474,DIN_546.png
+DIN 551,551,00551.910,A 1,Slotted grub screws with flat point,474,DIN_551.png
+DIN 551,551,00551.940,A 4,Slotted grub screws with flat point,474,DIN_551.png
+DIN 553,553,00553.910,A 1,Slotted grub screws with cone point,475,DIN_553.png
+DIN 553,553,00553.940,A 4,Slotted grub screws with cone point,475,DIN_553.png
+DIN 557,557,00557.920,A 2,Square nuts,475,DIN_557.png
+DIN 557,557,00557.940,A 4,Square nuts,475,DIN_557.png
+DIN 562,562,00562.940,A 4,Square thin nuts product grade B,475,DIN_562.png
+DIN 571,571,00571.920,A 2,Hexagon head wood screws,475,DIN_571.png
+DIN 571,571,00571.940,A 4,Hexagon head wood screws,476,DIN_571.png
+DIN 580,580,00580.920,A 2,Lifting eye bolts,476,DIN_580.png
+DIN 580,580,00580.940,A 4,Lifting eye bolts,477,DIN_580.png
+DIN 582,582,00582.920,A 2,Lifting eye nuts,477,DIN_582.png
+DIN 582,582,00582.940,A 4,Lifting eye nuts,477,DIN_582.png
+DIN 603,603,00603.924,A 2,Cup head square neck bolts,477,DIN_603.png
+DIN 603,603,00603.944,A 4,Cup head square neck bolts,478,DIN_603.png
+DIN 653,653,00653.910,A 1,"Knurled thumb screws, low type",478,DIN_653.png
+DIN 660,660,00660.920,A 2,Round head rivets,478,DIN_660.png
+DIN 661,661,00661.920,A 2,Countersunk head rivets,479,DIN_661.png
+DIN 705,705,00705.911,A 1 type A,"Adjusting rings, light range, A = with grub screw",479,DIN_705.png
+DIN 705,705,00705.951,1.4571 (A 5) type A,"Adjusting rings, light range, A = with grub screw",479,DIN_705.png
+DIN 741 (~similar),741,00741.920,A 2,Clips for free ends of wire ropes,479,DIN_741_sim.png
+DIN 835,835,00835.940,A 4,"Studs, metal end",480,DIN_835.png
+DIN 906,906,00906.940,A 4 taper fine,Hexagon socket pipe plugs with taper fine pitch thread,480,DIN_906.png
+DIN 906,906,00906.944,A 4 taper pipe R,"Hexagon socket pipe plugs, R = with taper pipe thread",480,DIN_906.png
+DIN 908,908,00908.940,A 4 cyl. fine,Hexagon socket screw plugs with cylindrical fine pitch thread,480,DIN_908.png
+DIN 908,908,00908.944,A 4 cyl. pipe G,"Hexagon socket screw plugs, G = with cylindrical pipe thread",480,DIN_908.png
+DIN 910,910,00910.940,A 4 cyl. fine,"Hexagon head screw plugs, heavy type, with cylindrical fine pitch thread",480,DIN_910.png
+DIN 910,910,00910.944,A 4 cyl. pipe G,"Hexagon head screw plugs, heavy type, G = cylindrical pipe thread",481,DIN_910.png
+DIN 910 (~similar),910,00910.954,1.4571 cyl. pipe EG,"Hexagon head screw plugs, heavy type, E = with ventilation G = cylindrical pipe thread",481,DIN_910_sim.png
+DIN 912,912,00912.920,A 2 (- 70)*,Hexagon socket head cap screws,481,DIN_912_v2.png
+DIN 912,912,00912.940,A 4 (- 70)*,Hexagon socket head cap screws,483,DIN_912_v2.png
+DIN 912,912,00912.948,A 4 - 80,Hexagon socket head cap screws,484,DIN_912_v2.png
+DIN 913,913,00913.910,A 1/A 2,Hexagon socket set screws with flat point,485,DIN_913.png
+DIN 913,913,00913.940,A 4,Hexagon socket set screws with flat point,485,DIN_913.png
+DIN 914,914,00914.910,A 1/A 2,Hexagon socket set screws with cone point,486,DIN_914.png
+DIN 914,914,00914.940,A 4,Hexagon socket set screws with cone point,486,DIN_914.png
+DIN 915,915,00915.910,A 1/A 2,Hexagon socket set screws with full dog point,487,DIN_915.png
+DIN 915,915,00915.940,A 4,Hexagon socket set screws with full dog point,487,DIN_915.png
+DIN 916,916,00916.910,A 1/A 2,Hexagon socket set screws with cup point,488,DIN_916.png
+DIN 916,916,00916.940,A 4,Hexagon socket set screws with cup point,488,DIN_916.png
+DIN 917,917,00917.910,A 1/A 2,"Hexagon cap nuts, low type",489,DIN_917.png
+DIN 917,917,00917.920,A 2,"Hexagon cap nuts, low type",489,DIN_917.png
+DIN 917,917,00917.940,A 4,"Hexagon cap nuts, low type",489,DIN_917.png
+DIN 921,921,00921.910,A 1,Slotted large cheese head screws,489,DIN_921.png
+DIN 923,923,00923.910,A 1,Slotted cheese head shoulder screws,489,DIN_923.png
+DIN 929,929,00929.920,A 2,Hexagon weld nuts,490,DIN_929.png
+DIN 929,929,00929.940,A 4,Hexagon weld nuts,490,DIN_929.png
+DIN 931,931,00931.920,A 2 (- 70)*,Hexagon head bolts,490,DIN_931.png
+DIN 931,931,00931.940,A 4 (- 70)*,Hexagon head bolts,492,DIN_931.png
+DIN 931,931,00931.948,A 4 - 80,Hexagon head bolts,493,DIN_931.png
+DIN 931,931,00931.950,1.4571 (A 5),Hexagon head bolts,494,DIN_931.png
+DIN 933,933,00933.920,A 2 (- 70)*,Hexagon head screws,494,DIN_933.png
+DIN 933,933,00933.924,A 2 Sz,"Hexagon head screws, Sz = slotted head as per DIN 962",496,DIN_933_v3.png
+DIN 933,933,00933.940,A 4 (- 70)*,Hexagon head screws,496,DIN_933.png
+DIN 933,933,00933.948,A 4 - 80,Hexagon head screws,498,DIN_933.png
+DIN 933,933,00933.950,1.4571 (A 5),Hexagon head screws,499,DIN_933.png
+DIN 934,934,00934.910,A 1/A 2,Hexagon nuts,499,DIN_934.png
+DIN 934,934,00934.920,A 2 (- 70)*,Hexagon nuts,499,DIN_934.png
+DIN 934,934,00934.931,A 2 - 70,"Hexagon nuts, lubricated",500,DIN_934.png
+DIN 934,934,00934.925,A 2 fine,Hexagon nuts with metric fine pitch thread,500,DIN_934.png
+DIN 934,934,00934.924,A 2 left,Hexagon nuts with metric left hand thread,500,DIN_934.png
+DIN 934,934,00934.940,A 4 (- 70)*,Hexagon nuts,500,DIN_934.png
+DIN 934,934,00934.951,A 4 - 70,"Hexagon nuts, lubricated",500,DIN_934.png
+DIN 934,934,00934.948,A 4 - 80,Hexagon nuts,500,DIN_934.png
+DIN 934,934,00934.950,1.4571 (A 5),Hexagon nuts,501,DIN_934.png
+DIN 934,934,00934.944,A 4 left,Hexagon nuts with metric left hand thread,501,DIN_934.png
+DIN 935-1,935-1,00935.920,A 2,Hexagon slotted and castle nuts,501,DIN_935_1.png
+DIN 935-1,935-1,00935.940,A 4,Hexagon slotted and castle nuts,501,DIN_935_1.png
+DIN 936,936,00936.920,A 2,Hexagon thin nuts,501,DIN_936.png
+DIN 936,936,00936.940,A 4,Hexagon thin nuts,501,DIN_936.png
+DIN 936,936,00936.925,A 2 fine,Hexagon thin nuts with metric fine pitch thread,502,DIN_936.png
+DIN 936,936,00936.945,A 4 fine,Hexagon thin nuts with metric fine pitch thread,502,DIN_936.png
+DIN 938,938,00938.920,A 2,"Studs, metal end",502,DIN_938_v2.png
+DIN 938,938,00938.940,A 4,"Studs, metal end",502,DIN_938_v2.png
+DIN 939,939,00939.920,A 2,"Studs, metal end",503,DIN_939.png
+DIN 939,939,00939.940,A 4,"Studs, metal end",503,DIN_939.png
+DIN 963,963,00963.920,A 2,Slotted countersunk head screws,504,DIN_963.png
+DIN 963,963,00963.940,A 4,Slotted countersunk head screws,505,DIN_963.png
+DIN 964,964,00964.920,A 2,Slotted raised countersunk head screws,506,DIN_964_v2.png
+DIN 964,964,00964.940,A 4,Slotted raised countersunk head screws,506,DIN_964_v2.png
+DIN 965,965,00965.924,A 2 H,Countersunk head screws with Phillips cross recess H,507,DIN_965_v2.png
+DIN 965,965,00965.944,A 4 H,Countersunk head screws with Phillips cross recess H,508,DIN_965_v2.png
+DIN 965,965,00965.925,A 2 Z,Countersunk head screws with Pozidriv cross recess Z,508,DIN_965_v2.png
+DIN 965 (~similar),965,00965.926,A 2 ISR,"Countersunk head screws, ISR = hexalobular socket",509,DIN_965_sim.png
+DIN 965 (~similar),965,00965.948,A 4 ISR,"Countersunk head screws, ISR = hexalobular socket",510,DIN_965_sim.png
+DIN 966,966,00966.924,A 2 H,Raised countersunk head screws with Phillips cross recess H,510,DIN_966.png
+DIN 966,966,00966.944,A 4 H,Raised countersunk head screws with Phillips cross recess H,511,DIN_966.png
+DIN 975 (~similar),975,00975.920,A 2,"Threaded rods, length 1000 mm",511,DIN_975_sim.png
+DIN 975 (~similar),975,00975.926,A 2 2000,"Threaded rods, length 2.000 mm",511,DIN_975_sim.png
+DIN 975 (~similar),975,00975.940,A 4,"Threaded rods, length 1000 mm",511,DIN_975_sim.png
+DIN 975 (~similar),975,00975.924,A 2 left,"Threaded rods, length 1000 mm with metric left hand thread",512,DIN_975_sim.png
+DIN 975 (~similar),975,00975.944,A 4 trapezoid,"Threaded rods, length 1000 mm, with normal trapezoidal thread",512,DIN_975_sim_v2.png
+DIN 975 (~similar),975,00975.950,A 5,"Threaded rods, length 1000 mm",512,DIN_975_sim.png
+DIN 976-1,976-1,00976.922,A 2 type B,"Stud bolts, B = with flat point",512,DIN_976_1.png
+DIN 976-1,976-1,00976.942,A 4 type B,"Stud bolts, B = with flat point",513,DIN_976_1.png
+DIN 976-1,976-1,00976.956,A 5 type A,"Stud bolts, A = without flat point, threaded rod, length 1000 mm",513,DIN_976_1.png
+DIN 980 (~similar),980,00980.924,A 2 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",513,DIN_980_sim_v2.png
+DIN 980 (~similar),980,00980.944,A 4 type V,"Prevailing torque type hexagon nuts, V = all-metal nuts, single component",514,DIN_980_sim_v2.png
+DIN 982 (~similar),982,00982.920,A 2,"Prevailing torque type hexagon nuts with non-metallic insert, high type",515,DIN_982_sim.png
+DIN 982 (~similar),982,00982.940,A 4,"Prevailing torque type hexagon nuts with non-metallic insert, high type",515,DIN_982_sim.png
+DIN 985 (~similar),985,00985.920,A 2,"Prevailing torque type hexagon nuts with non-metallic insert, low type",515,DIN_985_sim.png
+DIN 985 (~similar),985,00985.940,A 4,"Prevailing torque type hexagon nuts with non-metallic insert, low type",516,DIN_985_sim.png
+DIN 985,985,00985.948,A 4 - 80,"Prevailing torque type hexagon nuts with non-metallic insert, low type",516,DIN_985.png
+DIN 986 (~similar),986,00986.920,A 2,Prevailing torque type hexagon domed cap nuts with non-metallic insert,516,DIN_986_sim.png
+DIN 988 (~similar),988,00988.920,A 2/1.4310,Shim rings,516,DIN_988_sim.png
+DIN 1052,1052,01052.924,A 2,"Washers for timber connectors, heavy, round type",517,DIN_1052_v5.png
+DIN 1052,1052,01052.944,A 4,"Washers for timber connectors, heavy, round type",517,DIN_1052_v5.png
+DIN 1440,1440,01440.920,A 2,Washers for clevis pins,520,DIN_1440.png
+DIN 1440,1440,01440.940,A 4,Washers for clevis pins,520,DIN_1440.png
+DIN 1471,1471,01471.910,A 1,"Grooved pins, full-length taper grooved",520,DIN_1471.png
+DIN 1472,1472,01472.910,A 1,"Grooved pins, half length taper grooved",521,DIN_1472.png
+DIN 1473,1473,01473.910,A 1,"Grooved pins, full length parallel grooved",521,DIN_1473.png
+DIN 1476,1476,01476.920,1.4303 (A 2),Grooved pins with round head,522,DIN_1476.png
+DIN 1480,1480,01480.924,A 2 SP-AE,"Turnbuckles, forged,open type, AE = with 2 welding studs",522,DIN_1480_v2.png
+DIN 1480,1480,01480.925,A 2 SP-RR,"Turnbuckles, forged, open type, RR = with 2 eye bolts",522,DIN_1480_v3.png
+DIN 1481,1481,01481.960,1.4310,"Spring type straight pins, slotted, heavy duty (clamping sleeves)",523,DIN_1481.png
+DIN 1587,1587,01587.920,A 2,"Hexagon domed cap nuts, high type",525,DIN_1587.png
+DIN 1587,1587,01587.940,A 4,"Hexagon domed cap nuts, high type",525,DIN_1587.png
+DIN 1804,1804,01804.920,A 2,Slotted round nuts,526,DIN_1804.png
+DIN 2093,2093,02093.960,1.4310/1.4568*,Disc springs,529,DIN_2093.png
+DIN 3017,3017,03017.311,1.4016 (W2) type A,"Hose clamps, A = with worm gear drive",532,DIN_3017.png
+DIN 3017,3017,03017.903,1.4016 (W2) type C1,"Hose clamps, C1 = with hinge bolts, one-piece",532,DIN_3017_v2.png
+DIN 3017,3017,03017.941,A 4 (W5) type A,"Hose clamps, A = with worm gear drive",532,DIN_3017.png
+DIN 3567,3567,03567.951,1.4571 (A 5) type A,"Pipe clamps, A = equal sided",532,DIN_3567.png
+DIN 3570,3570,03570.941,A 4 type A,"Stirrup bolts without nuts, A = double-sided fixing thread",532,DIN_3570.png
+DIN 6330,6330,06330.942,A 4 type B,"Hexagon nuts with a height of 1,5 d, B = with one spherical bearing face",556,DIN_6330.png
+DIN 6331,6331,06331.940,A 4,"Hexagon nuts with collar with a height of 1,5 d",556,DIN_6331.png
+DIN 6334,6334,06334.940,A 4,Hexagon nuts with a height of 3 d,556,DIN_6334.png
+DIN 6796 (~similar),6796,,1.4310/A 2*,Conical spring washers for screwed fastenings,556,DIN_6796_sim.png
+DIN 6796 (~similar),6796,06796.940,A 4,Conical spring washers for screwed fastenings,557,DIN_6796_sim.png
+DIN 6797 (~similar),6797,06797.961,1.4310 type A,"Toothed lock washers, A = external teeth",557,DIN_6797_sim.png
+DIN 6797 (~similar),6797,06797.964,1.4310 type I,"Toothed lock washers, I = internal teeth",557,DIN_6797_sim_v2.png
+DIN 6798 (~similar),6798,06798.961,1.4310 type A,"Serrated lock washers, A = external teeth",557,DIN_6798_sim.png
+DIN 6798 (~similar),6798,06798.964,1.4310 type I,"Serrated lock washers, I = internal teeth",557,DIN_6798_sim_v2.png
+DIN 6798 (~similar),6798,06798.944,A 4 type A,"Serrated lock washers, A = external teeth",557,DIN_6798_sim.png
+DIN 6798 (~similar),6798,06798.965,1.4310 type V,"Serrated lock washers, V = countersunk",558,DIN_6798_sim_v3.png
+DIN 6799 (~similar),6799,06799.300,1.4122,Retaining rings for shafts,558,DIN_6799_sim.png
+DIN 6885,6885,06885.941,A 4 type A,"Parallel keys, deep pattern, A = round-ended (without holes)",558,DIN_6885.png
+DIN 6912,6912,06912.920,A 2,"Hexagon socket head cap screws, low head, with centre",559,DIN_6912.png
+DIN 6912,6912,06912.940,A 4,"Hexagon socket head cap screws, low head, with centre",559,DIN_6912.png
+DIN 6921,6921,06921.920,A 2,Hexagon flange bolts,560,DIN_6921.png
+DIN 6921 (~similar),6921,06921.926,A 2 locking,Hexagon locking bolts with flange,560,DIN_6921_sim.png
+DIN 6921,6921,06921.940,A 4,Hexagon flange bolts,561,DIN_6921_v2.png
+DIN 6921 (~similar),6921,06921.944,A 4 locking,Hexagon locking bolts with flange,561,DIN_6921_sim.png
+DIN 6923,6923,06923.920,A 2,Hexagon flange nuts,561,DIN_6923.png
+DIN 6923,6923,06923.940,A 4,Hexagon flange nuts,561,DIN_6923.png
+DIN 6923 (~similar),6923,06923.924,A 2 locking,Hexagon locking nuts with flange,562,DIN_6923_sim.png
+DIN 6923 (~similar),6923,06923.944,A 4 locking,Hexagon locking nuts with flange,562,DIN_6923_sim.png
+DIN 6924 (~similar),6924,06924.920,A 2,"Prevailing torque type hexagon nuts with non-metallic insert, high type",562,DIN_6924_sim.png
+DIN 6924 (~similar),6924,06924.940,A 4,"Prevailing torque type hexagon nuts with non-metallic insert, high type",562,DIN_6924_sim.png
+DIN 7343,7343,07343.960,1.4310,"Spring-type straight pins, coiled, standard duty",574,DIN_7343.png
+DIN 7349,7349,07349.920,A 2   100 HV,Washers for screws with heavy spring-type straight pins,575,DIN_7349.png
+DIN 7349,7349,07349.940,A 4   100 HV,Washers for screws with heavy spring-type straight pins,575,DIN_7349.png
+DIN 7604,7604,07604.941,A 4 type A,"Hexagon head screw plugs with collar, light type, A = short stud end, cylindrical fine pitch thread",577,DIN_7604_v4.png
+DIN 7964 (~similar),7964,07964.924,A 2 K-D1,"Hexagon head screws with waisted shank, short thread, wrench sizes acc. to ISO",578,DIN_7964_sim.png
+DIN 7967 (~similar),7967,07967.960,1.4310,Self locking counter nuts,578,DIN_7967_sim.png
+DIN 7967 (~similar),7967,07967.940,A 4,Self locking counter nuts,578,DIN_7967_sim.png
+DIN 7976,7976,07976.923,A 2 type C,"Hexagon head tapping screws, C = with cone end",578,DIN_7976.png
+DIN 7980 (~similar),7980,07980.960,1.4310,Spring lock washers for cheese head screws,579,DIN_7980_sim.png
+DIN 7980 (~similar),7980,07980.940,A 4,Spring lock washers for cheese head screws,579,DIN_7980_sim.png
+DIN 7981,7981,07981.924,A 2 type C-H,"Pan head tapping screws with Phillips cross recess H, C = with cone end",579,DIN_7981.png
+DIN 7981,7981,07981.944,A 4 type C-H,"Pan head tapping screws with Phillips cross recess H, C = with cone end",580,DIN_7981.png
+DIN 7981,7981,07981.927,A 2 type F-H,"Pan head tapping screws with Phillips cross recess H, F = with flat end",580,DIN_7981_v2.png
+DIN 7982,7982,07982.924,A 2 type C-H,"Countersunk head tapping screws with Phillips cross recess H, C = with cone end",581,DIN_7982.png
+DIN 7983,7983,07983.924,A 2 type C-H,"Raised countersunk head tapping screws with Phillips cross recess H, C = with cone end",582,DIN_7983.png
+DIN 7984,7984,07984.920,A 2,Hexagon socket head cap screws with low head,582,DIN_7984.png
+DIN 7984,7984,07984.940,A 4,Hexagon socket head cap screws with low head,583,DIN_7984.png
+DIN 7985,7985,07985.924,A 2 H,Cheese head screws with Phillips cross recess H,583,DIN_7985.png
+DIN 7985,7985,07985.944,A 4 H,Cheese head screws with Phillips cross recess H,584,DIN_7985.png
+DIN 7985,7985,07985.925,A 2 Z,Cheese head screws with Pozidriv cross recess Z,585,DIN_7985.png
+DIN 7985 (~similar),7985,07985.926,A 2 ISR,"Cheese head screws, ISR = hexalobular socket",585,DIN_7985_sim.png
+DIN 7989-1,7989-1,07989.943,A 4 PK C,"Washers for steel structures, product grade C (g)",586,DIN_7989_1.png
+DIN 9021,9021,09021.920,A 2,"Washers, outside product grade C",590,DIN_9021.png
+DIN 9021,9021,09021.940,A 4,"Washers, outside product grade C",590,DIN_9021.png
+DIN 11024,11024,11024.940,A 4,Spring cotters for a bolt,593,DIN_11024.png
+DIN 11024 (~similar),11024,11024.922,A 2,"Spring cotters for a bolt, single type",593,DIN_11024_sim.png
+DIN 71412,71412,71412.941,A 4 type A-M,"Lubricating nipples, cone type, with hexagon, A = cone head straight / axial M = with taper fine pitch thread",596,DIN_71412.png
+DIN 80704,80704,80704.940,A 4,Bow nuts,596,DIN_80704.png
+DIN 84,84,00084.704,Brass,Slotted cheese head screws,615,DIN_84.png
+DIN 84,84,00084.700,Brass,Slotted cheese head screws,615,DIN_84.png
+DIN 84,84,00084.730,Brass,Slotted cheese head screws,616,DIN_84.png
+DIN 84,84,00084.600,Plastic PA,Slotted cheese head screws,616,DIN_84.png
+DIN 85,85,00085.700,Brass,Slotted pan head screws,616,DIN_85.png
+DIN 85,85,00085.600,Plastic PA,Slotted pan head screws,617,DIN_85.png
+DIN 94,94,00094.700,Brass,Split pins,617,DIN_94.png
+DIN 94,94,00094.301,Copper,Split pins,617,DIN_94.png
+DIN 95,95,00095.700,Brass,Slotted raised countersunk head wood screws,617,DIN_95.png
+DIN 95,95,00095.730,Brass,Slotted raised countersunk head wood screws,618,DIN_95.png
+DIN 95,95,00095.740,Brass,Slotted raised countersunk head wood screws,618,DIN_95.png
+DIN 95,95,00095.750,Brass,Slotted raised countersunk head wood screws,618,DIN_95.png
+DIN 96,96,00096.700,Brass,Slotted round head wood screws,619,DIN_96.png
+DIN 96,96,00096.730,Brass,Slotted round head wood screws,619,DIN_96.png
+DIN 97,97,00097.700,Brass,Slotted countersunk head wood screws,619,DIN_97.png
+DIN 97,97,00097.730,Brass,Slotted countersunk head wood screws,620,DIN_97.png
+DIN 125-1,125-1,00125.701,Brass type A,"Plain washers, A = without chamfer*",620,DIN_125_1_v3.png
+DIN 125-1,125-1,00125.731,Brass type A,"Plain washers, A = without chamfer",620,DIN_125_1.png
+DIN 125-1,125-1,00125.704,Brass type B,"Plain washers, B = with chamfers",620,DIN_125_1_v2.png
+DIN 125-1,125-1,00125.300,Copper type A,"Plain washers, A = without chamfer",621,DIN_125_1.png
+DIN 125-1,125-1,00125.301,Aluminium type A,"Plain washers, A = without chamfer",621,DIN_125_1.png
+DIN 125-1,125-1,00125.601,Plastic PA type A,"Plain washers, A = without chamfer",621,DIN_125_1.png
+DIN 127,127,00127.702,Bronze type B,"Spring lock washers, B = flat end",621,DIN_127.png
+DIN 315,315,00315.700,Brass,"Wing nuts, rounded wings, product grade C (g)",621,DIN_315.png
+DIN 315,315,00315.730,Brass,"Wing nuts, rounded wings, product grade C (g)",621,DIN_315.png
+DIN 316,316,00316.700,Brass,"Wing screws, rounded wings, product grade C (g)",622,DIN_316.png
+DIN 319,319,00319.633,Plastic type C,"Ball knobs, C = with internal thread (without bush insert)",622,DIN_319.png
+DIN 319,319,00319.644,Plastic type E-St,"Ball knobs, E = with threaded bush steel, ZP",622,DIN_319_v2.png
+DIN 319,319,00319.634,Plastic type E-Ms,"Ball knobs, E = with threaded bush brass",622,DIN_319_v2.png
+DIN 431,431,00431.702,Brass type B,"Pipe nuts with inch pipe thread G, B = thread one-sided countersunk",622,DIN_431.png
+DIN 433-1,433-1,00433.700,Brass,Washers,622,DIN_433_1.png
+DIN 439,439,00439.702,Brass type B,"Hexagon thin nuts, B = with chamfers",623,DIN_439.png
+DIN 439,439,00439.732,Brass type B,"Hexagon thin nuts, B = with chamfers",623,DIN_439.png
+DIN 444,444,00444.702,Brass type B,"Eye bolts, B = product grade B (mg)",623,DIN_444.png
+DIN 463 (~similar),463,00463.700,Brass,Washers with 2 taps,623,DIN_463_sim.png
+DIN 464,464,00464.700,Brass,"Knurled thumb screws, high type",623,DIN_464.png
+DIN 466,466,00466.700,Brass,"Knurled nuts, high type",624,DIN_466.png
+DIN 467,467,00467.700,Brass,"Knurled nuts, low type",624,DIN_467.png
+DIN 546,546,00546.700,Brass,Slotted round nuts,624,DIN_546.png
+DIN 551,551,00551.700,Brass,Slotted grub screws with flat point,624,DIN_551.png
+DIN 551,551,00551.600,Plastic PA,Slotted grub screws with flat point,624,DIN_551.png
+DIN 553,553,00553.700,Brass,Slotted grub screws with cone point,625,DIN_553.png
+DIN 555,555,00555.600,Plastic PA,Hexagon nuts,625,DIN_555.png
+DIN 603,603,00603.704,Brass,Cup head square neck bolts,625,DIN_603.png
+DIN 660,660,00660.700,Brass,Round head rivets,625,DIN_660.png
+DIN 660,660,00660.300,Copper,Round head rivets,625,DIN_660.png
+DIN 660,660,00660.301,Aluminium 99.5,Round head rivets,626,DIN_660.png
+DIN 661,661,00661.700,Brass,Countersunk head rivets,626,DIN_661.png
+DIN 661,661,00661.300,Copper,Countersunk head rivets,627,DIN_661.png
+DIN 661,661,00661.301,Aluminium 99.5,Countersunk head rivets,627,DIN_661.png
+DIN 662,662,00662.700,Copper,Mushroom head rivets,627,DIN_662.png
+DIN 662,662,00662.300,Aluminium 99.5,Mushroom head rivets,627,DIN_662.png
+DIN 906,906,00906.700,Brass taper fine,Hexagon socket pipe plugs with taper fine pitch thread,628,DIN_906.png
+DIN 906,906,00906.704,Brass taper pipe R,"Hexagon socket pipe plugs, R = with taper pipe thread",628,DIN_906.png
+DIN 908,908,00908.704,Brass cyl. pipe G,"Hexagon socket screw plugs, G = with cylindrical pipe thread",628,DIN_908.png
+DIN 910,910,00910.700,Brass cyl. fine,"Hexagon head screw plugs, heavy type, cylindrical fine pitch thread",628,DIN_910.png
+DIN 910,910,00910.704,Brass cyl. pipe G,"Hexagon head screw plugs, heavy type, G = cylindrical pipe thread",628,DIN_910.png
+DIN 917,917,00917.700,Brass,"Hexagon cap nuts, low type",628,DIN_917.png
+DIN 931,931,00931.700,Brass,Hexagon head bolts,629,DIN_931.png
+DIN 933,933,00933.700,Brass,hexagon head screws,629,DIN_933.png
+DIN 933,933,00933.600,Plastic PA,hexagon head screws,629,DIN_933.png
+DIN 934,934,00934.700,Brass,Hexagon nuts,630,DIN_934.png
+DIN 934,934,00934.730,Brass,Hexagon nuts,630,DIN_934.png
+DIN 934,934,00934.740,Brass,Hexagon nuts,630,DIN_934.png
+DIN 934,934,00934.705,Brass fine,Hexagon nuts with metric fine pitch thread,630,DIN_934.png
+DIN 934,934,00934.302,CuNiSi,Hexagon nuts,630,DIN_934.png
+DIN 934,934,00934.303,Aluminium,Hexagon nuts,631,DIN_934.png
+DIN 934,934,00934.308,Titanium (grade 2),Hexagon nuts,631,DIN_934.png
+DIN 936,936,00936.700,Brass,Hexagon thin nuts,631,DIN_936.png
+DIN 936,936,00936.705,Brass fine,Hexagon thin nuts with metric fine pitch thread,631,DIN_936.png
+DIN 963,963,00963.704,Brass,Slotted countersunk head screws,631,DIN_963.png
+DIN 963,963,00963.700,Brass,Slotted countersunk head screws,631,DIN_963.png
+DIN 963,963,00963.730,Brass,Slotted countersunk head screws,632,DIN_963.png
+DIN 963,963,00963.600,Plastic PA,Slotted countersunk head screws,632,DIN_963.png
+DIN 964,964,00964.700,Brass,Slotted raised countersunk head screws,632,DIN_964_v2.png
+DIN 964,964,00964.730,Brass,Slotted raised countersunk head screws,633,DIN_964_v2.png
+DIN 964,964,00964.740,Brass,Slotted raised countersunk head screws,633,DIN_964_v2.png
+DIN 975 (~similar),975,00975.700,Brass,"Threaded rods, length 1000 mm",634,DIN_975_sim.png
+DIN 975 (~similar),975,00975.600,Plastic PA,"Threaded rods, length 1000 mm",634,DIN_975_sim.png
+DIN 985 (~similar),985,00985.700,Brass,"Prevailing torque type hexagon nuts with non-metallic insert, low type",634,DIN_985_sim.png
+DIN 1476,1476,01476.700,Brass,Grooved pins with round head,636,DIN_1476.png
+DIN 1476,1476,01476.300,Aluminium,Grooved pins with round head,636,DIN_1476.png
+DIN 1587,1587,01587.700,Brass,"Hexagon domed cap nuts, high type",637,DIN_1587.png
+DIN 1587,1587,01587.730,Brass,"Hexagon domed cap nuts, high type",637,DIN_1587.png
+DIN 1587,1587,01587.740,Brass,"Hexagon domed cap nuts, high type",637,DIN_1587.png
+DIN 1587,1587,01587.600,Plastic PA,"Hexagon domed cap nuts, high type",638,DIN_1587.png
+DIN 3404,3404,03404.700,Brass MF,"Lubricating nipples, button head, with round head, hexagon drive, MF = with metric fine pitch thread",640,DIN_3404.png
+DIN 6335,6335,06335.634,Plastic type K-St,"Palm grips, K = with threaded bush*",643,DIN_6335.png
+DIN 6336,6336,06336.644,Plastic type K-St,"Star grips, K = with threaded bush*",643,DIN_6336_v2.png
+DIN 6336,6336,06336.634,Plastic type K-Ms,"Star grips, K = with threaded bush*",643,DIN_6336_v2.png
+DIN 6798 (~similar),6798,06798.701,CuSn8 type A,"Serrated lock washers, A = external teeth",643,DIN_6798_sim.png
+DIN 7338,7338,07338.702,Copper type B,"Rivets for brake linings and clutch linings, B = semi-tubular rivet",645,DIN_7338.png
+DIN 7338,7338,07338.703,Copper type C,"Rivets for brake linings and clutch linings, C = tubular rivet",645,DIN_7338.png
+DIN 7603,7603,07603.701,Copper type A,Sealing rings A = flat sealing rings,646,DIN_7603.png
+DIN 7603,7603,07603.300,Aluminium type A,Sealing rings A = flat sealing rings,646,DIN_7603.png
+DIN 7965,7965,07965.700,Brass,"Screwed inserts ""RAMPA""",646,DIN_7965_v2.png
+DIN 9021,9021,09021.700,Brass,"Washers, outside",647,DIN_9021.png
+DIN 9021,9021,09021.600,Plastic PA,"Washers, outside",647,DIN_9021.png
+DIN 34810,34810,34810.600,Plastic PA,Hexagon head screws with thread up to head*,648,DIN_34810.png
+DIN 80701,80701,80701.700,Brass,Butterfly nuts,648,DIN_80701.png
+DIN 80704,80704,80704.700,Brass,Bow nuts,648,DIN_80704.png
