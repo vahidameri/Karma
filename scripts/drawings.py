@@ -1,11 +1,12 @@
-"""Match DIN parents to the REYHER catalogue drawings and embed them in a sheet.
+"""Match DIN parents to the REYHER catalogue figures and embed them in a sheet.
 
-data/drawings/reyher/images_index.csv lists one drawing per catalogue entry
+data/drawings/reyher/images_index.csv lists one figure per catalogue entry
 (standard, title, page, REYHER article codes). A standard can have several
-drawings, one per form; the form is named in the title as "A = without
+figures, one per form; the form is named in the title as "A = without
 chamfer", "ISR = hexalobular socket", ... and is matched to the parent's form
 (DIN125A -> A, DIN912TX -> ISR, DIN6797J -> I). "(~similar)" in the catalogue
-means the drawing shows a close variant, not the exact standard.
+means the figure shows a close variant, not the exact standard. A figure of a
+different form of the same standard is only suggested, never embedded.
 """
 
 import csv
@@ -77,29 +78,32 @@ def match(standard, catalogue):
     elif hit:
         label = "فرم نزدیک"
     else:
-        label = "استاندارد (فرم دیگر)"
+        label = "فرم دیگر"
     if best["similar"]:
         label += " · مشابه"
     return best, label
 
 
 def annotate(standards):
-    """Add drawing fields to each parent dict; return number matched."""
+    """Add figure fields to each parent dict; return number with a figure."""
     catalogue = load()
     n = 0
     for s in standards:
         r, label = match(s["standard"], catalogue)
+        other = label.startswith("فرم دیگر")
+        use = r if r and not other else None
         s["drawing"] = ""
-        s["drawing_file"] = r["image_file"] if r else ""
-        s["drawing_title"] = r["title"] if r else ""
-        s["drawing_match"] = label or "بدون نقشه"
-        s["reyher_codes"] = r["reyher_codes"] if r else ""
-        n += bool(r)
+        s["drawing_file"] = use["image_file"] if use else ""
+        s["drawing_title"] = use["title"] if use else ""
+        s["reyher_codes"] = use["reyher_codes"] if use else ""
+        s["drawing_match"] = (label + " (خالی)") if other else (label or "بدون تصویر")
+        s["drawing_suggest"] = f'{r["image_file"]} — {r["title"]}' if other else ""
+        n += bool(use)
     return n
 
 
 def embed(ws, col, file_col):
-    """Place the image named in `file_col` into column `col` of each data row."""
+    """Place the figure named in `file_col` into column `col` of each data row."""
     ws.column_dimensions[get_column_letter(col)].width = (MAX_W + 2 * PAD) / 7
     for row in range(2, ws.max_row + 1):
         name = ws.cell(row=row, column=file_col).value
@@ -121,3 +125,46 @@ def embed(ws, col, file_col):
         ws.row_dimensions[row].height = (MAX_H + 2 * PAD) * 0.75
         for cell in ws[row]:
             cell.alignment = Alignment(vertical="center", wrap_text=cell.alignment.wrap_text)
+
+
+INDEX_COLS = [  # key, header, width — laid out like a catalogue figure index
+    ("standard", "Standard", 14),
+    ("drawing", "تصویر", None),
+    ("name_en", "Designation (EN)", 38),
+    ("drawing_title", "REYHER designation", 46),
+    ("parent_code", "Parent code", 13),
+    ("drawing_match", "تطبیق تصویر", 20),
+    ("drawing_suggest", "تصویر فرم دیگر (پیشنهادی، درج نشده)", 46),
+    ("drawing_file", "Figure file", 20),
+]
+
+
+def index_sheet(wb, standards, title="فهرست تصاویر"):
+    """Figure index: one row per parent, standard in red beside its figure."""
+    from openpyxl.styles import Border, Font, Side
+
+    ws = wb.create_sheet(title)
+    line = Side(style="thin", color="9AA3AE")
+    box = Border(left=line, right=line, top=line, bottom=line)
+    ws.append([c[1] for c in INDEX_COLS])
+    for s in standards:
+        ws.append([s.get(c[0]) or "" for c in INDEX_COLS])
+    for i, c in enumerate(INDEX_COLS, 1):
+        if c[2]:
+            ws.column_dimensions[get_column_letter(i)].width = c[2]
+        h = ws.cell(row=1, column=i)
+        h.font = Font(bold=True, color="1F2A44")
+        h.border = Border(bottom=Side(style="medium", color="1F2A44"))
+        h.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    ws.row_dimensions[1].height = 30
+    keys = [c[0] for c in INDEX_COLS]
+    embed(ws, keys.index("drawing") + 1, keys.index("drawing_file") + 1)
+    for row in ws.iter_rows(min_row=2):
+        for cell in row:
+            cell.border = box
+            cell.alignment = Alignment(vertical="center", wrap_text=True)
+        row[0].font = Font(bold=True, color="C0392B", size=12)
+        row[0].alignment = Alignment(horizontal="center", vertical="center")
+    ws.freeze_panes = "C2"
+    ws.auto_filter.ref = ws.dimensions
+    return ws

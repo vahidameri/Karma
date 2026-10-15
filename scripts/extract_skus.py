@@ -780,7 +780,7 @@ def write(skus, review, standards):
     std_cols = [
         ("parent_code", "Parent code", 14),
         ("standard", "Standard", 14),
-        ("drawing", "نقشه", 23),
+        ("drawing", "تصویر", 23),
         ("name_en", "Product name (EN)", 42),
         ("priority", "Priority file", 11),
         ("role", "نقش", 12),
@@ -797,10 +797,11 @@ def write(skus, review, standards):
         ("equivalents", "Equivalent norms", 40),
         ("sheet", "Source sheet", 12),
         ("warnings", "هشدارها", 50),
-        ("drawing_match", "تطبیق نقشه", 22),
-        ("drawing_file", "Drawing file", 22),
-        ("drawing_title", "Drawing title (REYHER)", 50),
+        ("drawing_match", "تطبیق تصویر", 22),
+        ("drawing_file", "Figure file", 22),
+        ("drawing_title", "REYHER designation", 50),
         ("reyher_codes", "REYHER article codes", 40),
+        ("drawing_suggest", "تصویر فرم دیگر (پیشنهادی، درج نشده)", 50),
     ]
     n_drawn = drawings.annotate(standards)
     wb.remove(wb.active)
@@ -813,7 +814,7 @@ def write(skus, review, standards):
         ("", ""),
         (
             "مبنا",
-            "فقط داده‌های DIN موجود در data/raw. از هیچ منبع بیرونی استفاده نشده است (به‌جز تصویر نقشه‌ها از کاتالوگ REYHER).",
+            "فقط داده‌های DIN موجود در data/raw. از هیچ منبع بیرونی استفاده نشده است (به‌جز تصویرها از کاتالوگ REYHER).",
         ),
         (
             "والد (Parent)",
@@ -839,7 +840,7 @@ def write(skus, review, standards):
         ("   ├ با قطر × طول", n_len),
         ("   └ فقط سایز (محصول بدون طول)", len(skus) - n_len),
         ("ترکیب‌های مبهم (برگه Review)", len(review)),
-        ("والد با نقشه", n_drawn),
+        ("والد با تصویر", n_drawn),
         ("", ""),
         (
             "برگه Review",
@@ -854,8 +855,8 @@ def write(skus, review, standards):
             "سایزهای داخل پرانتز در استاندارد، مثل (M14) — مجاز ولی کم‌مصرف.",
         ),
         (
-            "نقشه",
-            "ستون «نقشه» در برگه Parents: نقشه‌ی فنی از کاتالوگ REYHER (data/drawings/reyher). تطبیق نقشه: فرم دقیق = همان فرم والد | فرم نزدیک = بخشی از کد فرم | استاندارد = نقشه‌ی عمومی همان استاندارد | فرم دیگر = نقشه‌ی فرم دیگری از همان استاندارد | مشابه = کاتالوگ آن را «~similar» زده.",
+            "تصویر",
+            "برگه «فهرست تصاویر» و ستون «تصویر» در Parents: تصویر محصول از کاتالوگ REYHER (data/drawings/reyher). تطبیق تصویر: فرم دقیق = همان فرم والد | فرم نزدیک = بخشی از کد فرم | استاندارد = تصویر عمومی همان استاندارد | مشابه = کاتالوگ آن را «~similar» زده | فرم دیگر (خالی) = کاتالوگ فقط فرم دیگری از این استاندارد را دارد؛ تصویر درج نشده و در ستون «تصویر فرم دیگر» فقط پیشنهاد شده | بدون تصویر = استاندارد در کاتالوگ نیست.",
         ),
         ("بازتولید", "python3 scripts/extract_skus.py  (ورودی: data/raw/*.xlsx)"),
     ]
@@ -866,6 +867,7 @@ def write(skus, review, standards):
     guide.column_dimensions["B"].width = 110
     for row in guide.iter_rows(min_row=2):
         row[1].alignment = Alignment(wrap_text=True, vertical="top")
+    drawings.index_sheet(wb, standards)
     parents = sheet("Parents", std_cols, standards)
     keys = [c[0] for c in std_cols]
     drawings.embed(
