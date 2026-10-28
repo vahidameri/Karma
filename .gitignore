@@ -1,1 +1,15 @@
 __pycache__/
+platform/.env
+platform/backend/*.sqlite3
+platform/backend/staticfiles/
+platform/frontend/node_modules/
+platform/frontend/.next/
+platform/frontend/*.tsbuildinfo
+platform/frontend/playwright-report/
+platform/frontend/test-results/
+*.pyc
+platform/backend/media/
+platform/.venv/
+platform/backups/
+platform/.cache/
+platform/backend/.hypothesis/

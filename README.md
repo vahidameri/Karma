@@ -8,3 +8,7 @@
 pip install openpyxl
 python3 scripts/extract_skus.py
 ```
+
+## Karma Platform 2.0 alpha
+
+The executable rewrite is in [`platform/`](platform/README.fa.md). This is a development alpha; see its [delivery status](platform/docs/RELEASE-2.0.0-alpha.1.md) for implemented workflows and remaining work.

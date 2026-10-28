@@ -1,0 +1,8 @@
+__pycache__
+*.sqlite3
+*.pyc
+staticfiles
+
+media
+.hypothesis
+.ruff_cache

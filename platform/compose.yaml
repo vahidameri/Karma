@@ -1,0 +1,107 @@
+name: karma-platform
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-karma}
+      POSTGRES_USER: karma
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+    - 127.0.0.1:5432:5432
+    volumes:
+    - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U karma -d karma
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+    - redis:/data
+    ports:
+    - 127.0.0.1:6379:6379
+  elasticsearch:
+    image: elasticsearch:8.19.3
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'false'
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    ports:
+    - 127.0.0.1:9200:9200
+    volumes:
+    - search:/usr/share/elasticsearch/data
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - curl -fsS http://localhost:9200/_cluster/health
+      interval: 10s
+      timeout: 5s
+      retries: 60
+  backend:
+    build:
+      context: ./backend
+      network: ${BUILD_NETWORK:-default}
+      extra_hosts:
+      - ${BUILD_PROXY_HOST:-proxy}:${BUILD_PROXY_IP:-host-gateway}
+    environment: &id001
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set DJANGO_SECRET_KEY in .env}
+      DJANGO_DEBUG: '1'
+      DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,backend,frontend
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${POSTGRES_DB:-karma}
+      POSTGRES_USER: karma
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      REDIS_URL: redis://redis:6379/0
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    ports:
+    - 127.0.0.1:${BACKEND_PORT:-8000}:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+    - ../output:/source/output:ro
+    - ../astm:/source/astm:ro
+    - ./data/legacy:/source/legacy:ro
+    - media:/app/media
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 2 --access-logfile
+      - --no-control-socket
+    image: karma-platform-backend
+  worker:
+    environment: *id001
+    depends_on:
+    - backend
+    command: celery -A config.celery:app worker -l INFO --concurrency 2
+    image: karma-platform-backend
+  beat:
+    environment: *id001
+    depends_on:
+    - backend
+    command: celery -A config.celery:app beat -l INFO --schedule /tmp/celerybeat-schedule
+    image: karma-platform-backend
+  frontend:
+    build:
+      context: ./frontend
+      network: ${BUILD_NETWORK:-default}
+      extra_hosts:
+      - ${BUILD_PROXY_HOST:-proxy}:${BUILD_PROXY_IP:-host-gateway}
+    environment:
+      BACKEND_URL: http://backend:8000
+    ports:
+    - 127.0.0.1:${FRONTEND_PORT:-3000}:3000
+    depends_on:
+    - backend
+    image: karma-platform-frontend
+volumes:
+  postgres: null
+  redis: null
+  search: null
+  media: null

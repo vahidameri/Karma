@@ -1,0 +1,34 @@
+Karma 2.0.0-alpha.1 — validation, 2026-10-28 UTC
+Status: development alpha; six-phase rewrite remains incomplete.
+
+Final source checks:
+- PostgreSQL 16: 74 Django tests passed, no skips (98.774 seconds).
+- SQLite: 74 tests discovered; 72 passed, 2 PostgreSQL concurrency tests skipped (45.687 seconds).
+- Playwright/Chromium against Docker images: 6 passed (16.0 seconds), no skips.
+  Includes account/unit isolation after logout/login, quote -> supply -> invoice,
+  actual Celery/Redis accounting posting, salesperson ledger denial, and PDF bytes.
+- Ruff backend + scripts: passed. Django migration drift: none.
+- Frontend TypeScript and production Next build: passed.
+- Backend and frontend Docker builds: passed with TLS verification enabled.
+
+Data checks:
+- Idempotent legacy import in Docker: before=21297 after=21297 created=0.
+- Original KR codes preserved; 613 aliases; 350 standards; 1020 image files.
+- Image SHA-256 and format verified by importer.
+- PostgreSQL backup/restore rehearsal completed in a disposable database;
+  product/standard/voucher counts matched. This is not a financial reconciliation
+  of live company ledgers: no live ledger export was supplied.
+- PDF pagination regression: 15 rows / 1 page; 40 rows / 2 pages.
+
+Local release runtime:
+- HTTP health: status=ok, version=2.0.0-alpha.1 on localhost:3000.
+- KR-100001 resolves to DIN912-M3X25-8.8-ZN.
+- Release database: 21297 products, 350 standards, zero application users.
+- Disposable E2E database and private fixture credentials removed after testing.
+
+Limits:
+- GitHub Actions workflow provided, not executed remotely.
+- Local Docker development runtime only; no public production deployment.
+- No migrated legacy user passwords or demo financial entries.
+- No human accountant sign-off or independent clean-room review.
+- See RELEASE-2.0.0-alpha.1.md for implemented work and phase-specific gaps.
