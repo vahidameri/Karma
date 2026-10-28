@@ -1,0 +1,14 @@
+Prototype 2.0.0 — 2026-10-29 Asia/Tehran
+532 real selected catalog variants; 242 embedded images; embedded Vazirmatn font.
+Browser smoke test passed using Chromium served on localhost:
+- Search by original KR code; select product; quantity and price validation.
+- Quote -> approval -> supply confirmation -> invoice.
+- Exact integer rial multiplication using BigInt.
+- Demo double-entry rendering; business unit separation; reload persistence.
+- Escaped customer input; mobile width fits 390px.
+- Zero external HTTP requests and zero JavaScript errors.
+Direct file:// navigation could not be tested because this managed browser blocks it.
+No connection to Google Sheets, backend or financial services exists in this demo.
+
+Repeat: python -m http.server 18777 --bind 127.0.0.1 --directory prototype
+Then, with platform frontend npm dependencies installed: node prototype/check.cjs
