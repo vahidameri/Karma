@@ -493,6 +493,7 @@ body.lp-page .appbar{position:relative}
 .dhead{display:flex;gap:16px;align-items:center;border-bottom:2px solid #1b1b1c;padding-bottom:14px;margin-bottom:16px}.dhead img{height:52px}.dhead h1{font-size:1.5rem;font-weight:700}
 .dhead dl,.dparty dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0}.dhead dt,.dparty dt{color:#5d6470}
 .dparties{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.dfollow{border:1px solid #c9d0dc;border-radius:8px;padding:8px 12px;margin:-6px 0 14px;font-size:.92em;line-height:1.9}.dfollow b{margin-inline-end:4px}
 .dparty{border:1px solid #cfd5df;border-radius:8px;padding:10px 14px}.dparty h4{font-size:.85rem;margin-bottom:6px;background:#f1f3f7;margin:-10px -14px 8px;padding:6px 14px;border-radius:8px 8px 0 0}
 table.dt{width:100%;border-collapse:collapse;font-size:.8rem}table.dt th,table.dt td{border:1px solid #cfd5df;padding:6px 6px;text-align:center;vertical-align:middle}table.dt th{background:#f1f3f7;font-weight:700}table.dt td.dl{text-align:start}table.dt tfoot td{background:#f8f9fb;font-weight:700}
 .dtotal{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid #cfd5df;border-top:0;padding:10px 12px;background:#f8f9fb}
@@ -1295,9 +1296,12 @@ table.t tbody tr:hover{background:#f7f9fc}
 .tabbar a.on{color:var(--char)}.tabbar a.on::before{background:var(--amber-c)}
 .tcount,.count.cart{background:var(--amber);color:var(--char)}
 .lx-dots button.on{background:var(--amber)!important}
-/* large monitors */
-@media (min-width:1600px){html{font-size:17px}.wrap{max-width:1400px}}
-@media (min-width:2200px){html{font-size:19px}.wrap{max-width:1640px}}
+/* page sizes: the same scale on every screen; content never wider than 1280px (site) / 1440px (panel) */
+html{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.wrap{max-width:1280px;padding-inline:24px}
+@media (max-width:760px){.wrap{padding-inline:16px}}
+.bo-main>*{max-width:1440px;margin-inline:auto}
+.appbar .hdr-act{display:flex;align-items:center;gap:8px;margin-inline-start:auto}
 
 /* ===== scroll: only the hero pins once, banner 2 slides over it, then the page scrolls normally ===== */
 .lp-panel{position:relative}
@@ -4180,9 +4184,9 @@ const isStaff=()=>!!(ME&&ME.kind==='staff');
 /* ============ access control: roles × permissions (module.resource.action), business-unit scope, module switches ============
    The admin builds roles from the permission list below (Users › Roles). A user can hold several roles; per-user
    allow / deny overrides and a business-unit scope sit on top. Every page, menu item and action asks can(). */
-const ACTFA={view:'مشاهده',create:'ایجاد / ویرایش پیش‌نویس',edit:'ویرایش',send:'ارسال برای مشتری',approve:'ثبت تأیید',revise:'اصلاح',issue:'صدور',void:'ابطال',return:'برگشتی',print:'چاپ',backdate:'تاریخ گذشته / آینده',assign:'سپردن به کارشناس',delete:'حذف',view_balance:'دیدن مانده حساب',view_cost:'دیدن قیمت خرید و سود',post:'دائم کردن',reverse:'سند معکوس',run:'اجرا',ops:'عملیات چک',sign:'امضا',settings:'تنظیمات',export:'خروجی'};
+const ACTFA={archive:'بایگانی',view:'مشاهده',create:'ایجاد / ویرایش پیش‌نویس',edit:'ویرایش',send:'ارسال برای مشتری',approve:'ثبت تأیید',revise:'اصلاح',issue:'صدور',void:'ابطال',return:'برگشتی',print:'چاپ',backdate:'تاریخ گذشته / آینده',assign:'سپردن به کارشناس',delete:'حذف',view_balance:'دیدن مانده حساب',view_cost:'دیدن قیمت خرید و سود',post:'دائم کردن',reverse:'سند معکوس',run:'اجرا',ops:'عملیات چک',sign:'امضا',settings:'تنظیمات',export:'خروجی'};
 const PERMDEF=[
- {m:'sales',fa:'فروش و مشتریان',res:[['request','درخواست‌های سایت',['view','edit']],['quote','پیش‌فاکتور',['view','create','edit','send','approve','revise','print']],['supply','برگهٔ تأمین و بسته‌بندی',['view','edit','assign','print']],['invoice','فاکتور فروش و برگشتی',['view','create','issue','void','return','print','backdate']],['customer','پروندهٔ مشتریان',['view','edit','delete','view_balance']]]},
+ {m:'sales',fa:'فروش و مشتریان',res:[['request','درخواست‌های سایت',['view','edit']],['quote','پیش‌فاکتور',['view','create','edit','send','approve','revise','print','archive']],['supply','برگهٔ تأمین و بسته‌بندی',['view','edit','assign','print']],['invoice','فاکتور فروش و برگشتی',['view','create','issue','void','return','print','backdate','archive']],['customer','پروندهٔ مشتریان',['view','edit','delete','view_balance']]]},
  {m:'catalog',fa:'محصولات، کاتالوگ و جستجو',res:[['product','استانداردها و کالاها',['view','create','edit']],['price','قیمت‌ها',['view','edit','view_cost']],['export','ساخت کاتالوگ',['view']],['search','جستجوی هوشمند (مترادف‌ها و گزارش)',['view','edit']]]},
  {m:'acc',fa:'حسابداری',res:[['dash','پیشخوان مالی',['view']],['voucher','اسناد حسابداری',['view','create','post','reverse']],['sales','فروش در حسابداری',['view']],['purchase','خرید',['view','create']],['treasury','دریافت، پرداخت و انتقال وجه',['view','create']],['cheque','چک‌ها',['view','ops']],['party','طرف‌حساب‌ها',['view','edit']],['report','گزارش‌ها',['view','export']],['setup','کدینگ، قواعد ثبت و تعاریف',['view','edit']],['close','پایان دوره و سال مالی',['run']]]},
  {m:'payroll',fa:'حقوق و دستمزد',res:[['run','حقوق و دستمزد',['view','run']]]},
@@ -4204,6 +4208,9 @@ const roleDefaults=()=>[
  {id:'warehouse',name:'کارشناس تأمین',d:'فقط برگه‌های تأمین سفارش',sys:true,bu:[],own:false,perms:permX('sales.supply.view','sales.supply.edit','sales.supply.print')},
  {id:'r_karma',name:'کارشناس فروش کارما (نمونه)',d:'نمونهٔ نقش سفارشی: فقط اسناد واحد کارما و فقط اسنادی که خودش ساخته؛ بدون ابطال و تاریخ گذشته',sys:false,bu:['unofficial'],own:true,perms:permX('sales.request.*','sales.quote.*','sales.supply.view','sales.supply.print','sales.invoice.view','sales.invoice.create','sales.invoice.issue','sales.invoice.print','sales.customer.view','sales.customer.edit','catalog.product.view','catalog.price.view')}];
 S.roles=roleDefaults();
+/* permissions added in later versions: built-in roles saved before them receive them on load */
+const NEWPERMS=['sales.quote.archive','sales.invoice.archive'];
+function permUpgrade(){const D=roleDefaults();S.roles.forEach(r=>{const d=D.find(x=>x.id===r.id);if(!d||r.all||!d.perms||!r.sys)return;r.perms=r.perms||[];NEWPERMS.forEach(p=>{if(d.perms.includes(p)&&!r.perms.includes(p))r.perms.push(p)})})}
 S.modules={sales:true,catalog:true,acc:true,payroll:true,tax:true,dabir:true,company:true};
 S.audit=[];S.permRev=0;
 S.users.forEach(u=>{if(u.kind==='staff'&&!u.roles)u.roles=[u.role]});
@@ -4371,6 +4378,30 @@ const ymdOf=d=>{const m=/^(\d{4})\/(\d\d)\/(\d\d)$/.exec(LAT(d||''));return m?m[
 /* numbers are digits only (14050801-0001); the letter prefix is optional (Settings › numbering) */
 const docNo=(pref,date,seq)=>`${S.doc.letters&&pref?pref+'-':''}${(S.doc.numFmt||'date')==='year'?ymdOf(date).slice(0,4):ymdOf(date)}-${String(seq).padStart(4,'0')}`;
 const newPfId=()=>pfx('pf',mkDn(jd().num));
+/* a quote gets its number only when it is sent to the customer; until then it is a draft with a temporary key,
+   so a draft deleted before sending uses no number and the next quote continues from the last one sent */
+const draftQid=()=>{let id;do id='DRF-'+Date.now().toString(36).toUpperCase()+Math.floor(Math.random()*90+10);while(S.quotes[id]);return id};
+const qNo=Q=>Q.draft?'پیش‌نویس':Q.id;
+/* archive: hidden from the lists, kept as is (sales manager); permanent delete: system administrator only */
+function archDoc(D,on,what){if(on)D.arch={by:ME?ME.name:'',at:NOW()};else delete D.arch;if(D.log)D.log.push([NOW(),on?'بایگانی شد':'از بایگانی خارج شد']);audit(on?'بایگانی '+what:'خروج از بایگانی '+what,D.no||(D.draft?'پیش‌نویس':D.id),D.customer&&D.customer.name||'')}
+const archBanner=(D,what)=>D.arch?`<div class="notice" style="margin-bottom:14px">${icon('i-info')}<span>این ${what} بایگانی شده است (${esc(D.arch.by||'')}، ${esc(D.arch.at||'')}) و در فهرست‌ها دیده نمی‌شود.</span></div>`:'';
+function hardDelQuote(Q){if(!isAdmin()){toast('حذف کامل فقط با مدیر سیستم است.');return false}
+  const o=Q.order&&S.orders[Q.order];if(Q.inv||(o&&o.inv)){toast('برای این پیش‌فاکتور فاکتور ساخته شده؛ ابتدا فاکتور را حذف کنید.');return false}
+  if(Q.next&&S.quotes[Q.next]){toast('این پیش‌فاکتور اصلاحیه دارد؛ ابتدا نسخهٔ جدیدتر را حذف کنید.');return false}
+  if(!confirm(`پیش‌فاکتور ${qNo(Q)} برای همیشه از سامانه حذف شود؟${o?` برگهٔ تأمین ${oNo(o)} هم حذف می‌شود.`:''} این کار برگشت‌پذیر نیست.`))return false;
+  if(o)delete S.orders[o.id];const pv=Q.prev&&S.quotes[Q.prev];if(pv){delete pv.next;if(pv.status==='revised')pv.status='sent'}
+  S.requests.forEach(r=>{if(r.quote===Q.id)r.quote=pv?pv.id:null});delete S.quotes[Q.id];audit('حذف کامل پیش‌فاکتور',qNo(Q),Q.customer&&Q.customer.name||'');return true}
+function hardDelInv(I){if(!isAdmin()){toast('حذف کامل فقط با مدیر سیستم است.');return false}
+  if(I.status==='issued'){toast('فاکتور صادرشده را ابتدا ابطال کنید تا سند حسابداری‌اش برگردد؛ بعد حذف کنید.');return false}
+  if(Object.values(S.invoices).some(x=>x.type==='return'&&x.ref===I.id)){toast('این فاکتور برگشتی دارد؛ ابتدا برگشتی را حذف کنید.');return false}
+  if(!confirm(`${I.no?'فاکتور '+I.no:'این پیش‌نویس'} برای همیشه از سامانه حذف شود؟ این کار برگشت‌پذیر نیست.`))return false;
+  delete S.invoices[I.id];Object.values(S.orders).forEach(o=>{if(o.inv===I.id)o.inv=null});Object.values(S.quotes).forEach(q=>{if(q.inv===I.id){q.inv=null;if(q.status==='invoiced')q.status='approved'}});
+  audit('حذف کامل فاکتور',I.no||'پیش‌نویس',I.customer&&I.customer.name||'');return true}
+function finalizeQuote(Q){if(!Q.draft)return Q.id;const old=Q.id,id=newPfId();delete S.quotes[old];Q.id=id;delete Q.draft;S.quotes[id]=Q;
+  S.requests.forEach(r=>{if(r.quote===old)r.quote=id});Object.values(S.quotes).forEach(q=>{if(q.next===old)q.next=id;if(q.prev===old)q.prev=id});
+  if(S.dabir&&S.dabir.letters)S.dabir.letters.forEach(l=>{if(l.quote===old)l.quote=id});
+  Q.log.push([NOW(),'شمارهٔ '+id+' گرفت']);return id}
+function deleteDraftQuote(Q){if(!Q.draft)return false;delete S.quotes[Q.id];S.requests.forEach(r=>{if(r.quote===Q.id){r.quote=null;if(r.status==='review')r.status='new'}});audit('حذف پیش‌نویس پیش‌فاکتور',Q.customer&&Q.customer.name||'','بدون شماره');return true}
 const ISTAT={draft:['پیش‌نویس','warn'],issued:['صادرشده','ok'],void:['باطل‌شده','gray']};
 const sellerOf=k=>S.doc.sellers[k]||S.doc.sellers.unofficial;
 /* stamp: each seller has its own stamp (on by default or not, ring text, centre text, logo); each document can switch it */
@@ -4690,7 +4721,7 @@ function cmdOpen(){if(!isStaff()){const i=$('[data-sbi=top]')||$('[data-sbi=hero
       if(p.dym)add('منظورتان این بود؟',[['#/search?q='+encodeURIComponent(p.dym),esc(p.dym),'','i-search']]);
       if(can('sales.customer.view'))add('مشتری',custSearch(q).slice(0,5).map(c=>['#/admin/customer/'+c.id,esc(c.name||'—'),[c.mobile,c.code].filter(Boolean).map(esc).join(' · '),'i-users']));
       const hitD=(...xs)=>xs.some(x=>x&&norm(String(x)).includes(nq));
-      if(can('sales.quote.view'))add('پیش‌فاکتور',Object.values(S.quotes).filter(Q=>buOK(Q.seller)&&mine(Q)&&hitD(Q.id,Q.customer.name,Q.customer.mobile)).slice(0,4).map(Q=>['#/admin/quote/'+Q.id,`<span class="lat">${Q.id}</span> — ${esc(Q.customer.name||'')}`,'','i-doc']));
+      if(can('sales.quote.view'))add('پیش‌فاکتور',Object.values(S.quotes).filter(Q=>buOK(Q.seller)&&mine(Q)&&hitD(Q.id,Q.customer.name,Q.customer.mobile)).slice(0,4).map(Q=>['#/admin/quote/'+Q.id,`<span class="lat">${qNo(Q)}</span> — ${esc(Q.customer.name||'')}`,'','i-doc']));
       if(can('sales.invoice.view'))add('فاکتور',Object.values(S.invoices).filter(I=>buOK(I.seller)&&mine(I)&&hitD(I.no,I.customer.name,I.customer.mobile)).slice(0,4).map(I=>['#/admin/invoice/'+I.id,`<span class="lat">${I.no||'پیش‌نویس'}</span> — ${esc(I.customer.name||'')}`,esc(kindName(I.seller)),'i-inv']));
       if(can('sales.supply.view'))add('برگهٔ تأمین',Object.values(S.orders).filter(o2=>mine(o2)&&hitD(oNo(o2),o2.customer&&o2.customer.name)).slice(0,3).map(o2=>['#/admin/fulfill/'+o2.id,`<span class="lat">${oNo(o2)}</span> — ${esc((o2.customer||{}).name||'')}`,'','i-check2']));
       if(can('acc.voucher.view')&&typeof A!=='undefined')add('سند حسابداری',A.vouchers.filter(v=>buOK(v.bu)&&(String(v.no)===LAT(q)||String(v.atf)===LAT(q)||norm(v.desc).includes(nq))).slice(0,4).map(v=>['#/admin/acc/v/'+v.id,`سند <span class="lat">${v.no}</span> — ${esc(v.desc)}`,FAD(v.date),'i-doc']))}
@@ -4790,13 +4821,13 @@ function header(active){
     <a class="brand" href="#/"><img class="lg-d" src="${LOGO}" alt="لوگوی کارما"><img class="lg-l" src="${LOGO_L}" alt="لوگوی کارما"><span>کارما</span></a>
     <nav class="topnav"><a href="#/catalog" class="${active==='products'?'on':''}">محصولات</a><a href="#/standards" class="${active==='standards'?'on':''}">استانداردها</a><a href="#/page/guide" class="${active==='guide'?'on':''}">راهنمای خرید</a><a href="#/page/about" class="${active==='about'?'on':''}">دربارهٔ ما</a><a href="#/page/contact" class="${active==='contact'?'on':''}">تماس با ما</a>${isStaff()?'<a href="#/admin/requests">پنل مدیریت</a>':''}</nav>
     ${searchBox('top')}
-    ${ME?`<button class="icon-btn" aria-label="علاقه‌مندی‌ها" onclick="go('#/account/favs')">${icon('i-heart')}<span class="count fav ${ME.favs.size?'on':''}">${fa(ME.favs.size)}</span></button>`:''}
+    <div class="hdr-act">${ME?`<button class="icon-btn" aria-label="علاقه‌مندی‌ها" onclick="go('#/account/favs')">${icon('i-heart')}<span class="count fav ${ME.favs.size?'on':''}">${fa(ME.favs.size)}</span></button>`:''}
     <button class="icon-btn" aria-label="سبد استعلام" onclick="go('#/cart')">${icon('i-cart')}<span class="count cart ${cartCount()?'on':''}">${fa(cartCount())}</span></button>
     ${ME?`<div class="acct"><button class="avbtn" id="acctBtn" aria-haspopup="menu" aria-expanded="false"><span class="nm">${esc(ME.name)}</span><span class="avatar sm">${esc(ME.name[0])}</span></button>
       <div class="menu" id="acctMenu" role="menu"><div class="mh"><b>${esc(ME.name)}</b><span class="tiny muted">${ME.kind==='staff'?esc(roleNames(ME)):'عضو'}، <bdi class="lat">${ME.mobile}</bdi></span></div>
       <a href="#/account">${icon('i-user')}حساب من</a><a href="#/account/favs">${icon('i-heart')}علاقه‌مندی‌ها</a><a href="#/account/requests">${icon('i-doc')}درخواست‌ها و پیش‌فاکتورها</a><a href="#/account/lists">${icon('i-list')}لیست‌های من</a>
       ${ME.kind==='staff'?`<div class="sep"></div><a href="#/admin/requests">${icon('i-shield')}پنل مدیریت</a>`:''}<div class="sep"></div><button onclick="logout()">${icon('i-out')}خروج</button></div></div>`
-    :`<button class="btn outlined sm acct-in" onclick="auth('login')">${icon('i-user')}<span>ورود اعضا</span></button>`}
+    :`<button class="btn outlined sm acct-in" onclick="auth('login')">${icon('i-user')}<span>ورود اعضا</span></button>`}</div>
   </div></header>
   <nav class="tabbar" aria-label="پیمایش اصلی">${[['home','#/','i-home','خانه'],['products','#/catalog','i-grid','محصولات'],['cart','#/cart','i-cart','سبد'],['account','#/account','i-user','حساب']].map(([k,h,i,t])=>`<a href="${h}" class="${active===k?'on':''}">${icon(i)}<span>${t}</span>${k==='cart'?`<b class="tcount ${cartCount()?'on':''}">${fa(cartCount())}</b>`:''}</a>`).join('')}</nav>`}
 function searchBox(id,big){
@@ -5118,6 +5149,8 @@ function docEd(D,o){const lock=o.lock,ks=o.kindLock;
       ${D.created||D.issuedAt?`<p class="tiny muted" style="margin:-4px 0 0">ثبت در سامانه: <span class="lat">${esc(FAD(D.created||'—'))}</span>${D.issuedAt?` · صدور: <span class="lat">${esc(FAD(D.issuedAt))}</span>`:''}</p>`:''}
       <label class="check"><input type="checkbox" id="dstamp" ${stampFor(D.seller||S.doc.pfSeller,D)?'checked':''} ${o.stampLock?'disabled':''}> مهر روی سند بخورد</label></div>
     <div class="card stack" style="gap:10px" id="dcust"></div>
+    ${o.follow?`<div class="card stack" style="gap:8px"><label class="check"><input type="checkbox" id="dfollowOn" ${D.follow&&D.follow.on?'checked':''} ${lock?'disabled':''}> پیرو درخواست سازمان / نامه</label>
+      <div id="dfollowBox" ${D.follow&&D.follow.on?'':'hidden'}><textarea id="dfollow" rows="3" ${lock?'disabled':''} placeholder="مثلاً: پیرو درخواست شمارهٔ ۱۲۳/۴۵ مورخ ۱۴۰۵/۰۸/۰۱ شرکت …">${esc(D.follow&&D.follow.text||'')}</textarea><span class="tiny muted">زیر کادر مشخصات فروشنده و خریدار چاپ می‌شود.</span></div></div>`:''}
     <div class="card totals" id="dtot"></div>
     ${o.side||''}</div></div>`}
 function docEdWire(D,o){const lock=()=>o.lock(),pf=o.type==='pf';
@@ -5154,7 +5187,8 @@ function docEdWire(D,o){const lock=()=>o.lock(),pf=o.type==='pf';
       const SK=[...r.skus,...(r.near||[])];sug.innerHTML=SK.length?SK.slice(0,8).map(rec=>`<a href="javascript:void 0" data-add="${rec.pcode}"><span class="g">${thumb(byId(rec.sid),24)}</span><span class="grow">${skuTitleH(rec)}، ${gfin(rec)}</span><span class="pcode tiny">${rec.pcode}</span></a>`).join(''):`<div class="empty small">کالای کدداری پیدا نشد. سایز و طول را هم بنویسید، یا «ردیف دستی» بزنید.</div>`;sug.classList.add('on');
       $$('[data-add]',sug).forEach(a=>a.onclick=()=>{D.lines.push({p:a.dataset.add,q:100,u:'عدد',price:aSugg(a.dataset.add)||0});inp.value='';sug.classList.remove('on');paintLines();totals()})};
     document.addEventListener('click',e=>{if(box&&!box.contains(e.target))sug.classList.remove('on')});
-    $('#dnote').oninput=e=>{D.note=e.target.value};$('#ddate').onchange=e=>{const v=norm(e.target.value);if(v&&!jdValid(v)){toast('تاریخ معتبر نیست؛ از تقویم انتخاب کنید.');return}D.date=v?fixDate(v):D.date};
+    $('#dnote').oninput=e=>{D.note=e.target.value};
+    const fo=$('#dfollowOn'),ft=$('#dfollow');if(fo){fo.onchange=()=>{D.follow=Object.assign(D.follow||{text:''},{on:fo.checked});$('#dfollowBox').hidden=!fo.checked;if(fo.checked)ft.focus()};ft.oninput=e=>{D.follow=Object.assign(D.follow||{},{on:true,text:e.target.value})}}$('#ddate').onchange=e=>{const v=norm(e.target.value);if(v&&!jdValid(v)){toast('تاریخ معتبر نیست؛ از تقویم انتخاب کنید.');return}D.date=v?fixDate(v):D.date};
     const ds=$('#dseller');if(ds)ds.onchange=()=>{D.seller=ds.value;if(D.stamp==null){const c=$('#dstamp');if(c)c.checked=stampOf(ds.value).on}}}
   const dst=$('#dstamp');if(dst&&!dst.disabled)dst.onchange=()=>{D.stamp=dst.checked};
   paintLines();totals();paintCust();paintTerms()}
@@ -5173,12 +5207,12 @@ function reviseQuote(Q){if(!['sent','approved'].includes(Q.status))return;
   if(o)o.log.push([NOW(),`پیش‌فاکتور ${Q.id} در حال اصلاح است (${id})`]);
   go('#/admin/quote/'+id)}
 const prevOrder=Q=>{let q=Q;while(q&&q.prev){q=S.quotes[q.prev];if(q&&q.order&&S.orders[q.order])return S.orders[q.order]}return null};
-function newQuote(){if(!can('sales.quote.create')){toast('نقش شما اجازهٔ ساخت پیش‌فاکتور ندارد.');return}const qid=newPfId();S.quotes[qid]={id:qid,req:null,by:ME?ME.id:0,created:sysStamp(),status:'draft',date:jd().num,seller:S.doc.pfSeller,customer:{name:'',mobile:''},lines:[],vat:S.doc.vat,ship:0,terms:{},note:'',log:[[NOW(),'پیش‌نویس ساخته شد']]};go('#/admin/quote/'+qid)}
+function newQuote(){if(!can('sales.quote.create')){toast('نقش شما اجازهٔ ساخت پیش‌فاکتور ندارد.');return}const qid=draftQid();S.quotes[qid]={id:qid,draft:true,req:null,by:ME?ME.id:0,created:sysStamp(),status:'draft',date:jd().num,seller:S.doc.pfSeller,customer:{name:'',mobile:''},lines:[],vat:S.doc.vat,ship:0,terms:{},note:'',log:[[NOW(),'پیش‌نویس ساخته شد']]};go('#/admin/quote/'+qid)}
 function pQuote(id){const Q=S.quotes[id];if(!Q)return bo('quotes','<div class="empty">پیدا نشد.</div>');if(!buOK(Q.seller)||!mine(Q))return pNoAccess();
   setTimeout(()=>wireQuote(Q),0);
-  return bo('quotes',`<div class="bo-top"><div><p class="small muted"><a href="#/admin/quotes">پیش‌فاکتورها</a>${Q.req?` / از درخواست <span class="code">${Q.req}</span>`:''}</p><h1>پیش‌فاکتور <span class="code" style="font-size:1rem">${Q.id}</span></h1></div><span class="grow"></span><div class="row" id="qactions"></div></div>
+  return bo('quotes',`<div class="bo-top"><div><p class="small muted"><a href="#/admin/quotes">پیش‌فاکتورها</a>${Q.req?` / از درخواست <span class="code">${Q.req}</span>`:''}</p><h1>پیش‌فاکتور <span class="code" style="font-size:1rem">${qNo(Q)}</span>${Q.draft?' <span class="badge warn">شماره هنگام ارسال داده می‌شود</span>':''}</h1></div><span class="grow"></span><div class="row" id="qactions"></div></div>
    ${Q.status==='revised'?`<div class="notice warn" style="margin-bottom:14px">${icon('i-info')}<span>این پیش‌فاکتور اصلاح شده و دیگر معتبر نیست. نسخهٔ جاری: <a class="lat" href="#/admin/quote/${Q.next}">${Q.next}</a></span></div>`:''}${Q.prev?`<p class="small muted" style="margin:-6px 0 12px">اصلاحیهٔ ${fa(Q.rev)} از <a class="lat" href="#/admin/quote/${Q.prev}">${Q.prev}</a></p>`:''}
-   <div class="status-steps" id="qsteps"></div>${docEd(Q,{lock:Q.status!=='draft',stampLock:!can('sales.quote.edit')||Q.status==='revised',side:'<div class="card tl" id="qlog"></div>'})}`)}
+   ${archBanner(Q,'پیش‌فاکتور')}<div class="status-steps" id="qsteps"></div>${docEd(Q,{follow:true,lock:Q.status!=='draft',stampLock:!can('sales.quote.edit')||Q.status==='revised',side:'<div class="card tl" id="qlog"></div>'})}`)}
 function wireQuote(Q){
   const lock=()=>Q.status!=='draft';const O=()=>Q.order&&S.orders[Q.order];
   const save=()=>{keepTerms(Q);custKeep(Q.customer)};
@@ -5186,16 +5220,21 @@ function wireQuote(Q){
     const steps=[['draft','پیش‌نویس'],['sent','ارسال برای مشتری'],['approved','تأیید مشتری و تأمین'],['invoiced','فاکتور']];const ci=steps.findIndex(s=>s[0]===Q.status);
     $('#qsteps').innerHTML=steps.map(([k,t],i)=>`<span class="${i<ci?'done':i===ci?'cur':''}">${i<ci?'✓ ':''}${t}</span>`).join('');
     const inv=Q.inv&&S.invoices[Q.inv];
-    $('#qactions').innerHTML=Q.status==='draft'?`<button class="btn outlined sm" id="qsave">ذخیره</button><a class="btn outlined sm" href="#/doc/pf/${Q.id}">${icon('i-eye')}پیش‌نمایش</a><button class="btn sm" id="qsend">ارسال برای مشتری</button>`
+    $('#qactions').innerHTML=Q.status==='draft'?`<button class="btn outlined sm" id="qsave">ذخیره</button><a class="btn outlined sm" href="#/doc/pf/${Q.id}">${icon('i-eye')}پیش‌نمایش</a>${Q.draft?'<button class="btn text sm danger" id="qdel">حذف پیش‌نویس</button>':''}<button class="btn sm" id="qsend">ارسال برای مشتری</button>`
       :Q.status==='revised'?`<a class="btn outlined sm" href="#/doc/pf/${Q.id}">${icon('i-eye')}پیش‌نمایش</a>${Q.next?`<a class="btn sm" href="#/admin/quote/${Q.next}">نسخهٔ جاری: <span class="lat">${Q.next}</span></a>`:''}`
       :Q.status==='sent'?`<button class="btn text sm" id="qrev">اصلاح پیش‌فاکتور</button><button class="btn outlined sm" id="qedit">بازگشت به ویرایش</button><a class="btn outlined sm" href="#/doc/pf/${Q.id}">${icon('i-eye')}پیش‌نمایش</a><a class="btn text sm" href="#/q/${Q.id}" target="_blank">صفحهٔ مشتری</a><button class="btn dark sm" id="qappr">${icon('i-check')}ثبت تأیید مشتری</button>`
       :Q.status==='approved'?`<button class="btn text sm" id="qrev" ${O()&&O().inv?'disabled title="برای این سفارش فاکتور ساخته شده"':''}>اصلاح پیش‌فاکتور</button><a class="btn outlined sm" href="#/doc/pf/${Q.id}">${icon('i-eye')}پیش‌نمایش</a>${(()=>{const o=O(),pr=orderProgress(o);return `<a class="btn outlined sm" href="#/admin/fulfill/${o.id}">${icon('i-check2')}چک‌لیست تأمین <span class="lat">${oNo(o)}</span> (${fa(pr.done)} از ${fa(pr.n)})</a><button class="btn dark sm" id="qinv" ${pr.done<pr.n?'disabled title="ابتدا همهٔ اقلام چک‌لیست را تعیین تکلیف کنید"':''}>ساخت فاکتور</button>`})()}`
       :`<a class="btn outlined sm" href="#/doc/pf/${Q.id}">${icon('i-eye')}پیش‌نمایش</a>${inv?`<a class="btn outlined sm" href="#/admin/invoice/${inv.id}">${icon('i-inv')}فاکتور ${inv.no?`<span class="lat">${inv.no}</span>`:'(پیش‌نویس)'}</a>`:''}`;
-    permStrip({qsave:'sales.quote.edit',qsend:'sales.quote.send',qrev:'sales.quote.revise',qedit:'sales.quote.edit',qappr:'sales.quote.approve',qinv:'sales.invoice.create'});
+    if(!Q.draft)$('#qactions').insertAdjacentHTML('beforeend',`<button class="btn text sm" id="qarch">${Q.arch?'خروج از بایگانی':'بایگانی'}</button>`);
+    if(isAdmin()&&!Q.draft)$('#qactions').insertAdjacentHTML('beforeend','<button class="btn text sm" id="qhdel" style="color:var(--error)">حذف کامل</button>');
+    permStrip({qarch:'sales.quote.archive',qdel:'sales.quote.create',qsave:'sales.quote.edit',qsend:'sales.quote.send',qrev:'sales.quote.revise',qedit:'sales.quote.edit',qappr:'sales.quote.approve',qinv:'sales.invoice.create'});
     $('#qlog').innerHTML='<b style="font-size:.9rem">تاریخچه</b>'+Q.log.map(([t,m])=>`<div><i></i><span>${t} — ${m}</span></div>`).join('');
     const on=(id,fn)=>{const e=$('#'+id);if(e)e.onclick=fn};
     on('qsave',()=>{save();Q.log.push([NOW(),'ذخیره شد']);toast('پیش‌فاکتور ذخیره شد.');paint()});
-    on('qsend',()=>{if(!jdValid(Q.date)){toast('تاریخ پیش‌فاکتور را از تقویم انتخاب کنید.');return}if(!Q.lines.length||Q.lines.some(l=>!l.price||(!l.p&&!String(l.desc||'').trim()))){toast('شرح و قیمت همهٔ ردیف‌ها را وارد کنید.');return}if(!/^09\d{9}$/.test(norm(Q.customer.mobile||''))){toast('موبایل مشتری معتبر نیست.');return}save();Q.status='sent';Q.log.push([NOW(),'برای مشتری ارسال شد']);audit('ارسال پیش‌فاکتور',Q.id,Q.customer.name||'');const r=S.requests.find(x=>x.no===Q.req);if(r)r.status='sent';toast('پیش‌فاکتور ارسال شد.');rerender()});
+    on('qsend',()=>{if(!jdValid(Q.date)){toast('تاریخ پیش‌فاکتور را از تقویم انتخاب کنید.');return}if(!Q.lines.length||Q.lines.some(l=>!l.price||(!l.p&&!String(l.desc||'').trim()))){toast('شرح و قیمت همهٔ ردیف‌ها را وارد کنید.');return}if(!/^09\d{9}$/.test(norm(Q.customer.mobile||''))){toast('موبایل مشتری معتبر نیست.');return}save();const wasDraft=!!Q.draft;finalizeQuote(Q);Q.status='sent';Q.log.push([NOW(),'برای مشتری ارسال شد']);audit('ارسال پیش‌فاکتور',Q.id,Q.customer.name||'');const r=S.requests.find(x=>x.no===Q.req);if(r)r.status='sent';toast(wasDraft?`پیش‌فاکتور با شمارهٔ ${Q.id} ارسال شد.`:'پیش‌فاکتور ارسال شد.');if(wasDraft)go('#/admin/quote/'+Q.id);else rerender()});
+    on('qarch',()=>{archDoc(Q,!Q.arch,'پیش‌فاکتور');toast(Q.arch?'بایگانی شد.':'از بایگانی خارج شد.');rerender()});
+    on('qhdel',()=>{if(hardDelQuote(Q)){toast('پیش‌فاکتور حذف شد.');go('#/admin/quotes')}});
+    on('qdel',()=>{if(!confirm('این پیش‌نویس حذف شود؟ چون هنوز ارسال نشده، شماره‌ای مصرف نمی‌شود.'))return;deleteDraftQuote(Q);toast('پیش‌نویس حذف شد.');go('#/admin/quotes')});
     on('qrev',()=>reviseQuote(Q));
     on('qedit',()=>{Q.status='draft';Q.log.push([NOW(),'برای ویرایش باز شد']);rerender()});
     on('qappr',()=>{const id=approveQuote(Q,'staff');audit('ثبت تأیید مشتری',Q.id,'برگهٔ تأمین '+oNo(S.orders[id]));toast(`تأیید ثبت شد و چک‌لیست تأمین ${oNo(S.orders[id])} ساخته شد.`,['مشاهده','#/admin/fulfill/'+id]);rerender()});
@@ -5214,15 +5253,15 @@ const invLabel=I=>I.type==='return'?'فاکتور برگشت از فروش':'ف�
 const invTotal=I=>docTot(I).tot;
 const retDone=(I,p,desc)=>Object.values(S.invoices).filter(x=>x.type==='return'&&x.ref===I.id&&x.status==='issued').reduce((a,x)=>a+x.lines.filter(l=>l.p===p&&(p||l.desc===desc)).reduce((s,l)=>s+l.q,0),0);
 function pInvoices(qs){const f=(qs&&qs.get('f'))||'all';const all=Object.values(S.invoices).filter(I=>buOK(I.seller)&&mine(I)).sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id));
-  const L=all.filter(I=>f==='all'||(f==='ret'?I.type==='return':f==='void'?I.status==='void':f==='draft'?I.status==='draft':I.type==='sale'&&I.seller===f&&I.status!=='void'));
+  const L=all.filter(I=>f==='arch'?!!I.arch:!I.arch&&(f==='all'||(f==='ret'?I.type==='return':f==='void'?I.status==='void':f==='draft'?I.status==='draft':I.type==='sale'&&I.seller===f&&I.status!=='void')));
   const ed=can('sales.invoice.create');
   return bo('invoices',`<div class="bo-top"><h1>فاکتورها</h1><span class="grow"></span>${ed&&buOK('unofficial')?`<button class="btn outlined sm" onclick="newInvoice('unofficial')">${icon('i-plus')}فاکتور ${esc(kindName('unofficial'))}</button>`:''}${ed&&buOK('official')?`<button class="btn sm" onclick="newInvoice('official')">${icon('i-plus')}فاکتور ${esc(kindName('official'))}</button>`:''}</div>
-   <div class="card" style="padding:0;overflow:hidden"><div class="toolbar">${[['all','همه'],['unofficial',kindName('unofficial')],['official',kindName('official')],['ret','برگشتی'],['draft','پیش‌نویس'],['void','باطل‌شده']].map(([k,t])=>`<a class="chip" aria-pressed="${f===k}" href="#/admin/invoices?f=${k}">${t}</a>`).join('')}</div>
+   <div class="card" style="padding:0;overflow:hidden"><div class="toolbar">${[['all','همه'],['unofficial',kindName('unofficial')],['official',kindName('official')],['ret','برگشتی'],['draft','پیش‌نویس'],['void','باطل‌شده'],['arch','بایگانی‌شده ('+fa(all.filter(I=>I.arch).length)+')']].map(([k,t])=>`<a class="chip" aria-pressed="${f===k}" href="#/admin/invoices?f=${k}">${t}</a>`).join('')}</div>
    ${L.length?`<div style="overflow-x:auto"><table class="t"><thead><tr><th>شماره</th><th>نوع</th><th>تاریخ</th><th>خریدار</th><th>اقلام</th><th>مبلغ کل (ریال)</th><th>وضعیت</th><th></th></tr></thead><tbody>${L.map(I=>`<tr class="click" onclick="go('#/admin/invoice/${I.id}')"><td>${I.no?`<span class="code">${I.no}</span>`:'<span class="muted small">بدون شماره</span>'}</td><td>${I.type==='return'?'<span class="badge err">برگشتی</span> ':''}<span class="badge ${I.seller==='official'?'':'gray'}">${KINDFA[I.seller]}</span></td><td class="lat">${fa(I.date)}</td><td>${custLink(I.customer,esc(I.customer.name||'—'))}</td><td>${fa(I.lines.length)}</td><td>${money(invTotal(I))}</td><td><span class="badge ${ISTAT[I.status][1]}">${ISTAT[I.status][0]}</span></td><td><a class="btn tonal sm" href="#/admin/invoice/${I.id}">باز کردن</a></td></tr>`).join('')}</tbody></table></div>`:`<div class="empty">فاکتوری در این دسته نیست.${ed?' با دکمه‌های بالا فاکتور رسمی یا غیررسمی بسازید.':''}</div>`}</div>`)}
 function pInvoice(id){const I=S.invoices[id];if(!I)return bo('invoices','<div class="empty">پیدا نشد.</div>');if(!buOK(I.seller)||!mine(I))return pNoAccess();
   const ret=I.type==='return',base=ret&&S.invoices[I.ref];
   setTimeout(()=>wireInvoice(I),0);
-  return bo('invoices',`<div class="bo-top"><div><p class="small muted"><a href="#/admin/invoices">فاکتورها</a>${base?` / برگشتِ <a class="code" href="#/admin/invoice/${base.id}">${base.no}</a>`:''}</p><h1>${invLabel(I)} ${I.no?`<span class="code" style="font-size:1rem">${I.no}</span>`:''} <span class="badge ${I.seller==='official'?'':'gray'}">${KINDFA[I.seller]}</span> <span class="badge ${ISTAT[I.status][1]}">${ISTAT[I.status][0]}</span>${(()=>{const sx=typeof A!=='undefined'&&I.type==='sale'&&A.sinv.find(x=>x.inv===I.id&&x.st!=='void');if(!sx||!(can('acc.sales.view')||can('sales.customer.view_balance')))return '';const ps=aSPay(sx);return ` <span class="badge ${ps[1]}" title="ماندهٔ ${money(aSDue(sx))} ریال">${ps[0]}</span>`})()}</h1></div><span class="grow"></span><div class="row" id="iactions"></div></div>
+  return bo('invoices',`<div class="bo-top"><div><p class="small muted"><a href="#/admin/invoices">فاکتورها</a>${base?` / برگشتِ <a class="code" href="#/admin/invoice/${base.id}">${base.no}</a>`:''}</p><h1>${invLabel(I)} ${I.no?`<span class="code" style="font-size:1rem">${I.no}</span>`:''} <span class="badge ${I.seller==='official'?'':'gray'}">${KINDFA[I.seller]}</span> <span class="badge ${ISTAT[I.status][1]}">${ISTAT[I.status][0]}</span>${(()=>{const sx=typeof A!=='undefined'&&I.type==='sale'&&A.sinv.find(x=>x.inv===I.id&&x.st!=='void');if(!sx||!(can('acc.sales.view')||can('sales.customer.view_balance')))return '';const ps=aSPay(sx);return ` <span class="badge ${ps[1]}" title="ماندهٔ ${money(aSDue(sx))} ریال">${ps[0]}</span>`})()}</h1></div><span class="grow"></span><div class="row" id="iactions"></div></div>${archBanner(I,'فاکتور')}
    ${I.status==='void'?`<div class="notice warn" style="margin-bottom:14px">${icon('i-info')}<span>این فاکتور باطل شده است${I.voidWhy?`: ${esc(I.voidWhy)}`:''}. ${I.voidAt?`(${esc(I.voidAt)})`:''}</span></div>`:''}
    ${docEd(I,{lock:I.status!=='draft'||!can('sales.invoice.create'),stampLock:!can('sales.invoice.create'),kindLock:ret,kindLabel:'نوع فاکتور / فروشنده',side:'<div class="card tl" id="ilog"></div>'})}`)}
 function wireInvoice(I){const lock=()=>I.status!=='draft'||!can('sales.invoice.create'),ret=I.type==='return',base=ret&&S.invoices[I.ref];
@@ -5230,10 +5269,14 @@ function wireInvoice(I){const lock=()=>I.status!=='draft'||!can('sales.invoice.c
   const ed=can('sales.invoice.view');
   $('#iactions').innerHTML=(I.status==='draft'&&ed?`<button class="btn text sm" id="idel" style="color:var(--error)">حذف پیش‌نویس</button><button class="btn outlined sm" id="isave">ذخیره</button><a class="btn outlined sm" href="#/doc/inv/${I.id}">${icon('i-eye')}پیش‌نمایش</a><button class="btn sm" id="iissue">${icon('i-check')}صدور ${ret?'برگشتی':'فاکتور'}</button>`:`<a class="btn outlined sm" href="#/doc/inv/${I.id}">${icon('i-print')}پیش‌نمایش و چاپ</a>`)
     +(I.status==='issued'&&ed&&!ret?`<button class="btn outlined sm" id="iret">فاکتور برگشتی</button>`:'')+(I.status==='issued'&&ed?`<button class="btn text sm" id="ivoid" style="color:var(--error)">ابطال</button>`:'');
-  permStrip({idel:'sales.invoice.create',isave:'sales.invoice.create',iissue:'sales.invoice.issue',iret:'sales.invoice.return',ivoid:'sales.invoice.void'});
+  if(I.status!=='draft')$('#iactions').insertAdjacentHTML('beforeend',`<button class="btn text sm" id="iarch">${I.arch?'خروج از بایگانی':'بایگانی'}</button>`);
+  if(isAdmin()&&I.status!=='draft')$('#iactions').insertAdjacentHTML('beforeend','<button class="btn text sm" id="ihdel" style="color:var(--error)">حذف کامل</button>');
+  permStrip({iarch:'sales.invoice.archive',idel:'sales.invoice.create',isave:'sales.invoice.create',iissue:'sales.invoice.issue',iret:'sales.invoice.return',ivoid:'sales.invoice.void'});
   $('#ilog').innerHTML='<b style="font-size:.9rem">تاریخچه</b>'+I.log.map(([t,m])=>`<div><i></i><span>${t} — ${m}</span></div>`).join('')
     +Object.values(S.invoices).filter(x=>x.type==='return'&&x.ref===I.id).map(x=>`<div><i></i><span>برگشتی: <a class="lat" href="#/admin/invoice/${x.id}">${x.no||'پیش‌نویس'}</a> · ${ISTAT[x.status][0]}</span></div>`).join('');
   on('isave',()=>{keepTerms(I);custKeep(I.customer);I.log.push([NOW(),'ذخیره شد']);toast('ذخیره شد.');rerender()});
+  on('iarch',()=>{archDoc(I,!I.arch,'فاکتور');toast(I.arch?'بایگانی شد.':'از بایگانی خارج شد.');rerender()});
+  on('ihdel',()=>{if(hardDelInv(I)){toast('فاکتور حذف شد.');go('#/admin/invoices')}});
   on('idel',()=>{if(!confirm('پیش‌نویس حذف شود؟'))return;delete S.invoices[I.id];Object.values(S.orders).forEach(o=>{if(o.inv===I.id)o.inv=null});Object.values(S.quotes).forEach(q=>{if(q.inv===I.id)q.inv=null});go('#/admin/invoices')});
   on('iissue',()=>{if(!I.lines.length||I.lines.some(l=>!l.q||!l.price||(!l.p&&!String(l.desc||'').trim()))){toast('شرح، تعداد و قیمت همهٔ ردیف‌ها را وارد کنید.');return}
     if(!String(I.customer.name||'').trim()){toast('نام خریدار را وارد کنید.');return}
@@ -5298,7 +5341,7 @@ function pCustomer(id){const c=S.customers.find(x=>String(x.id)===String(id));if
   return bo('customers',`<div class="bo-top"><div><p class="small muted"><a href="#/admin/customers">پروفایل مشتریان</a></p><h1>${esc(c.name||'—')}</h1><p class="small muted">${[c.contact,c.city,c.mobile].filter(Boolean).map(esc).join(' · ')}</p></div><span class="grow"></span>
     ${ed?`<button class="btn outlined sm" id="cedit">ویرایش مشخصات</button><button class="btn outlined sm" id="cnq">${icon('i-plus')}پیش‌فاکتور</button>${['unofficial','official'].map(k=>`<button class="btn outlined sm" data-cni="${k}">${icon('i-plus')}فاکتور ${esc(kindName(k))}</button>`).join('')}`:''}</div>
    <div class="qgrid"><div class="stack" style="gap:14px">
-     <div class="card" style="padding:0;overflow:hidden"><div class="toolbar"><b>پیش‌فاکتورها</b></div>${tbl(['شماره','تاریخ','اقلام','مبلغ (ریال)','وضعیت'],d.quo.map(q=>`<tr class="click" onclick="go('#/admin/quote/${q.id}')"><td class="lat">${q.id}</td><td>${fdate(q.date)}</td><td>${fa(q.lines.length)}</td><td>${money(docTot(q).tot)}</td><td>${QS[q.status]||q.status}</td></tr>`))}</div>
+     <div class="card" style="padding:0;overflow:hidden"><div class="toolbar"><b>پیش‌فاکتورها</b></div>${tbl(['شماره','تاریخ','اقلام','مبلغ (ریال)','وضعیت'],d.quo.map(q=>`<tr class="click" onclick="go('#/admin/quote/${q.id}')"><td class="lat">${qNo(q)}</td><td>${fdate(q.date)}</td><td>${fa(q.lines.length)}</td><td>${money(docTot(q).tot)}</td><td>${QS[q.status]||q.status}</td></tr>`))}</div>
      <div class="card" style="padding:0;overflow:hidden"><div class="toolbar"><b>فاکتورها</b></div>${tbl(['شماره','فروشنده','تاریخ','مبلغ (ریال)','وضعیت'],d.inv.map(I=>`<tr class="click" onclick="go('#/admin/invoice/${I.id}')"><td class="lat">${I.no||'پیش‌نویس'}</td><td>${esc(kindName(I.seller))}${I.type==='return'?' · برگشتی':''}</td><td>${fdate(I.date)}</td><td>${money(invTotal(I))}</td><td>${ISTAT[I.status][0]}</td></tr>`))}</div>
      <div class="card" style="padding:0;overflow:hidden"><div class="toolbar"><b>چک‌لیست‌های تأمین</b></div>${tbl(['شماره','پیش‌فاکتور','پیشرفت','وضعیت'],d.ord.map(o=>{const pr=orderProgress(o);return `<tr class="click" onclick="go('#/admin/fulfill/${o.id}')"><td class="lat">${oNo(o)}</td><td class="lat">${o.quote}</td><td>${fa(pr.done)} از ${fa(pr.n)}</td><td>${o.status==='invoiced'?'فاکتورشده':'در حال تأمین'}</td></tr>`}))}</div>
      <div class="card" style="padding:0;overflow:hidden"><div class="toolbar"><b>درخواست‌های سایت</b></div>${tbl(['شماره','تاریخ','اقلام','وضعیت'],d.req.map(r=>`<tr><td class="lat">${r.no}</td><td>${esc(r.date)}</td><td>${fa(r.items.length)} قلم</td><td>${(STATUS[r.status]||[r.status])[0]}</td></tr>`))}</div></div>
@@ -5422,7 +5465,7 @@ function salesDoc(o){const s=sellerOf(o.seller);DOC_NO=o.no;
   const tog=o.stampDoc&&(can('sales.quote.edit')||can('sales.invoice.create'))?`<label class="check small" style="margin-inline-end:8px"><input type="checkbox" ${o.stamp?'checked':''} onchange="docStamp('${o.stampDoc[0]}','${o.stampDoc[1]}',this.checked)"> مهر</label>`:'';
   return `<style id="kdcss">${docCss()}</style><div class="docwrap"><div class="doctools"><a class="btn text sm" href="${o.back}">بازگشت</a><span class="grow"></span>${tog}${o.tools||''}${isStaff()?`<a class="btn text sm" href="#/admin/setup/print">اندازه‌ها</a>`:''}<span class="tiny muted">نام فایل: <b class="lat">${o.no}.pdf</b></span><button class="btn sm" onclick="printDoc('${o.no}')">${icon('i-print')}چاپ / ذخیره PDF</button></div>
   <article class="docpage kd ${o.cls||''}">${o.wm?`<div class="dwm" aria-hidden="true"><span>${o.wm[0]}</span><small>${o.wm[1]}</small></div>`:''}<header class="dhead">${docBrand(s)}<div class="grow"><h1>${o.title}</h1><span class="lat">${o.no}</span>${o.sub?`<div class="tiny dsub">${o.sub}</div>`:''}</div><dl><dt>تاریخ</dt><dd>${o.date}</dd>${o.meta||''}</dl></header>
-  ${o.parties===false?'':`<div class="dparties">${sellerBox(s)}${buyerBox(o.customer)}</div>`}${o.body}
+  ${o.parties===false?'':`<div class="dparties">${sellerBox(s)}${buyerBox(o.customer)}</div>`}${o.follow?`<div class="dfollow"><b>پیرو درخواست:</b> ${esc(o.follow).replace(/\n/g,'<br>')}</div>`:''}${o.body}
   ${o.sign===false?'':o.signHtml||`<div class="dsign"><div class="dseller">مهر و امضای فروشنده<span></span>${o.stamp?stampSeller(o.seller):''}</div><div>مهر و امضای خریدار<span></span></div></div>`}
   <footer class="dfoot">${sellerFoot(s)}</footer></article></div>`}
 const fdate=d=>/^\d{4}\/\d\d\/\d\d$/.test(d||'')?fa(d):esc(d||today());
@@ -5435,7 +5478,7 @@ function pInvDoc(id){const I=S.invoices[id];if(!I)return pNotFound();const base=
     tools:I.src&&I.src.order&&S.orders[I.src.order]?`<a class="btn outlined sm" href="#/doc/pl/${I.src.order}">${icon('i-box')}لیست بسته‌بندی</a>`:'',
     body:linesTable(I,T.code)+(I.note?`<p class="small dnote">${esc(I.note)}</p>`:'')+termsBox(I)+typeNote(k)})}
 function pPfDoc(Q){const T=S.doc.types.pf,sl=Q.seller||S.doc.pfSeller;
-  return salesDoc({seller:sl,stamp:stampFor(sl,Q),stampDoc:Q.status==='revised'?null:['q',Q.id],no:Q.id,title:T.title,date:fdate(Q.date),customer:Q.customer,back:isStaff()?`#/admin/quote/${Q.id}`:`#/q/${Q.id}`,cls:'pf',sign:T.sign,
+  return salesDoc({seller:sl,stamp:stampFor(sl,Q),stampDoc:Q.status==='revised'?null:['q',Q.id],no:qNo(Q),follow:Q.follow&&Q.follow.on&&String(Q.follow.text||'').trim(),title:T.title,date:fdate(Q.date),customer:Q.customer,back:isStaff()?`#/admin/quote/${Q.id}`:`#/q/${Q.id}`,cls:'pf',sign:T.sign,
     wm:Q.status==='revised'?['اصلاح‌شده',`REVISED · ${Q.next||''}`]:T.wm?[esc(T.wmText),esc(T.wmSub)]:null,meta:(Q.req&&T.reqNo?`<dt>شمارهٔ درخواست</dt><dd class="lat">${Q.req}</dd>`:'')+(Q.prev?`<dt>اصلاحیه</dt><dd>${fa(Q.rev)} (جایگزین <span class="lat">${Q.prev}</span>)</dd>`:''),
     body:linesTable(Q,T.code)+(Q.note?`<p class="small dnote">${esc(Q.note)}</p>`:'')+termsBox(Q)+typeNote('pf')})}
 function pSampleDoc(k){const D={seller:k,customer:{name:'نام خریدار',mobile:'09xxxxxxxxx'},lines:Array.from({length:12},(_,i)=>({p:'',desc:`ردیف نمونهٔ ${fa(i+1)}`,q:10,u:'عدد',price:100000})),vat:S.doc.vat,ship:0,terms:{}};
@@ -5496,10 +5539,10 @@ function wireReq(st){let q='';
   $$('[data-st]').forEach(b=>b.onclick=()=>{st=b.dataset.st;paint()});
   $('#rq').oninput=e=>{q=norm(e.target.value);paint()};paint()}
 function quoteFromRequest(no){const r=S.requests.find(x=>x.no===no);let qid=r.quote;
-  if(!qid){qid=newPfId();const cp=S.customers.find(c=>c.mobile===r.mobile)||{};S.quotes[qid]={id:qid,req:no,by:ME?ME.id:0,created:sysStamp(),cid:cp.id||null,status:'draft',date:jd().num,seller:S.doc.pfSeller,terms:{},note:'',customer:{...cp,name:cp.name||r.name,mobile:r.mobile,company:cp.company||r.company||''},lines:r.items.map(i=>({p:i.p,q:i.q,u:i.u,gr:i.gr,price:aSugg(i.p)||0,disc:0})),vat:S.doc.vat,ship:0,log:[[r.date,'درخواست از سایت ثبت شد ('+fa(r.items.length)+' قلم)'],[NOW(),'پیش‌نویس ساخته شد']]};r.quote=qid;if(r.status==='new'){r.status='review';r.owner=ME?ME.name:'—'}}
+  if(!qid){qid=draftQid();const cp=S.customers.find(c=>c.mobile===r.mobile)||{};S.quotes[qid]={id:qid,draft:true,req:no,by:ME?ME.id:0,created:sysStamp(),cid:cp.id||null,status:'draft',date:jd().num,seller:S.doc.pfSeller,terms:{},note:'',customer:{...cp,name:cp.name||r.name,mobile:r.mobile,company:cp.company||r.company||''},lines:r.items.map(i=>({p:i.p,q:i.q,u:i.u,gr:i.gr,price:aSugg(i.p)||0,disc:0})),vat:S.doc.vat,ship:0,log:[[r.date,'درخواست از سایت ثبت شد ('+fa(r.items.length)+' قلم)'],[NOW(),'پیش‌نویس ساخته شد']]};r.quote=qid;if(r.status==='new'){r.status='review';r.owner=ME?ME.name:'—'}}
   custKeep(S.quotes[qid].customer);go('#/admin/quote/'+qid)}
-function pQuotes(){const qs=Object.values(S.quotes).filter(q=>buOK(q.seller)&&mine(q));
-  return bo('quotes',`<div class="bo-top"><h1>پیش‌فاکتورها</h1><span class="grow"></span><button class="btn sm" onclick="newQuote()" ${can('sales.quote.create')?'':'hidden'}>${icon('i-plus')}پیش‌فاکتور جدید</button></div><div class="card" style="padding:0;overflow:hidden">${qs.length?`<table class="t"><thead><tr><th>شماره</th><th>مشتری</th><th>اقلام</th><th>وضعیت</th><th></th></tr></thead><tbody>${qs.map(q=>`<tr><td><span class="code">${q.id}</span></td><td>${esc(q.customer.name||'—')}</td><td>${fa(q.lines.length)}</td><td><span class="badge ${q.status==='draft'?'warn':q.status==='sent'?'':q.status==='approved'?'ok':'gray'}">${q.rev?`اصلاحیهٔ ${fa(q.rev)} · `:''}${{draft:'پیش‌نویس',sent:'منتظر تأیید مشتری',approved:'در حال تأمین',invoiced:'فاکتور شد',revised:'اصلاح‌شده'}[q.status]}</span></td><td><a class="btn outlined sm" href="#/admin/quote/${q.id}">باز کردن</a></td></tr>`).join('')}</tbody></table>`:`<div class="empty">هنوز پیش‌فاکتوری ساخته نشده. از «درخواست‌ها» شروع کنید.</div>`}</div>`)}
+function pQuotes(qp){const ar=qp&&qp.get('f')==='arch',q0=Object.values(S.quotes).filter(q=>buOK(q.seller)&&mine(q)),na=q0.filter(q=>q.arch).length,qs=q0.filter(q=>!!q.arch===ar);
+  return bo('quotes',`<div class="bo-top"><h1>پیش‌فاکتورها</h1><span class="grow"></span><button class="btn sm" onclick="newQuote()" ${can('sales.quote.create')?'':'hidden'}>${icon('i-plus')}پیش‌فاکتور جدید</button></div><div class="row" style="gap:8px;margin-bottom:12px"><a class="chip" aria-pressed="${!ar}" href="#/admin/quotes">جاری</a><a class="chip" aria-pressed="${ar}" href="#/admin/quotes?f=arch">بایگانی‌شده (${fa(na)})</a></div><div class="card" style="padding:0;overflow:hidden">${qs.length?`<table class="t"><thead><tr><th>شماره</th><th>مشتری</th><th>اقلام</th><th>وضعیت</th><th></th></tr></thead><tbody>${qs.map(q=>`<tr><td><span class="code">${qNo(q)}</span></td><td>${esc(q.customer.name||'—')}</td><td>${fa(q.lines.length)}</td><td><span class="badge ${q.status==='draft'?'warn':q.status==='sent'?'':q.status==='approved'?'ok':'gray'}">${q.rev?`اصلاحیهٔ ${fa(q.rev)} · `:''}${{draft:'پیش‌نویس',sent:'منتظر تأیید مشتری',approved:'در حال تأمین',invoiced:'فاکتور شد',revised:'اصلاح‌شده'}[q.status]}</span></td><td><a class="btn outlined sm" href="#/admin/quote/${q.id}">باز کردن</a></td></tr>`).join('')}</tbody></table>`:`<div class="empty">هنوز پیش‌فاکتوری ساخته نشده. از «درخواست‌ها» شروع کنید.</div>`}</div>`)}
 function pProducts(){
   return bo('products',`<div class="bo-top"><h1>استانداردها و کالاها</h1><span class="grow"></span><a class="btn sm" href="#/admin/new-sku">${icon('i-plus')}تعریف کالای جدید</a></div>
   <div class="card" style="padding:0;overflow:hidden"><table class="t"><thead><tr><th>استاندارد (والد)</th><th>نام</th><th>سایزها</th><th>کالاهای کددار</th><th>منبع طول</th><th></th></tr></thead><tbody>
@@ -7560,7 +7603,7 @@ function route(keep){
   else if(seg[0]==='admin'&&!seg[1]){go('#/admin/'+homeOf());return}
   else if(seg[0]==='admin'&&!canPage(seg.slice(1).join('/')))html=pNoAccess();
   else if(seg[0]==='admin'&&seg[1]==='fulfill')html=seg[2]?pFulfill(seg[2]):pFulfillList();
-  else if(seg[0]==='admin'){const p=seg[1]||'requests';html=p==='requests'?pRequests():p==='quotes'?pQuotes():p==='quote'?pQuote(seg[2]):p==='products'?pProducts():p==='new-sku'?pNewSku(qs):p==='users'?pUsers(qs):p==='search'?pSearchAdmin(qs):p==='home'?pStaffHome():p==='audit'?(UTAB='audit',pUsers()):p==='invoices'?pInvoices(qs):p==='invoice'?pInvoice(seg[2]):p==='customers'?pCustomers(qs):p==='customer'?pCustomer(seg[2]):p==='docset'?pSetup('sellers'):p==='setup'?pSetup(seg[2]):p==='settings'?pSetup('so'):p==='catalog'?pCatExport():p==='letter'?pDabir(qs):p==='dabir'?(seg[2]==='new'?pDabirNew(seg[3]||'out'):seg[2]==='edit'?pDabirNew((dById(seg[3])||{}).kind,seg[3]):seg[2]==='l'?pDabirView(seg[3]):seg[2]==='settings'?pDabirSet():pDabir(qs)):p==='resume'?pResume():p==='acc'?pAcc(seg,qs):pRequests()}
+  else if(seg[0]==='admin'){const p=seg[1]||'requests';html=p==='requests'?pRequests():p==='quotes'?pQuotes(qs):p==='quote'?pQuote(seg[2]):p==='products'?pProducts():p==='new-sku'?pNewSku(qs):p==='users'?pUsers(qs):p==='search'?pSearchAdmin(qs):p==='home'?pStaffHome():p==='audit'?(UTAB='audit',pUsers()):p==='invoices'?pInvoices(qs):p==='invoice'?pInvoice(seg[2]):p==='customers'?pCustomers(qs):p==='customer'?pCustomer(seg[2]):p==='docset'?pSetup('sellers'):p==='setup'?pSetup(seg[2]):p==='settings'?pSetup('so'):p==='catalog'?pCatExport():p==='letter'?pDabir(qs):p==='dabir'?(seg[2]==='new'?pDabirNew(seg[3]||'out'):seg[2]==='edit'?pDabirNew((dById(seg[3])||{}).kind,seg[3]):seg[2]==='l'?pDabirView(seg[3]):seg[2]==='settings'?pDabirSet():pDabir(qs)):p==='resume'?pResume():p==='acc'?pAcc(seg,qs):pRequests()}
   else html=pNotFound();
   $('#app').innerHTML=html;
   wireSearch();
@@ -7646,7 +7689,7 @@ const KS=(()=>{
       set:d=>{(d.std||[]).forEach(o=>{const s=BYID.get(o.id);if(s)fill(s,o);else{STD.push(o);BYID.set(o.id,o)}});
         (d.sku||[]).forEach(r=>{if(!REG.has(r.tech)){REG.set(r.tech,r);REGBYCODE.set(r.pcode,r)}const n=+String(r.pcode).slice(3);if(n>SEQ)SEQ=n})}},
     /* roles and module switches (Users › Roles, Settings › Modules) */
-    iam:{get:()=>({roles:S.roles,modules:S.modules}),set:d=>{if(d&&Array.isArray(d.roles)&&d.roles.length){S.roles=d.roles;S.modules=Object.assign({},S.modules,d.modules||{})}permBump()}},
+    iam:{get:()=>({roles:S.roles,modules:S.modules}),set:d=>{if(d&&Array.isArray(d.roles)&&d.roles.length){S.roles=d.roles;S.modules=Object.assign({},S.modules,d.modules||{});permUpgrade()}permBump()}},
     /* search dictionary, code aliases and weights entered by hand */
     dict:{get:()=>({syn:S.syn,alias:S.alias,wt:S.wt}),set:d=>{d=d||{};if(Array.isArray(d.syn))S.syn=d.syn;if(d.alias)S.alias=d.alias;if(d.wt)S.wt=d.wt}},
     /* append-only: the screen sends only its new entries (AQ / SQ), the server adds them to the shared list */
@@ -7728,7 +7771,7 @@ const KS=(()=>{
   const fail=()=>{toast('ارتباط با سرور برقرار نشد. دوباره تلاش کنید.');return null};
 
   async function boot(){
-    const sp=document.createElement('div');sp.id='ks-splash';sp.innerHTML=`<div class="kss"><div class="kss-m"><svg viewBox="0 0 132 132" aria-hidden="true"><circle cx="66" cy="66" r="50" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4"/><circle class="kss-r" cx="66" cy="66" r="50" fill="none" stroke="#f5b31b" stroke-width="4" stroke-linecap="round" stroke-dasharray="70 245"/></svg><img src="${LOGO_L}" alt=""></div><b class="lat">karma</b><span>در حال دریافت اطلاعات شما…</span></div>`;document.body.appendChild(sp);
+    const sp=document.createElement('div');sp.id='ks-splash';sp.innerHTML=`<div class="kss"><div class="kss-m"><svg viewBox="0 0 132 132" aria-hidden="true"><circle cx="66" cy="66" r="50" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4"/><circle class="kss-r" cx="66" cy="66" r="50" fill="none" stroke="#f5b31b" stroke-width="4" stroke-linecap="round" stroke-dasharray="70 245"/></svg><img src="${LOGO_L}" alt=""></div></div>`;document.body.appendChild(sp);
     STD.forEach(s=>STD0.set(s.id,enc(s)));REG.forEach((r,k)=>REG0.add(k));
     if(GS){let b=null,er='';for(let i=0;i<3&&!b;i++){try{b=await run('apiBoot',TOK)}catch(e){er=e&&e.message||String(e);if(TOK&&i===1){TOK='';mem.set('karma.tok',null)}await new Promise(r=>setTimeout(r,1500))}}
       if(!b){sp.innerHTML='<div style="text-align:center;padding:24px">ارتباط با سرور برقرار نشد. صفحه را دوباره باز کنید.<div dir="ltr" style="color:#ffb4b4;font-size:12px;margin-top:10px">apiBoot: '+esc(er)+'</div></div>';return}
