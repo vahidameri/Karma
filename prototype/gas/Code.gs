@@ -13,11 +13,11 @@
  * deny, and decides which parts they may read and write (ROOTS). Members only ever receive their
  * own requests and quotes. The audit trail and the search log are append-only.
  */
-var KARMA_VERSION = '1.4.0';
+var KARMA_VERSION = '1.5.0';
 
 var T = {
   STORE: '_store', SESS: '_sessions', ASSETS: '_assets', USERS: 'کاربران', CFG: 'تنظیمات', LOG: 'گزارش فعالیت',
-  REQ: 'درخواست‌ها', QUO: 'پیش‌فاکتورها', ORD: 'سفارش‌ها', INV: 'فاکتورها', CUST: 'مشتریان', VCH: 'اسناد حسابداری', AUD: 'گزارش ممیزی', SKU: 'کالاها', STD: 'استانداردها', NEWSKU: 'کالاهای ساخته‌شده'
+  REQ: 'درخواست‌ها', QUO: 'پیش‌فاکتورها', ORD: 'سفارش‌ها', INV: 'فاکتورها', CUST: 'مشتریان', VCH: 'اسناد حسابداری', AUD: 'گزارش ممیزی', WORK: 'میزکار', SKU: 'کالاها', STD: 'استانداردها', NEWSKU: 'کالاهای ساخته‌شده'
 };
 var USER_COLS = ['id', 'kind', 'name', 'user', 'mobile', 'email', 'role', 'active', 'last', 'joined', 'company', 'ptype', 'natid', 'eco', 'addr', 'data', 'hash', 'salt', 'roles', 'acl'];
 /* roles shipped with the app; the live list is the "iam" part, edited in the app (Users › Roles) */
@@ -35,8 +35,10 @@ var ROOTS = {
   dict: { r: EVERYONE, w: function (P) { return has_(P, 'catalog.product.create') || has_(P, 'catalog.product.edit') || has_(P, 'catalog.search.edit'); } },
   iam: { r: function (P) { return P.kind === 'staff'; }, w: function (P) { return has_(P, 'admin.role.edit') || has_(P, 'admin.module.edit'); } },
   audit: { r: function (P) { return has_(P, 'admin.audit.view'); }, w: function (P) { return P.kind === 'staff'; }, add: 'list' },
-  slog: { r: function (P) { return has_(P, 'catalog.search.view'); }, w: EVERYONE, add: 'count' }
+  slog: { r: function (P) { return has_(P, 'catalog.search.view'); }, w: EVERYONE, add: 'count' },
+  work: { r: function (P) { return any_(P, /^work\./); }, w: function (P) { return any_(P, /^work\./); } }
 };
+var NEWPERMS = ['sales.quote.archive', 'sales.invoice.archive', 'work.task.view', 'work.task.create', 'work.task.assign', 'work.task.view_all'];
 var NOWRITE = /\.(view|print|view_balance|view_cost|export)$/;
 /* first staff accounts (same as the prototype); setup() stores them hashed. Change them after the first sign-in. */
 var SEED_USERS = [
@@ -72,13 +74,13 @@ var LOADER_HTML = '<!doctype html><html lang="fa" dir="rtl"><head><meta charset=
   'body{margin:0;font:15px/1.9 Tahoma,sans-serif;background:#f6f7fb;color:#333}#ld{min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px}' +
   '#ld b{display:block;font-size:22px;color:#1f3a68;margin-bottom:6px}#ldbar{width:220px;height:6px;border-radius:9px;background:#dde3ef;margin:14px auto 0;overflow:hidden}' +
   '#ldbar i{display:block;height:100%;width:3%;background:#1f3a68;transition:width .3s}#lderr{color:#a11;font-size:13px;max-width:560px;direction:ltr;text-align:left;white-space:pre-wrap;margin-top:12px}</style></head>' +
-  '<body><div id="ld"><div><b>کارما</b><span id="ldm">در حال بارگذاری…</span><div id="ldbar"><i id="ldb"></i></div><div id="lderr"></div></div></div><script>/*BOOT*/' +
+  '<body><div id="ld"><div><b>کارما</b><span id="ldm"></span><div id="ldbar"><i id="ldb"></i></div><div id="lderr"></div></div></div><script>/*BOOT*/' +
   '(function(){var parts=[],n=0,got=0;' +
   'function fail(m){var e=document.getElementById("lderr");if(!e){e=document.createElement("div");e.id="lderr";e.style.cssText="position:fixed;bottom:0;left:0;right:0;background:#fde7e7;color:#a11;padding:10px;font:12px monospace;z-index:999;direction:ltr";document.body.appendChild(e)}' +
   'var t=document.getElementById("ldm");if(t)t.textContent="سایت بارگذاری نشد. یک بار صفحه را دوباره باز کنید؛ اگر باز هم نشد، از همین پیغام عکس بگیرید.";e.textContent+=String(m)+"\\n"}' +
   'window.__KSFAIL=fail;window.addEventListener("error",function(ev){if(!window.__KS_OK)fail((ev.message||"error")+" @"+(ev.lineno||""))});' +
   'function get(i,tries){google.script.run.withSuccessHandler(function(r){n=r.n;parts[i]=r.s;got++;document.getElementById("ldb").style.width=Math.round(got/n*100)+"%";' +
-  'if(i===0)for(var k=1;k<n;k++)get(k,0);if(got===n)start(parts.join(""))}).withFailureHandler(function(e){if(tries<3)setTimeout(function(){get(i,tries+1)},1500);else fail("apiApp: "+(e&&e.message||e))}).apiApp(i)}' +
+  'if(i===0)for(var k=1;k<n;k++)get(k,0);if(got===n)start(parts.join(""))}).withFailureHandler(function(e){if(tries<5)setTimeout(function(){get(i,tries+1)},1500*Math.pow(2,tries));else fail("apiApp: "+(e&&e.message||e))}).apiApp(i)}' +
   'function start(html){try{var lc=document.getElementById("ldcss");if(lc)lc.parentNode.removeChild(lc);var d=new DOMParser().parseFromString(html,"text/html"),sc=[].slice.call(d.querySelectorAll("script"));' +
   'sc.forEach(function(s){s.parentNode.removeChild(s)});' +
   '[].slice.call(d.head.children).forEach(function(el){if(el.tagName!=="TITLE"&&!(el.tagName==="META"&&el.name==="viewport"))document.head.appendChild(document.importNode(el,true))});' +
@@ -345,6 +347,12 @@ function iam_() {
   if (_IAM) return _IAM;
   var x = readRoot_('iam'), d = null; try { d = x.d ? JSON.parse(x.d) : null; } catch (e) {}
   if (!d || !Array.isArray(d.roles) || !d.roles.length) d = DEFAULT_IAM || { roles: [{ id: 'admin', name: 'مدیر سیستم', all: true, sys: true }], modules: {} };
+  // permissions added in later versions reach the built-in roles saved before them (same as permUpgrade() in the app)
+  if (DEFAULT_IAM) d.roles.forEach(function (r) {
+    var def = DEFAULT_IAM.roles.filter(function (x) { return x.id === r.id; })[0];
+    if (!def || r.all || !r.sys || !def.perms) return; r.perms = r.perms || [];
+    NEWPERMS.forEach(function (p) { if (def.perms.indexOf(p) >= 0 && r.perms.indexOf(p) < 0) r.perms.push(p); });
+  });
   return (_IAM = d);
 }
 function rolesOf_(u) { return u.roles && u.roles.length ? u.roles : u.role ? [u.role] : []; }
@@ -529,6 +537,7 @@ function sessionUserById_(uid) {
 /* ================= readable tabs ================= */
 function mirror_(k, d) {
   if (k === 'audit') { mirrorAudit_(d); return; }
+  if (k === 'work') { mirrorWork_(d); return; }
   if (k === 'sales') {
     put_(T.REQ, ['شماره', 'تاریخ', 'نام', 'موبایل', 'شرکت', 'وضعیت', 'کارشناس', 'تعداد اقلام', 'اقلام', 'پیش‌فاکتور', 'توضیح'],
       (d.requests || []).map(function (r) { return [r.no, r.date, r.name, r.mobile, r.company || '', r.status, r.owner || '', (r.items || []).length, (r.items || []).map(function (i) { return i.p + ' × ' + i.q + ' ' + (i.u || ''); }).join('، '), r.quote || '', r.note || '']; }));
@@ -558,6 +567,16 @@ function mirror_(k, d) {
   } else if (k === 'prod') {
     put_(T.NEWSKU, ['کد محصول', 'کد فنی', 'استاندارد', 'سایز', 'طول', 'گرید', 'پوشش', 'تاریخ'], (d.sku || []).map(function (r) { return [r.pcode, r.tech, r.sid, r.size, r.len || '', r.grade, r.fin, r.created || '']; }));
   }
+}
+function mirrorWork_(d) {
+  var cfg = (d && d.cfg) || {}, st = {}, pr = {}, ls = {}, nm = {};
+  (cfg.statuses || []).forEach(function (x) { st[x.k] = x.t; }); (cfg.prios || []).forEach(function (x) { pr[x.k] = x.t; }); (cfg.lists || []).forEach(function (x) { ls[x.id] = x.name; });
+  readUsers_().forEach(function (u) { nm[u.id] = u.name; });
+  put_(T.WORK, ['شناسه', 'عنوان', 'وضعیت', 'اولویت', 'فهرست', 'مسئول', 'سازنده', 'سررسید', 'ثبت', 'انجام', 'آخرین توضیح', 'خصوصی'],
+    ((d && d.tasks) || []).map(function (t) {
+      var c = (t.cm || [])[(t.cm || []).length - 1];
+      return [t.id, t.title || '', st[t.status] || t.status || '', pr[t.prio] || '', ls[t.list] || '', (t.as || []).map(function (x) { return nm[x] || x; }).join('، '), nm[t.by] || '', t.due || '', t.created || '', t.doneAt || '', t.priv ? '' : (c ? c.text : ''), t.priv ? 'بله' : ''];
+    }));
 }
 function mirrorAudit_(d) {
   put_(T.AUD, ['زمان', 'کاربر', 'کار', 'موضوع', 'جزئیات'], (d || []).map(function (e) { return [e.t || '', e.who || '', e.act || '', e.obj || '', e.det || '']; }));

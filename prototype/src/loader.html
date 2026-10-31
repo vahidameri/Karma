@@ -35,16 +35,20 @@ h1{font-size:28px;font-weight:800;margin:6px 0 2px}
 <script>/*BOOT*/
 (function(){var parts=[],n=0,got=0,msgs=[''];
 function say(t){var m=document.getElementById('ldm');if(m)m.textContent=t}
+/* browsers too old for the app (Chrome/Edge < 92, Safari < 15.4, Firefox < 98) get a clear message instead of a blank page */
+var old=!window.HTMLDialogElement||!Array.prototype.flat||!window.Promise||!Object.fromEntries||!String.prototype.padStart;
 function fail(m){var e=document.getElementById('lderr');if(!e){e=document.createElement('div');e.id='lderr';e.style.cssText='position:fixed;bottom:0;left:0;right:0;background:#3a1212;color:#ffd0d0;padding:10px;font:12px monospace;z-index:999;direction:ltr';document.body.appendChild(e)}
- say('سایت بارگذاری نشد. یک بار صفحه را دوباره باز کنید؛ اگر باز هم نشد، از همین پیغام عکس بگیرید.');e.textContent+=String(m)+'\n'}
+ say('سایت بارگذاری نشد. یک بار صفحه را دوباره باز کنید؛ اگر باز هم نشد، از همین پیغام عکس بگیرید.');e.textContent+=String(m)+'\n'+(e.textContent.indexOf('UA:')<0?'UA: '+navigator.userAgent+'\n':'')}
 window.__KSFAIL=fail;window.addEventListener('error',function(ev){if(!window.__KS_OK)fail((ev.message||'error')+' @'+(ev.lineno||''))});
 function bar(f){var b=document.getElementById('ldb');if(b)b.style.width=Math.max(4,Math.round(f*100))+'%';say(msgs[Math.min(msgs.length-1,Math.floor(f*(msgs.length-1)+.2))])}
 function get(i,tries){google.script.run.withSuccessHandler(function(r){n=r.n;parts[i]=r.s;got++;bar(got/(n+1));
- if(i===0)for(var k=1;k<n;k++)get(k,0);if(got===n){setTimeout(function(){start(parts.join(''))},30)}}).withFailureHandler(function(e){if(tries<3)setTimeout(function(){get(i,tries+1)},1500);else fail('apiApp: '+(e&&e.message||e))}).apiApp(i)}
+ if(i===0)for(var k=1;k<n;k++)get(k,0);if(got===n){setTimeout(function(){start(parts.join(''))},30)}}).withFailureHandler(function(e){if(tries<5)setTimeout(function(){get(i,tries+1)},1500*Math.pow(2,tries));else fail('apiApp: '+(e&&e.message||e))}).apiApp(i)}
 function start(html){try{var lc=document.getElementById('ldcss');if(lc)lc.parentNode.removeChild(lc);var d=new DOMParser().parseFromString(html,'text/html'),sc=[].slice.call(d.querySelectorAll('script'));
  sc.forEach(function(s){s.parentNode.removeChild(s)});
  [].slice.call(d.head.children).forEach(function(el){if(el.tagName!=='TITLE'&&!(el.tagName==='META'&&el.name==='viewport'))document.head.appendChild(document.importNode(el,true))});
  document.body.innerHTML=d.body.innerHTML;
  sc.forEach(function(s){var e=document.createElement('script');e.text=s.textContent;document.body.appendChild(e)})}catch(e){fail('start: '+e.message)}}
+if(old){var m=document.getElementById('ldm');m.innerHTML='مرورگر این دستگاه قدیمی است و سامانه در آن کار نمی‌کند.<br>Google Chrome یا Microsoft Edge را به آخرین نسخه به‌روز کنید (یا از مرورگر دیگری استفاده کنید) و دوباره این صفحه را باز کنید.';m.style.cssText='color:#ffd36b;font-size:14px;line-height:2;margin-top:18px';
+ var e2=document.getElementById('lderr');e2.textContent='UA: '+navigator.userAgent;return}
 setTimeout(function(){bar(.08)},150);get(0,0)})();
 </script></body></html>

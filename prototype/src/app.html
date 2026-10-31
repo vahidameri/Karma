@@ -1302,6 +1302,7 @@ html{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media (max-width:760px){.wrap{padding-inline:16px}}
 .bo-main>*{max-width:1440px;margin-inline:auto}
 .appbar .hdr-act{display:flex;align-items:center;gap:8px;margin-inline-start:auto}
+.appbar>.wrap{max-width:none!important;padding-inline:28px}@media (max-width:760px){.appbar>.wrap{padding-inline:16px}}
 /* workspace */
 .w-quick{display:flex;gap:8px;align-items:center;padding:10px 12px;margin-bottom:12px;flex-wrap:wrap}.w-quick input#wqadd{flex:1;min-width:220px;border:0;background:transparent;font:inherit;font-size:1rem;outline:none;padding:6px 4px}
 .w-quick select,.w-quick input{min-height:36px;border:1px solid var(--outline-variant);border-radius:10px;padding:4px 8px;font:inherit;background:var(--surface,#fff)}
@@ -1635,7 +1636,10 @@ input[data-jdp]{background-image:linear-gradient(transparent,transparent);cursor
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <dialog id="dlg"></dialog>
 
-<script>//---------------------------------------------------------------------
+<script>
+/* .at() for browsers before Chrome 92 / Safari 15.4 */
+[Array,String].forEach(function(C){if(!C.prototype.at)Object.defineProperty(C.prototype,'at',{value:function(n){n=Math.trunc(n)||0;if(n<0)n+=this.length;return n<0||n>=this.length?undefined:this[n]},configurable:true,writable:true})});
+//---------------------------------------------------------------------
 //
 // QR Code Generator for JavaScript
 //
@@ -7907,6 +7911,7 @@ const KS=(()=>{
     if(!b.me){TOK='';mem.set('karma.tok',null)}
     Object.keys(LAST).forEach(k=>delete LAST[k]);
     if(!b.roots.sales)R.sales.set({requests:[],quotes:{},orders:{},doc:S.doc});
+    if(!b.roots.work)S.work=workDefaults();
     Object.entries(b.roots).forEach(([k,x])=>apply(k,x));
     apply('users',b.users||{v:0,d:'[]'});LAST.me=enc(meGet());paintSt();catchUp()};
   /* invoices issued by users without accounting access are posted by the next accountant / admin screen */
