@@ -1302,6 +1302,26 @@ html{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media (max-width:760px){.wrap{padding-inline:16px}}
 .bo-main>*{max-width:1440px;margin-inline:auto}
 .appbar .hdr-act{display:flex;align-items:center;gap:8px;margin-inline-start:auto}
+/* workspace */
+.w-quick{display:flex;gap:8px;align-items:center;padding:10px 12px;margin-bottom:12px;flex-wrap:wrap}.w-quick input#wqadd{flex:1;min-width:220px;border:0;background:transparent;font:inherit;font-size:1rem;outline:none;padding:6px 4px}
+.w-quick select,.w-quick input{min-height:36px;border:1px solid var(--outline-variant);border-radius:10px;padding:4px 8px;font:inherit;background:var(--surface,#fff)}
+.w-filt{gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.w-sep{width:1px;height:22px;background:var(--outline-variant);margin:0 4px}.w-search{min-height:34px;border:1px solid var(--outline-variant);border-radius:999px;padding:4px 14px;font:inherit;min-width:200px}
+.w-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:6px;vertical-align:middle}
+.w-grp{margin-bottom:12px}.w-grp .toolbar{gap:6px}.w-t td{vertical-align:middle}.w-strike{text-decoration:line-through;color:var(--on-surface-variant)}
+.w-tag{display:inline-flex;align-items:center;font-size:.78rem;padding:2px 8px;border-radius:999px;background:var(--surface-variant,#eef1f6)}
+.w-avs{display:inline-flex}.w-av{width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;font-size:.72rem;font-weight:700;background:#1f2a44;color:#fff;border:2px solid #fff;margin-inline-start:-6px}.w-av:first-child{margin-inline-start:0}
+.w-over{color:var(--error,#b3261e)!important;font-weight:600}
+.w-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px;align-items:start}
+.w-col{background:var(--surface-variant,#eef1f6);border-radius:16px;padding:10px;min-height:200px;transition:background .15s}.w-col.over{background:#dfe7f7}.w-col header{display:flex;align-items:center;gap:4px;margin-bottom:10px;padding:2px 4px}.w-col header .tiny{margin-inline-start:auto}
+.w-cards{display:grid;gap:8px}.w-card{background:#fff;border-radius:12px;padding:10px 12px;box-shadow:0 1px 3px rgba(15,26,46,.1);cursor:pointer;display:grid;gap:6px}.w-card:hover{box-shadow:0 3px 10px rgba(15,26,46,.14)}.w-card.drag{opacity:.5}
+.w-ct{font-weight:600;line-height:1.6}.w-cm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.78rem}.w-pr{font-size:.76rem}.w-empty{text-align:center;padding:12px}
+.w-dlg{width:100%}.w-cli input{flex:none}.w-dlg header{display:flex;gap:10px;align-items:center}.w-title{flex:1;font:inherit;font-size:1.15rem;font-weight:700;border:0;border-bottom:1px solid transparent;padding:4px 2px;background:transparent}.w-title:focus{outline:none;border-bottom-color:var(--outline-variant)}
+.w-body{display:grid;grid-template-columns:1fr 260px;gap:18px}.w-main{display:grid;gap:10px;min-width:0}.w-main textarea,.w-main input:not([type=checkbox]){width:100%;font:inherit;border:1px solid var(--outline-variant);border-radius:10px;padding:8px 10px}
+.w-sec{display:grid;gap:6px;border-top:1px solid var(--outline-variant);padding-top:10px}.w-cli{display:flex;align-items:center;gap:6px}.w-cli span{flex:1}
+.w-cms{display:grid;gap:8px;max-height:260px;overflow:auto}.w-cmt{background:var(--surface-variant,#f3f5f9);border-radius:10px;padding:8px 10px;line-height:1.8}.w-cmt.done{background:#e6f4ec}
+.w-side{display:grid;gap:10px;align-content:start}.w-asl label.check{margin:0!important;padding:2px 0!important;min-height:0;font-weight:400;font-size:.85rem}.w-asl{display:grid;gap:4px;max-height:170px;overflow:auto;border:1px solid var(--outline-variant);border-radius:10px;padding:6px 8px}
+.w-set .w-srow{gap:6px;align-items:center}.w-set input[type=color]{width:34px;height:30px;border:0;background:none;padding:0}.w-set input:not([type]){border:1px solid var(--outline-variant);border-radius:8px;padding:4px 8px;font:inherit}
+@media (max-width:760px){.w-body{grid-template-columns:1fr}.w-board{grid-auto-columns:82vw}.w-t th:nth-child(3),.w-t td:nth-child(3),.w-t th:nth-child(7),.w-t td:nth-child(7){display:none}}
 
 /* ===== scroll: only the hero pins once, banner 2 slides over it, then the page scrolls normally ===== */
 .lp-panel{position:relative}
@@ -4186,7 +4206,7 @@ const isStaff=()=>!!(ME&&ME.kind==='staff');
 /* ============ access control: roles × permissions (module.resource.action), business-unit scope, module switches ============
    The admin builds roles from the permission list below (Users › Roles). A user can hold several roles; per-user
    allow / deny overrides and a business-unit scope sit on top. Every page, menu item and action asks can(). */
-const ACTFA={archive:'بایگانی',view:'مشاهده',create:'ایجاد / ویرایش پیش‌نویس',edit:'ویرایش',send:'ارسال برای مشتری',approve:'ثبت تأیید',revise:'اصلاح',issue:'صدور',void:'ابطال',return:'برگشتی',print:'چاپ',backdate:'تاریخ گذشته / آینده',assign:'سپردن به کارشناس',delete:'حذف',view_balance:'دیدن مانده حساب',view_cost:'دیدن قیمت خرید و سود',post:'دائم کردن',reverse:'سند معکوس',run:'اجرا',ops:'عملیات چک',sign:'امضا',settings:'تنظیمات',export:'خروجی'};
+const ACTFA={view_all:'دیدن تسک‌های همه',archive:'بایگانی',view:'مشاهده',create:'ایجاد / ویرایش پیش‌نویس',edit:'ویرایش',send:'ارسال برای مشتری',approve:'ثبت تأیید',revise:'اصلاح',issue:'صدور',void:'ابطال',return:'برگشتی',print:'چاپ',backdate:'تاریخ گذشته / آینده',assign:'سپردن به کارشناس',delete:'حذف',view_balance:'دیدن مانده حساب',view_cost:'دیدن قیمت خرید و سود',post:'دائم کردن',reverse:'سند معکوس',run:'اجرا',ops:'عملیات چک',sign:'امضا',settings:'تنظیمات',export:'خروجی'};
 const PERMDEF=[
  {m:'sales',fa:'فروش و مشتریان',res:[['request','درخواست‌های سایت',['view','edit']],['quote','پیش‌فاکتور',['view','create','edit','send','approve','revise','print','archive']],['supply','برگهٔ تأمین و بسته‌بندی',['view','edit','assign','print']],['invoice','فاکتور فروش و برگشتی',['view','create','issue','void','return','print','backdate','archive']],['customer','پروندهٔ مشتریان',['view','edit','delete','view_balance']]]},
  {m:'catalog',fa:'محصولات، کاتالوگ و جستجو',res:[['product','استانداردها و کالاها',['view','create','edit']],['price','قیمت‌ها',['view','edit','view_cost']],['export','ساخت کاتالوگ',['view']],['search','جستجوی هوشمند (مترادف‌ها و گزارش)',['view','edit']]]},
@@ -4195,13 +4215,14 @@ const PERMDEF=[
  {m:'tax',fa:'مالیات، ارز و دفاتر قانونی',res:[['tax','ارزش افزوده، ارز و دفاتر قانونی',['view','run']]]},
  {m:'dabir',fa:'دبیرخانه',res:[['letter','نامه‌ها',['view','create','sign','settings']]]},
  {m:'company',fa:'رزومهٔ شرکت',res:[['resume','رزومه',['view','edit']]]},
+ {m:'work',fa:'میزکار (تسک‌ها)',res:[['task','تسک‌ها',['view','create','assign','view_all']],['settings','تنظیمات میزکار',['edit']]]},
  {m:'admin',fa:'مدیریت سامانه',res:[['user','کاربران',['view','edit']],['role','نقش‌ها و دسترسی‌ها',['view','edit']],['settings','تنظیمات',['view','edit']],['module','ماژول‌ها',['edit']],['audit','گزارش ممیزی',['view']]]}];
 const PERMALL=PERMDEF.flatMap(M=>M.res.flatMap(([r,,acts])=>acts.map(a=>`${M.m}.${r}.${a}`)));
 const PERMFA=p=>{const [m,r,a]=p.split('.');const M=PERMDEF.find(x=>x.m===m),R=M&&M.res.find(x=>x[0]===r);return R?`${R[1]}: ${ACTFA[a]||a}`:p};
-const MODS=[['sales','فروش و مشتریان','درخواست، پیش‌فاکتور، برگهٔ تأمین، فاکتور و پروندهٔ مشتریان'],['catalog','محصولات، کاتالوگ و جستجو','استانداردها، کالاها، ساخت کاتالوگ و جستجوی هوشمند'],['acc','حسابداری','اسناد، خرید، خزانه، چک، گزارش‌ها و پایان دوره'],['payroll','حقوق و دستمزد','وابسته به حسابداری'],['tax','مالیات، ارز و دفاتر قانونی','وابسته به حسابداری'],['dabir','دبیرخانه','نامه‌های صادره، وارده و داخلی'],['company','رزومهٔ شرکت','معرفی شرکت و فهرست مشتریان']];
+const MODS=[['sales','فروش و مشتریان','درخواست، پیش‌فاکتور، برگهٔ تأمین، فاکتور و پروندهٔ مشتریان'],['catalog','محصولات، کاتالوگ و جستجو','استانداردها، کالاها، ساخت کاتالوگ و جستجوی هوشمند'],['acc','حسابداری','اسناد، خرید، خزانه، چک، گزارش‌ها و پایان دوره'],['payroll','حقوق و دستمزد','وابسته به حسابداری'],['tax','مالیات، ارز و دفاتر قانونی','وابسته به حسابداری'],['dabir','دبیرخانه','نامه‌های صادره، وارده و داخلی'],['company','رزومهٔ شرکت','معرفی شرکت و فهرست مشتریان'],['work','میزکار','تسک‌های شخصی و ارجاعی، وضعیت‌ها و گزارش انجام کار']];
 const BUS=[['unofficial',()=>kindName('unofficial')],['official',()=>kindName('official')]];
 const permX=(...a)=>{const o=new Set();a.forEach(p=>{const re=new RegExp('^'+p.replace(/\./g,'\\.').replace(/\*/g,'[^.]+')+'$');PERMALL.filter(x=>re.test(x)).forEach(x=>o.add(x))});return [...o]};
-const roleDefaults=()=>[
+const roleDefaults0=()=>[
  {id:'admin',name:'مدیر سیستم',d:'دسترسی کامل؛ این نقش محدود یا حذف نمی‌شود.',all:true,sys:true,bu:[],own:false},
  {id:'sales',name:'مدیر / کارشناس فروش',d:'درخواست، پیش‌فاکتور، فاکتور، برگهٔ تأمین، مشتریان و کالاها',sys:true,bu:[],own:false,perms:permX('sales.*.*','catalog.product.*','catalog.price.view','catalog.price.edit','catalog.search.view','admin.settings.*')},
  {id:'product',name:'کارشناس محصول',d:'استانداردها، کالاها، کاتالوگ، جستجو، دبیرخانه و رزومه',sys:true,bu:[],own:false,perms:permX('catalog.*.*','sales.request.view','sales.quote.view','sales.quote.print','dabir.letter.view','dabir.letter.create','company.resume.*')},
@@ -4209,9 +4230,12 @@ const roleDefaults=()=>[
  {id:'viewer',name:'فقط مشاهده',d:'دیدن فروش، محصولات و دبیرخانه بدون امکان تغییر',sys:true,bu:[],own:false,perms:permX('sales.*.view','catalog.product.view','catalog.price.view','catalog.export.view','dabir.letter.view','company.resume.view')},
  {id:'warehouse',name:'کارشناس تأمین',d:'فقط برگه‌های تأمین سفارش',sys:true,bu:[],own:false,perms:permX('sales.supply.view','sales.supply.edit','sales.supply.print')},
  {id:'r_karma',name:'کارشناس فروش کارما (نمونه)',d:'نمونهٔ نقش سفارشی: فقط اسناد واحد کارما و فقط اسنادی که خودش ساخته؛ بدون ابطال و تاریخ گذشته',sys:false,bu:['unofficial'],own:true,perms:permX('sales.request.*','sales.quote.*','sales.supply.view','sales.supply.print','sales.invoice.view','sales.invoice.create','sales.invoice.issue','sales.invoice.print','sales.customer.view','sales.customer.edit','catalog.product.view','catalog.price.view')}];
+/* workspace: everyone keeps their own tasks; the sales manager role can assign and see all tasks */
+const WORKP={sales:['work.task.view','work.task.create','work.task.assign','work.task.view_all'],viewer:['work.task.view','work.task.create'],_:['work.task.view','work.task.create']};
+const roleDefaults=()=>roleDefaults0().map(r=>r.all?r:{...r,perms:[...r.perms,...(WORKP[r.id]||WORKP._)]});
 S.roles=roleDefaults();
 /* permissions added in later versions: built-in roles saved before them receive them on load */
-const NEWPERMS=['sales.quote.archive','sales.invoice.archive'];
+const NEWPERMS=['sales.quote.archive','sales.invoice.archive','work.task.view','work.task.create','work.task.assign','work.task.view_all'];
 function permUpgrade(){const D=roleDefaults();S.roles.forEach(r=>{const d=D.find(x=>x.id===r.id);if(!d||r.all||!d.perms||!r.sys)return;r.perms=r.perms||[];NEWPERMS.forEach(p=>{if(d.perms.includes(p)&&!r.perms.includes(p))r.perms.push(p)})})}
 S.modules={sales:true,catalog:true,acc:true,payroll:true,tax:true,dabir:true,company:true};
 S.audit=[];S.permRev=0;
@@ -4233,7 +4257,7 @@ const permBump=()=>{S.permRev++};
 /* audit trail: who did what and when (Users › audit) */
 function audit(act,obj,det){S.audit.unshift({t:NOW(),ts:Date.now(),who:ME?ME.name:'سیستم',uid:ME?ME.id:0,act,obj:obj||'',det:det||''});if(S.audit.length>3000)S.audit.length=3000}
 /* page → permission; the side menu and the router both use it */
-const PAGEPERM={home:null,requests:'sales.request.view',quotes:'sales.quote.view',quote:'sales.quote.view',fulfill:'sales.supply.view',invoices:'sales.invoice.view',invoice:'sales.invoice.view',customers:'sales.customer.view',customer:'sales.customer.view',products:'catalog.product.view','new-sku':'catalog.product.create',catalog:'catalog.export.view',search:'catalog.search.view',users:['admin.user.view','admin.role.view'],audit:'admin.audit.view',dabir:'dabir.letter.view',letter:'dabir.letter.view',resume:'company.resume.view',setup:'admin.settings.view',docset:'admin.settings.view',settings:'admin.settings.view'};
+const PAGEPERM={home:null,work:'work.task.view',requests:'sales.request.view',quotes:'sales.quote.view',quote:'sales.quote.view',fulfill:'sales.supply.view',invoices:'sales.invoice.view',invoice:'sales.invoice.view',customers:'sales.customer.view',customer:'sales.customer.view',products:'catalog.product.view','new-sku':'catalog.product.create',catalog:'catalog.export.view',search:'catalog.search.view',users:['admin.user.view','admin.role.view'],audit:'admin.audit.view',dabir:'dabir.letter.view',letter:'dabir.letter.view',resume:'company.resume.view',setup:'admin.settings.view',docset:'admin.settings.view',settings:'admin.settings.view'};
 const ACCPERM={'':'acc.dash.view',vouchers:'acc.voucher.view',v:'acc.voucher.view',sales:'acc.sales.view',si:'acc.sales.view',purchase:'acc.purchase.view',pi:'acc.purchase.view',treasury:'acc.treasury.view',r:'acc.treasury.view',stock:'acc.purchase.view',cheques:'acc.cheque.view',parties:'acc.party.view',pricing:'catalog.price.view',reports:'acc.report.view',setup:'acc.setup.view',close:'acc.close.run',pay:'payroll.run.view',payrun:'payroll.run.view',vat:'tax.tax.view',fx:'tax.tax.view',books:'tax.tax.view'};
 const ACCNEW={v:'acc.voucher.create',pi:'acc.purchase.create',pr:'acc.purchase.create',rec:'acc.treasury.create',pay:'acc.treasury.create'};
 function canPage(k){if(!ME||ME.kind!=='staff')return false;const [a,b,c]=String(k).split('/');
@@ -4336,6 +4360,7 @@ function pStaffHome(){
   if(can('sales.supply.view'))T.push(tile('برگه‌های تأمین باز',fa(Object.values(S.orders).filter(o=>o.status==='open'&&mine(o)).length),ownOnly()?'سپرده به شما':'در حال تأمین','#/admin/fulfill','i-check2'));
   if(can('sales.invoice.view'))T.push(tile('فاکتورهای پیش‌نویس',fa(Object.values(S.invoices).filter(I=>I.status==='draft'&&buOK(I.seller)&&mine(I)).length),'منتظر صدور','#/admin/invoices?f=draft','i-inv'));
   if(can('acc.dash.view')&&typeof A!=='undefined'){T.push(tile('مطالبات از مشتریان',money(aBal('1201')),'ریال','#/admin/acc/reports?r=dc','i-sort'));T.push(tile('چک‌های سررسید ۱۰ روز آینده',fa(A.chq.filter(c=>['box','bank','issued'].includes(c.st)&&c.due<=jd(10).num).length),'دریافتنی و پرداختنی','#/admin/acc/cheques','i-list'))}
+  if(can('work.task.view')){const mo=wMyOpen();T.unshift(tile('تسک‌های باز من',fa(mo.length),mo.filter(wOver).length?fa(mo.filter(wOver).length)+' سررسید گذشته':'در میزکار','#/admin/work','i-check2'))}
   if(can('dabir.letter.view')&&typeof dMine==='function')T.push(tile('کارتابل دبیرخانه',fa(dMine().length),'نامه‌های منتظر شما','#/admin/dabir','i-inbox'));
   const act=can('admin.audit.view')?S.audit.slice(0,8):S.audit.filter(a=>a.uid===ME.id).slice(0,8);
   const Q=[['sales.quote.create','javascript:newQuote()','پیش‌فاکتور جدید','i-doc'],['sales.invoice.create',"javascript:newInvoice('unofficial')",'فاکتور '+kindName('unofficial'),'i-inv'],['sales.invoice.create',"javascript:newInvoice('official')",'فاکتور '+kindName('official'),'i-inv'],['acc.treasury.create','#/admin/acc/new/rec','رسید دریافت','i-inbox'],['acc.purchase.create','#/admin/acc/new/pi','فاکتور خرید','i-box'],['acc.voucher.create','#/admin/acc/new/v','سند دستی','i-doc'],['catalog.product.create','#/admin/new-sku','تعریف کالا','i-plus'],['dabir.letter.create','#/admin/dabir/new/out','نامهٔ صادره','i-doc']].filter(x=>can(x[0]));
@@ -4712,7 +4737,7 @@ function wireSearchAdmin(ed){const B=$('#sabody');if(!B)return;
 const B_=v=>esc(String(v));
 
 /* ============ command palette (Ctrl+K): pages, products, customers and documents the user may see ============ */
-const CMDPAGES=[['home','پیشخوان'],['requests','درخواست‌ها'],['quotes','پیش‌فاکتورها'],['fulfill','برگه‌های تأمین'],['invoices','فاکتورها'],['customers','پروندهٔ مشتریان'],['products','استانداردها و کالاها'],['new-sku','تعریف کالای جدید'],['search','جستجوی هوشمند'],['catalog','ساخت کاتالوگ'],['acc','پیشخوان مالی'],['acc/vouchers','اسناد حسابداری'],['acc/sales','فروش (حسابداری)'],['acc/purchase','خرید'],['acc/treasury','دریافت و پرداخت'],['acc/cheques','چک‌ها'],['acc/parties','طرف‌حساب‌ها'],['acc/reports','گزارش‌ها'],['acc/reports?r=ex','کاوش حساب‌ها'],['acc/setup','کدینگ و قواعد ثبت'],['acc/close','پایان دوره'],['acc/pay','حقوق و دستمزد'],['acc/vat','ارزش افزوده'],['dabir','دبیرخانه'],['resume','رزومهٔ شرکت'],['users','کاربران و نقش‌ها'],['users?t=audit','گزارش ممیزی'],['setup','تنظیمات'],['setup/modules','ماژول‌ها']];
+const CMDPAGES=[['home','پیشخوان'],['work','میزکار'],['requests','درخواست‌ها'],['quotes','پیش‌فاکتورها'],['fulfill','برگه‌های تأمین'],['invoices','فاکتورها'],['customers','پروندهٔ مشتریان'],['products','استانداردها و کالاها'],['new-sku','تعریف کالای جدید'],['search','جستجوی هوشمند'],['catalog','ساخت کاتالوگ'],['acc','پیشخوان مالی'],['acc/vouchers','اسناد حسابداری'],['acc/sales','فروش (حسابداری)'],['acc/purchase','خرید'],['acc/treasury','دریافت و پرداخت'],['acc/cheques','چک‌ها'],['acc/parties','طرف‌حساب‌ها'],['acc/reports','گزارش‌ها'],['acc/reports?r=ex','کاوش حساب‌ها'],['acc/setup','کدینگ و قواعد ثبت'],['acc/close','پایان دوره'],['acc/pay','حقوق و دستمزد'],['acc/vat','ارزش افزوده'],['dabir','دبیرخانه'],['resume','رزومهٔ شرکت'],['users','کاربران و نقش‌ها'],['users?t=audit','گزارش ممیزی'],['setup','تنظیمات'],['setup/modules','ماژول‌ها']];
 function cmdOpen(){if(!isStaff()){const i=$('[data-sbi=top]')||$('[data-sbi=hero]');if(i)i.focus();else go('#/search');return}
   if($('.cmdk'))return;const o=document.createElement('div');o.className='cmdk';o.innerHTML=`<div class="cmdk-box" role="dialog" aria-label="جستجوی سراسری"><div class="cmdk-in">${icon('i-search')}<input placeholder="کالا (آلن ۸ در ۲۰)، مشتری، شمارهٔ سند یا نام صفحه…" autocomplete="off"><kbd>Esc</kbd></div><div class="cmd-list"></div><div class="cmd-foot"><span>↑ ↓ انتخاب</span><span>Enter باز کردن</span><span>Esc بستن</span></div></div>`;
   document.body.appendChild(o);const inp=$('input',o),L=$('.cmd-list',o);const close=()=>o.remove();o.onclick=e=>{if(e.target===o)close()};
@@ -5521,6 +5546,143 @@ function pPlDoc(o){const Q=S.quotes[o.quote]||{customer:o.customer||{}},sl=Q.sel
     tools:`${can('sales.supply.print')?`<label class="check small" style="margin-inline-end:8px"><input type="checkbox" ${st?'checked':''} onchange="docStamp('o','${o.id}',this.checked)"> مهر</label>`:''}${o.inv?`<a class="btn outlined sm" href="#/doc/inv/${o.inv}">${icon('i-inv')}فاکتور</a>`:''}`,
     signHtml:`<div class="dsign"><div class="dseller">تحویل‌دهنده (${esc(kindName(sl))})<span></span>${st?stampSeller(sl):''}</div><div>تحویل‌گیرنده (خریدار)<span></span></div></div>`})}
 /* ============ back office ============ */
+/* ============ workspace (میزکار): personal tasks and tasks assigned to others, ClickUp-style ============
+   Statuses, priorities and lists are configurable (Workspace › Settings). A task has assignees, a due date,
+   a checklist, comments («اقدامات و توضیحات») and an activity log. Marking it done can ask for a closing note. */
+const workDefaults=()=>({seq:0,cfg:{
+  statuses:[{k:'todo',t:'برای انجام',c:'#8a94a6'},{k:'doing',t:'در حال انجام',c:'#2f6fed'},{k:'review',t:'منتظر بررسی',c:'#c77c02'},{k:'done',t:'انجام شد',c:'#1e8e5a',done:true},{k:'cancel',t:'لغو شد',c:'#9aa1ad',done:true}],
+  prios:[{k:'urgent',t:'فوری',c:'#b3261e'},{k:'high',t:'بالا',c:'#c77c02'},{k:'normal',t:'عادی',c:'#2f6fed'},{k:'low',t:'پایین',c:'#8a94a6'}],
+  lists:[{id:'L1',name:'فروش',c:'#f5b31b'},{id:'L2',name:'تأمین',c:'#2f6fed'},{id:'L3',name:'مالی',c:'#1e8e5a'},{id:'L4',name:'شخصی',c:'#8a94a6'}],
+  doneNote:true},tasks:[]});
+S.work=workDefaults();
+const wSt=k=>S.work.cfg.statuses.find(s=>s.k===k)||S.work.cfg.statuses[0];
+const wDone=t=>!!wSt(t.status).done;
+const wPr=k=>S.work.cfg.prios.find(p=>p.k===k)||S.work.cfg.prios[Math.min(2,S.work.cfg.prios.length-1)];
+const wList=id=>S.work.cfg.lists.find(l=>l.id===id);
+const wUser=id=>S.users.find(u=>u.id===id);
+const wStaff=()=>S.users.filter(u=>u.kind==='staff'&&u.active!==false);
+const wSee=t=>!!ME&&(t.by===ME.id||(t.as||[]).includes(ME.id)||(!t.priv&&can('work.task.view_all')));
+const wEdit=t=>!!ME&&(t.by===ME.id||(t.as||[]).includes(ME.id)||isAdmin());
+const wOver=t=>!wDone(t)&&!!t.due&&t.due<jd().num;
+const wMyOpen=()=>ME?S.work.tasks.filter(t=>(t.as||[]).includes(ME.id)&&!wDone(t)):[];
+const wLog=(t,m)=>{(t.log=t.log||[]).push([NOW(),ME?ME.name:'',m])};
+const wAv=id=>{const u=wUser(id);return u?`<span class="w-av" title="${esc(u.name)}">${esc(u.name[0])}</span>`:''};
+const wDot=c=>`<i class="w-dot" style="background:${esc(c)}"></i>`;
+function wNew(o){const t=Object.assign({id:'T-'+(++S.work.seq),title:'',desc:'',status:S.work.cfg.statuses[0].k,prio:'normal',list:'',as:[ME.id],by:ME.id,created:sysStamp(),due:'',tags:[],cl:[],cm:[],log:[],priv:false},o);
+  S.work.tasks.unshift(t);wLog(t,'ساخته شد');const others=t.as.filter(x=>x!==ME.id);if(others.length){wLog(t,'سپرده شد به '+others.map(x=>(wUser(x)||{}).name).join('، '));audit('ارجاع تسک',t.id,t.title)}return t}
+/* status change; a «done» status may ask for a closing note, kept with the comments */
+function wSetStatus(t,k,after,cancel){const s=wSt(k);if(t.status===k)return;
+  const go=note=>{const was=wSt(t.status).t;t.status=k;if(s.done)t.doneAt=NOW();else delete t.doneAt;wLog(t,`وضعیت: ${was} ← ${s.t}`);
+    if(note)t.cm.push({id:Date.now(),by:ME.id,at:NOW(),text:note,kind:'done'});if(s.done&&t.by!==ME.id)audit('انجام تسک',t.id,t.title);after&&after()};
+  if(s.done&&S.work.cfg.doneNote&&k!=='cancel'){wAsk('گزارش انجام کار','چه کاری انجام شد؟ (اختیاری؛ در «اقدامات و توضیحات» تسک ثبت می‌شود)',go,cancel)}else go('')}
+function wAsk(title,hint,cb,cancel){const d=$('#dlg');d.innerHTML=`<form method="dialog" style="max-width:480px;margin:auto"><header><h3>${esc(title)}</h3></header><div class="body"><p class="small muted" style="margin:0 0 8px">${esc(hint)}</p><textarea id="wask" rows="4" style="width:100%"></textarea></div>
+  <footer><button class="btn" value="ok" id="wok">ثبت</button><button class="btn outlined" value="cancel">انصراف</button></footer></form>`;
+  if(d.open)d.close();d.returnValue='';d.addEventListener('close',()=>{const v=($('#wask',d)||{value:''}).value.trim();if(d.returnValue==='ok')cb(v);else cancel&&cancel()},{once:true});d.showModal();setTimeout(()=>$('#wask',d).focus(),50)}
+let WQ='',WOV=false;
+function pWork(qs){const v=qs.get('v')||'list',f=qs.get('f')||'mine',L=qs.get('l')||'';const tid=qs.get('t');if(tid)setTimeout(()=>{history.replaceState(null,'',location.hash.replace(/([?&])t=[^&]*&?/,'$1').replace(/[?&]$/,''));wOpen(tid)},0);
+  if(v==='settings')return pWorkSet();
+  setTimeout(()=>wireWork(v),0);
+  const all=can('work.task.view_all');
+  const href=o=>'#/admin/work?'+new URLSearchParams(Object.assign({v,f,l:L},o)).toString();
+  const T=S.work.tasks.filter(t=>wSee(t)&&(f==='mine'?(t.as||[]).includes(ME.id):f==='byme'?t.by===ME.id&&(t.as||[]).some(x=>x!==ME.id):true)&&(!L||t.list===L)&&(!WOV||wOver(t))&&(!WQ||norm(t.title+' '+t.desc+' '+t.id).includes(norm(WQ))));
+  const nMine=wMyOpen().length,nOver=wMyOpen().filter(wOver).length;
+  return bo('work',`<div class="bo-top"><div><h1>میزکار</h1><p class="small muted">${fa(nMine)} تسک باز برای شما${nOver?` · <b style="color:var(--error)">${fa(nOver)} سررسید گذشته</b>`:''}</p></div><span class="grow"></span>
+    <div class="row" style="gap:6px">${[['list','فهرست'],['board','بورد']].map(([k,t])=>`<a class="chip" aria-pressed="${v===k}" href="${href({v:k})}">${t}</a>`).join('')}${can('work.settings.edit')?`<a class="chip" href="#/admin/work?v=settings">تنظیمات</a>`:''}</div>
+    ${can('work.task.create')?`<button class="btn sm" id="wnew">${icon('i-plus')}تسک جدید</button>`:''}</div>
+   ${can('work.task.create')?`<div class="card w-quick"><input id="wqadd" placeholder="تسک تازه بنویسید و Enter بزنید…" autocomplete="off">
+     ${can('work.task.assign')?`<select id="wqas" title="مسئول">${wStaff().map(u=>`<option value="${u.id}" ${u.id===ME.id?'selected':''}>${esc(u.id===ME.id?'خودم':u.name)}</option>`).join('')}</select>`:''}
+     <select id="wqlist" title="فهرست"><option value="">بدون فهرست</option>${S.work.cfg.lists.map(l=>`<option value="${l.id}" ${L===l.id?'selected':''}>${esc(l.name)}</option>`).join('')}</select>
+     <input id="wqdue" data-jdp placeholder="سررسید" inputmode="numeric" autocomplete="off" style="max-width:130px"></div>`:''}
+   <div class="row w-filt"><a class="chip" aria-pressed="${f==='mine'}" href="${href({f:'mine'})}">سپرده به من</a><a class="chip" aria-pressed="${f==='byme'}" href="${href({f:'byme'})}">سپرده‌شده توسط من</a>${all?`<a class="chip" aria-pressed="${f==='all'}" href="${href({f:'all'})}">همهٔ تسک‌ها</a>`:''}
+     <span class="w-sep"></span><a class="chip" aria-pressed="${!L}" href="${href({l:''})}">همهٔ فهرست‌ها</a>${S.work.cfg.lists.map(l=>`<a class="chip" aria-pressed="${L===l.id}" href="${href({l:l.id})}">${wDot(l.c)}${esc(l.name)}</a>`).join('')}
+     <span class="w-sep"></span><label class="check small"><input type="checkbox" id="wov" ${WOV?'checked':''}> فقط سررسید گذشته</label><span class="grow"></span><input id="wsearch" class="w-search" placeholder="جستجو در تسک‌ها" value="${esc(WQ)}"></div>
+   <div id="wbody">${v==='board'?wBoard(T):wListView(T)}</div>`)}
+function wCard(t){const p=wPr(t.prio),l=wList(t.list),cd=(t.cl||[]).length?`<span class="tiny muted">☑ ${fa(t.cl.filter(c=>c.done).length)}/${fa(t.cl.length)}</span>`:'';
+  return `<div class="w-card" draggable="${wEdit(t)}" data-tid="${t.id}"><div class="w-ct">${esc(t.title)}</div><div class="w-cm">${l?`<span class="w-tag">${wDot(l.c)}${esc(l.name)}</span>`:''}<span class="w-pr" style="color:${esc(p.c)}">⚑ ${esc(p.t)}</span>${t.priv?'<span class="tiny muted">خصوصی</span>':''}</div>
+    <div class="w-cm"><span class="w-avs">${(t.as||[]).map(wAv).join('')}</span>${cd}${(t.cm||[]).length?`<span class="tiny muted">💬 ${fa(t.cm.length)}</span>`:''}<span class="grow"></span>${t.due?`<span class="tiny ${wOver(t)?'w-over':'muted'}">${esc(FAD(t.due))}</span>`:''}</div></div>`}
+function wBoard(T){return `<div class="w-board">${S.work.cfg.statuses.map(s=>{const C=T.filter(t=>t.status===s.k);return `<section class="w-col" data-st="${s.k}"><header>${wDot(s.c)}<b>${esc(s.t)}</b><span class="tiny muted">${fa(C.length)}</span></header><div class="w-cards">${C.map(wCard).join('')||'<div class="tiny muted w-empty">—</div>'}</div></section>`}).join('')}</div>`}
+function wListView(T){if(!T.length)return `<div class="card empty">تسکی نیست. ${can('work.task.create')?'از کادر بالا یک تسک بسازید.':''}</div>`;
+  return S.work.cfg.statuses.map(s=>{const C=T.filter(t=>t.status===s.k);if(!C.length)return '';return `<div class="card w-grp" style="padding:0;overflow:hidden"><div class="toolbar">${wDot(s.c)}<b>${esc(s.t)}</b><span class="tiny muted">${fa(C.length)}</span></div>
+    <table class="t w-t"><thead><tr><th style="width:34px"></th><th>تسک</th><th>فهرست</th><th>مسئول</th><th>سررسید</th><th>اولویت</th><th></th></tr></thead><tbody>${C.map(t=>{const p=wPr(t.prio),l=wList(t.list);return `<tr class="click" data-tid="${t.id}">
+      <td><input type="checkbox" class="w-chk" data-done="${t.id}" ${wDone(t)?'checked':''} ${wEdit(t)?'':'disabled'} title="انجام شد"></td><td><b class="${wDone(t)?'w-strike':''}">${esc(t.title)}</b> <span class="tiny muted lat">${t.id}</span>${t.priv?' <span class="badge gray">خصوصی</span>':''}${(t.cm||[]).length?` <span class="tiny muted">💬 ${fa(t.cm.length)}</span>`:''}</td>
+      <td>${l?`<span class="w-tag">${wDot(l.c)}${esc(l.name)}</span>`:'—'}</td><td><span class="w-avs">${(t.as||[]).map(wAv).join('')}</span></td>
+      <td class="${wOver(t)?'w-over':''}">${t.due?esc(FAD(t.due)):'—'}</td><td><span style="color:${esc(p.c)}">⚑ ${esc(p.t)}</span></td><td class="tiny muted">${t.by!==ME.id?'از '+esc((wUser(t.by)||{}).name||''):''}</td></tr>`}).join('')}</tbody></table></div>`}).join('')}
+function wireWork(v){
+  const add=$('#wqadd');if(add)add.onkeydown=e=>{if(e.key!=='Enter')return;const title=add.value.trim();if(!title)return;const due=norm($('#wqdue').value||'');if(due&&!jdValid(due)){toast('سررسید را از تقویم انتخاب کنید.');return}
+    const as=$('#wqas')?+$('#wqas').value:ME.id;const t=wNew({title,list:$('#wqlist').value,as:[as],due});add.value='';toast(as===ME.id?'تسک ساخته شد.':`تسک ساخته شد و به ${(wUser(as)||{}).name} سپرده شد.`);rerender();setTimeout(()=>{const a=$('#wqadd');if(a)a.focus()},50)};
+  const nb=$('#wnew');if(nb)nb.onclick=()=>{const t=wNew({title:'تسک تازه',list:$('#wqlist')?$('#wqlist').value:''});wOpen(t.id,true)};
+  const sr=$('#wsearch');if(sr)sr.oninput=e=>{WQ=e.target.value;const c=sr.selectionStart;rerender();const s2=$('#wsearch');if(s2){s2.focus();s2.setSelectionRange(c,c)}};
+  const ov=$('#wov');if(ov)ov.onchange=()=>{WOV=ov.checked;rerender()};
+  $$('[data-done]').forEach(c=>{c.onclick=e=>e.stopPropagation();c.onchange=()=>{const t=S.work.tasks.find(x=>x.id===c.dataset.done);const k=c.checked?(S.work.cfg.statuses.find(s=>s.done&&s.k!=='cancel')||S.work.cfg.statuses.find(s=>s.done)).k:S.work.cfg.statuses[0].k;wSetStatus(t,k,rerender,rerender)}});
+  $$('[data-tid]').forEach(r=>{r.onclick=()=>wOpen(r.dataset.tid)});
+  if(v==='board'){let drag=null;$$('.w-card').forEach(c=>{c.ondragstart=e=>{drag=c.dataset.tid;e.dataTransfer.effectAllowed='move';c.classList.add('drag')};c.ondragend=()=>c.classList.remove('drag')});
+    $$('.w-col').forEach(col=>{col.ondragover=e=>{e.preventDefault();col.classList.add('over')};col.ondragleave=()=>col.classList.remove('over');
+      col.ondrop=e=>{e.preventDefault();col.classList.remove('over');const t=S.work.tasks.find(x=>x.id===drag);if(t&&wEdit(t))wSetStatus(t,col.dataset.st,rerender,rerender)}})}}
+/* task window */
+function wOpen(id,fresh){const t=S.work.tasks.find(x=>x.id===id);if(!t||!wSee(t)){toast('این تسک پیدا نشد یا به آن دسترسی ندارید.');return}const ed=wEdit(t),asg=can('work.task.assign')||isAdmin();const d=$('#dlg');
+  const paint=()=>{const p=wPr(t.prio);
+  d.innerHTML=`<form method="dialog" class="w-dlg"><header><span class="lat tiny muted">${t.id}</span><input id="wt_title" class="w-title" value="${esc(t.title)}" ${ed?'':'disabled'}><button class="icon-btn" value="cancel" aria-label="بستن">${icon('i-x')}</button></header>
+   <div class="body w-body"><div class="w-main">
+     <label class="small muted">شرح</label><textarea id="wt_desc" rows="4" ${ed?'':'disabled'} placeholder="جزئیات کار، لینک‌ها، شماره‌ها…">${esc(t.desc||'')}</textarea>
+     <div class="w-sec"><b class="small">چک‌لیست</b><div id="wt_cl">${(t.cl||[]).map((c,i)=>`<label class="check w-cli"><input type="checkbox" data-cl="${i}" ${c.done?'checked':''} ${ed?'':'disabled'}> <span class="${c.done?'w-strike':''}">${esc(c.t)}</span>${ed?`<button type="button" class="icon-btn sm" data-cldel="${i}" aria-label="حذف">${icon('i-x')}</button>`:''}</label>`).join('')}</div>${ed?`<input id="wt_cladd" placeholder="مورد تازه + Enter">`:''}</div>
+     <div class="w-sec"><b class="small">اقدامات و توضیحات</b><div class="w-cms">${(t.cm||[]).map(c=>`<div class="w-cmt ${c.kind==='done'?'done':''}"><div class="tiny muted">${esc((wUser(c.by)||{}).name||'')} · ${esc(c.at)}${c.kind==='done'?' · گزارش انجام':''}</div><div>${esc(c.text).replace(/\n/g,'<br>')}</div></div>`).join('')||'<p class="tiny muted">هنوز چیزی ثبت نشده.</p>'}</div>
+       <textarea id="wt_cm" rows="2" placeholder="اقدام انجام‌شده یا توضیح تازه…"></textarea><button type="button" class="btn outlined sm" id="wt_cmadd">ثبت</button></div>
+     <details class="w-sec"><summary class="small">تاریخچه (${fa((t.log||[]).length)})</summary>${(t.log||[]).slice().reverse().map(([a,b,m])=>`<div class="tiny muted">${esc(a)} — ${esc(b)}: ${esc(m)}</div>`).join('')}</details></div>
+   <aside class="w-side">
+     <div class="field"><label>وضعیت</label><select id="wt_st" ${ed?'':'disabled'}>${S.work.cfg.statuses.map(s=>`<option value="${s.k}" ${s.k===t.status?'selected':''}>${esc(s.t)}</option>`).join('')}</select></div>
+     <div class="field"><label>اولویت</label><select id="wt_pr" ${ed?'':'disabled'}>${S.work.cfg.prios.map(x=>`<option value="${x.k}" ${x.k===t.prio?'selected':''}>${esc(x.t)}</option>`).join('')}</select></div>
+     <div class="field"><label>مسئول</label><div class="w-asl">${wStaff().map(u=>`<label class="check small"><input type="checkbox" data-as="${u.id}" ${(t.as||[]).includes(u.id)?'checked':''} ${ed&&(asg||u.id===ME.id)?'':'disabled'}> ${esc(u.name)}</label>`).join('')}</div>${asg?'':'<span class="hint">سپردن به دیگران با نقش‌هایی است که اجازهٔ «سپردن تسک» دارند.</span>'}</div>
+     <div class="field"><label>فهرست</label><select id="wt_list" ${ed?'':'disabled'}><option value="">بدون فهرست</option>${S.work.cfg.lists.map(l=>`<option value="${l.id}" ${l.id===t.list?'selected':''}>${esc(l.name)}</option>`).join('')}</select></div>
+     <div class="field"><label>سررسید</label><input id="wt_due" data-jdp value="${esc(t.due?FAD(t.due):'')}" placeholder="۱۴۰۵/۰۸/۲۰" inputmode="numeric" autocomplete="off" ${ed?'':'disabled'}></div>
+     <label class="check small"><input type="checkbox" id="wt_priv" ${t.priv?'checked':''} ${ed&&t.by===ME.id?'':'disabled'}> خصوصی (فقط سازنده و مسئولان)</label>
+     <p class="tiny muted">سازنده: ${esc((wUser(t.by)||{}).name||'')}<br>ثبت: <span class="lat">${esc(FAD(t.created||''))}</span>${t.doneAt?`<br>انجام: ${esc(t.doneAt)}`:''}</p>
+     ${(t.by===ME.id||isAdmin())?`<button type="button" class="btn text sm" id="wt_del" style="color:var(--error)">حذف تسک</button>`:''}
+   </aside></div></form>`;
+  const sv=()=>{rerender()};
+  const on=(i,ev,fn)=>{const e=$('#'+i,d);if(e)e[ev]=fn};
+  on('wt_title','onchange',e=>{const v=e.target.value.trim();if(v&&v!==t.title){wLog(t,'عنوان تغییر کرد');t.title=v;sv()}});
+  on('wt_desc','onchange',e=>{t.desc=e.target.value;wLog(t,'شرح تغییر کرد');sv()});
+  const reopen=()=>{paint();if(!d.open)d.showModal()};
+  on('wt_st','onchange',e=>{wSetStatus(t,e.target.value,()=>{sv();reopen()},reopen)});
+  on('wt_pr','onchange',e=>{t.prio=e.target.value;wLog(t,'اولویت: '+wPr(t.prio).t);sv()});
+  on('wt_list','onchange',e=>{t.list=e.target.value;sv()});
+  on('wt_due','onchange',e=>{const v=norm(e.target.value);if(v&&!jdValid(v)){toast('تاریخ معتبر نیست؛ از تقویم انتخاب کنید.');return}t.due=v;wLog(t,'سررسید: '+(v?FAD(v):'—'));sv()});
+  on('wt_priv','onchange',e=>{t.priv=e.target.checked;sv()});
+  $$('[data-as]',d).forEach(c=>c.onchange=()=>{const id=+c.dataset.as;t.as=t.as||[];if(c.checked){if(!t.as.includes(id))t.as.push(id);if(id!==ME.id){wLog(t,'سپرده شد به '+(wUser(id)||{}).name);audit('ارجاع تسک',t.id,t.title)}}else{t.as=t.as.filter(x=>x!==id);wLog(t,'از مسئولان برداشته شد: '+(wUser(id)||{}).name)}sv()});
+  $$('[data-cl]',d).forEach(c=>c.onchange=()=>{t.cl[+c.dataset.cl].done=c.checked;sv();paint()});
+  $$('[data-cldel]',d).forEach(b=>b.onclick=()=>{t.cl.splice(+b.dataset.cldel,1);sv();paint()});
+  on('wt_cladd','onkeydown',e=>{if(e.key!=='Enter')return;e.preventDefault();const v=e.target.value.trim();if(!v)return;(t.cl=t.cl||[]).push({t:v,done:false});sv();paint();setTimeout(()=>{const x=$('#wt_cladd',d);if(x)x.focus()},30)});
+  on('wt_cmadd','onclick',()=>{const v=$('#wt_cm',d).value.trim();if(!v)return;(t.cm=t.cm||[]).push({id:Date.now(),by:ME.id,at:NOW(),text:v});wLog(t,'توضیح ثبت شد');sv();paint()});
+  on('wt_del','onclick',()=>{if(!confirm('این تسک حذف شود؟'))return;S.work.tasks=S.work.tasks.filter(x=>x!==t);audit('حذف تسک',t.id,t.title);d.close();rerender()});
+  if(fresh)setTimeout(()=>{const x=$('#wt_title',d);if(x){x.focus();x.select()}},50)};
+  d.style.width='min(980px,calc(100% - 24px))';d.addEventListener('close',()=>{if(!$('.w-dlg',d))d.style.width=''},{once:true});paint();if(!d.open)d.showModal()}
+/* settings: statuses (with «done» flag), priorities, lists, closing note */
+function pWorkSet(){if(!can('work.settings.edit'))return pNoAccess();setTimeout(wireWorkSet,0);
+  const C=S.work.cfg,row=(k,i,x,extra)=>`<div class="row w-srow" data-k="${k}" data-i="${i}"><input type="color" value="${esc(x.c||'#8a94a6')}" data-f="c"><input value="${esc(x.t||x.name||'')}" data-f="${k==='lists'?'name':'t'}" style="flex:1">${extra||''}<button type="button" class="icon-btn sm" data-up="${k}:${i}" title="بالا">↑</button><button type="button" class="icon-btn sm" data-rm="${k}:${i}" title="حذف">${icon('i-x')}</button></div>`;
+  return bo('work',`<div class="bo-top"><div><p class="small muted"><a href="#/admin/work">میزکار</a></p><h1>تنظیمات میزکار</h1></div></div>
+   <div class="grid2 w-set">
+    <div class="card stack" style="gap:8px"><b>وضعیت‌ها</b><p class="tiny muted">ترتیب ستون‌های بورد. «پایانی» یعنی تسک با این وضعیت بسته حساب می‌شود.</p>${C.statuses.map((s,i)=>row('statuses',i,s,`<label class="check tiny"><input type="checkbox" data-f="done" ${s.done?'checked':''}> پایانی</label>`)).join('')}<button type="button" class="btn outlined sm" data-add="statuses">${icon('i-plus')}وضعیت تازه</button></div>
+    <div class="card stack" style="gap:8px"><b>اولویت‌ها</b>${C.prios.map((x,i)=>row('prios',i,x)).join('')}<button type="button" class="btn outlined sm" data-add="prios">${icon('i-plus')}اولویت تازه</button></div>
+    <div class="card stack" style="gap:8px"><b>فهرست‌ها (پروژه / حوزه)</b>${C.lists.map((x,i)=>row('lists',i,x)).join('')}<button type="button" class="btn outlined sm" data-add="lists">${icon('i-plus')}فهرست تازه</button></div>
+    <div class="card stack" style="gap:8px"><b>انجام کار</b><label class="check small"><input type="checkbox" id="wsdn" ${C.doneNote?'checked':''}> هنگام «انجام شد» گزارش انجام کار پرسیده شود</label></div>
+   </div>`)}
+function wireWorkSet(){const C=S.work.cfg;
+  $$('.w-srow').forEach(r=>{const k=r.dataset.k,i=+r.dataset.i,x=C[k][i];$$('[data-f]',r).forEach(inp=>inp.onchange=()=>{const f=inp.dataset.f;x[f]=inp.type==='checkbox'?inp.checked:inp.value.trim()||x[f];audit('تنظیمات میزکار',k,'')})});
+  $$('[data-rm]').forEach(b=>b.onclick=()=>{const [k,i]=b.dataset.rm.split(':');if(C[k].length<=1){toast('دست‌کم یک مورد لازم است.');return}const x=C[k][+i];
+    if(k==='statuses'&&S.work.tasks.some(t=>t.status===x.k)){toast('تسک‌هایی با این وضعیت هست؛ اول وضعیتشان را عوض کنید.');return}
+    if(k==='lists')S.work.tasks.forEach(t=>{if(t.list===x.id)t.list=''});C[k].splice(+i,1);rerender()});
+  $$('[data-up]').forEach(b=>b.onclick=()=>{const [k,i]=b.dataset.up.split(':');const j=+i;if(!j)return;[C[k][j-1],C[k][j]]=[C[k][j],C[k][j-1]];rerender()});
+  $$('[data-add]').forEach(b=>b.onclick=()=>{const k=b.dataset.add,id=Date.now().toString(36);C[k].push(k==='lists'?{id:'L'+id,name:'فهرست تازه',c:'#2f6fed'}:{k:id,t:k==='statuses'?'وضعیت تازه':'اولویت تازه',c:'#2f6fed'});rerender()});
+  const dn=$('#wsdn');if(dn)dn.onchange=()=>{C.doneNote=dn.checked}}
+/* sample tasks (labelled «نمونه») */
+function wSeed(){const me0=ME;ME=S.users.find(u=>u.id===1)||{id:1,name:'مدیر سیستم'};
+  const a=wNew({title:'پیگیری پیش‌فاکتور PF-1405-0229 با مشتری (نمونه)',list:'L1',prio:'high',as:[2],due:jd(2).num,cl:[{t:'تماس تلفنی',done:true},{t:'ارسال نسخهٔ اصلاحی',done:false}]});
+  wNew({title:'گزارش فروش ماهانهٔ مهر (نمونه)',list:'L3',prio:'normal',as:[4],status:'doing',due:jd(5).num,desc:'جمع فروش هر دو واحد و مقایسه با شهریور.'});
+  const c=wNew({title:'آماده‌سازی سفارش SO-1405-0011 برای ارسال (نمونه)',list:'L2',prio:'urgent',as:[5],status:'review',due:jd(-1).num});
+  c.cm.push({id:1,by:5,at:'۸ آبان ۱۰:۲۰',text:'۳ قلم از ۴ قلم آماده شد؛ پیچ M16 فردا می‌رسد.'});
+  const d=wNew({title:'به‌روزرسانی فهرست قیمت پیچ آلن (نمونه)',list:'L1',prio:'low',as:[1],status:'done'});d.doneAt='۷ آبان ۱۶:۰۰';d.cm.push({id:2,by:1,at:'۷ آبان ۱۶:۰۰',text:'قیمت‌های جدید وارد شد.',kind:'done'});
+  S.audit=S.audit.filter(x=>x.act!=='ارجاع تسک');ME=me0}
+
 function side(on){
   const a=(k,i,t,n)=>canPage(k)?`<a href="#/admin/${k}" class="${k===on||(k.startsWith('acc')&&'acc-'+(k.split('/')[1]||'home')===on)?'on':''}">${icon(i)}<span class="t">${t}</span>${n?`<span class="n">${n}</span>`:''}</a>`:'';
   const g=(t,links,cls='')=>{const h=links.join('');return h?`<span class="grp ${cls}">${t}</span>${h}`:''};
@@ -5530,7 +5692,7 @@ function side(on){
   const bs=buScope();
   return `<aside class="side"><a class="brand" href="#/"><img src="${LOGO_L}" alt="لوگوی کارما" style="height:26px"><span><span>کارما</span><small>پنل مدیریت</small></span></a>
    <button class="side-cmd" onclick="cmdOpen()">${icon('i-search')}<span>جستجو…</span><kbd>Ctrl K</kbd></button>
-   ${a('home','i-grid','پیشخوان','')}
+   ${a('home','i-grid','پیشخوان','')}${a('work','i-check2','میزکار',wMyOpen().length||'')}
    ${g(supOnly?'تأمین':'فروش',[a('requests','i-inbox','درخواست‌ها',newReq||''),a('quotes','i-doc','پیش‌فاکتورها',''),a('fulfill','i-check2',supOnly?'برگه‌های تأمین':'برگهٔ تأمین',openOrders||''),a('invoices','i-inv','فاکتورها',Object.values(S.invoices).filter(I=>I.status==='draft'&&buOK(I.seller)&&mine(I)).length||''),a('customers','i-users','پروندهٔ مشتریان','')])}
    ${g('محصولات',[a('products','i-box','استانداردها و کالاها',''),a('new-sku','i-plus','تعریف کالای جدید',''),a('search','i-search','جستجوی هوشمند',''),a('catalog','i-doc','ساخت کاتالوگ','')])}
    ${g('حسابداری',[a('acc','i-grid','پیشخوان مالی',''),a('acc/vouchers','i-doc','اسناد حسابداری',''),a('acc/sales','i-inv','فروش',''),a('acc/purchase','i-box','خرید',''),a('acc/treasury','i-inbox','دریافت و پرداخت',''),a('acc/cheques','i-list','چک‌ها',due||''),a('acc/parties','i-users','طرف‌حساب‌ها',''),a('acc/pricing','i-tag','اعلامیهٔ قیمت',''),a('acc/reports','i-sort','گزارش‌ها',''),a('acc/setup','i-shield','کدینگ و قواعد ثبت',''),a('acc/close','i-check2','پایان دوره','')],'grp-acc')}
@@ -7619,7 +7781,7 @@ function route(keep){
   else if(seg[0]==='admin'&&!seg[1]){go('#/admin/'+homeOf());return}
   else if(seg[0]==='admin'&&!canPage(seg.slice(1).join('/')))html=pNoAccess();
   else if(seg[0]==='admin'&&seg[1]==='fulfill')html=seg[2]?pFulfill(seg[2]):pFulfillList();
-  else if(seg[0]==='admin'){const p=seg[1]||'requests';html=p==='requests'?pRequests():p==='quotes'?pQuotes(qs):p==='quote'?pQuote(seg[2]):p==='products'?pProducts():p==='new-sku'?pNewSku(qs):p==='users'?pUsers(qs):p==='search'?pSearchAdmin(qs):p==='home'?pStaffHome():p==='audit'?(UTAB='audit',pUsers()):p==='invoices'?pInvoices(qs):p==='invoice'?pInvoice(seg[2]):p==='customers'?pCustomers(qs):p==='customer'?pCustomer(seg[2]):p==='docset'?pSetup('sellers'):p==='setup'?pSetup(seg[2]):p==='settings'?pSetup('so'):p==='catalog'?pCatExport():p==='letter'?pDabir(qs):p==='dabir'?(seg[2]==='new'?pDabirNew(seg[3]||'out'):seg[2]==='edit'?pDabirNew((dById(seg[3])||{}).kind,seg[3]):seg[2]==='l'?pDabirView(seg[3]):seg[2]==='settings'?pDabirSet():pDabir(qs)):p==='resume'?pResume():p==='acc'?pAcc(seg,qs):pRequests()}
+  else if(seg[0]==='admin'){const p=seg[1]||'requests';html=p==='requests'?pRequests():p==='quotes'?pQuotes(qs):p==='quote'?pQuote(seg[2]):p==='products'?pProducts():p==='new-sku'?pNewSku(qs):p==='users'?pUsers(qs):p==='search'?pSearchAdmin(qs):p==='home'?pStaffHome():p==='audit'?(UTAB='audit',pUsers()):p==='invoices'?pInvoices(qs):p==='invoice'?pInvoice(seg[2]):p==='customers'?pCustomers(qs):p==='customer'?pCustomer(seg[2]):p==='docset'?pSetup('sellers'):p==='setup'?pSetup(seg[2]):p==='settings'?pSetup('so'):p==='catalog'?pCatExport():p==='letter'?pDabir(qs):p==='work'?pWork(qs):p==='dabir'?(seg[2]==='new'?pDabirNew(seg[3]||'out'):seg[2]==='edit'?pDabirNew((dById(seg[3])||{}).kind,seg[3]):seg[2]==='l'?pDabirView(seg[3]):seg[2]==='settings'?pDabirSet():pDabir(qs)):p==='resume'?pResume():p==='acc'?pAcc(seg,qs):pRequests()}
   else html=pNotFound();
   $('#app').innerHTML=html;
   wireSearch();
@@ -7682,6 +7844,7 @@ document.addEventListener('input',e=>{const t=e.target;if(t.matches('input:not([
    Every part of the state is a "root" kept as JSON in the _store tab. After each action the
    changed roots are sent to the server; the server checks the role and the version. When
    someone else saved first, the two versions are merged item by item (by id / no). */
+wSeed();
 const KS=(()=>{
   const GS=!!(window.google&&google.script&&google.script.run);
   const run=(fn,...a)=>new Promise((res,rej)=>{if(!GS){rej(new Error('offline'));return}google.script.run.withSuccessHandler(res).withFailureHandler(rej)[fn](...a)});
@@ -7699,6 +7862,7 @@ const KS=(()=>{
       set:d=>{S.requests=d.requests||[];S.quotes=d.quotes||{};S.orders=d.orders||{};['rseq','qseq','oseq','fseq','cseq'].forEach(k=>{if(d[k]!=null)S[k]=d[k]});if(d.pack)S.pack=d.pack;S.invoices=d.invoices||{};S.customers=d.customers||[];if(d.iseq)S.iseq=d.iseq;if(d.doc){const D0=docDefaults();S.doc=Object.assign(D0,d.doc,{sellers:Object.assign(D0.sellers,d.doc.sellers||{}),pref:Object.assign(D0.pref,d.doc.pref||{}),post:Object.assign(D0.post,d.doc.post||{})});docMigrate()}}},
     acc:{get:()=>({A,PY}),set:d=>{fill(A,d.A);fill(PY,d.PY);accMigrate()}},
     dabir:{get:()=>S.dabir,set:d=>fill(S.dabir,d)},
+    work:{get:()=>S.work,set:d=>{if(d&&Array.isArray(d.tasks)){const D0=workDefaults();S.work={seq:d.seq||0,cfg:Object.assign(D0.cfg,d.cfg||{}),tasks:d.tasks}}}},
     cv:{get:()=>S.cv,set:d=>fill(S.cv,d)},
     cat:{get:()=>CATCFG,set:d=>{CATCFG=d}},
     prod:{get:()=>({std:STD.filter(s=>STD0.get(s.id)!==enc(s)),sku:[...REG.values()].filter(r=>!REG0.has(r.tech))}),

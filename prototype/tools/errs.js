@@ -1,0 +1,2 @@
+// load errors of the page: node errs.js <app.html>
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();const e=[];p.on('pageerror',x=>e.push(x.message+' '+String(x.stack).split('\n').slice(1,3).join(' ')));await p.goto('file://'+require('path').resolve(process.argv[2])+'#/');await p.waitForTimeout(3500);console.log(e.length?e:'no errors');await b.close()})();
