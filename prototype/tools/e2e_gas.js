@@ -37,6 +37,10 @@ ok(await s.evaluate(()=>KS.can('work')&&!KS.can('acc')),'supply user may write t
 await s.goto('file://'+D+'/t.html#/admin/work');await w(500);await s.click(`[data-done="${tk.id}"]`);await w(300);await s.fill('#wask','انجام شد — آزمون');await s.click('#wok');await settle(s);
 const t2=root('work').tasks.find(t=>t.id===tk.id);ok(t2.status==='done'&&t2.cm.some(c=>c.kind==='done'),'completion by the assignee saved on the server');
 await a.evaluate(()=>KS.sync());await w(200);await a.evaluate(()=>new Promise(r=>setTimeout(r,100)));
+// contact details: edited by the admin, saved in the resume part, seen by visitors
+await a.goto('file://'+D+'/t.html#/admin/resume');await w(600);await a.fill('#cted .ct-row[data-ct="0"] [data-cf2=v]','نشانی آزمون سرور');await settle(a);
+ok(root('cv').contact&&root('cv').contact[0].v==='نشانی آزمون سرور','contact details saved on the server');
+ok(JSON.parse(G.apiBoot('').roots.cv.d).contact[0].v==='نشانی آزمون سرور','visitors receive the new address');
 // member: no tasks
 const r=G.apiRegister({name:'عضو آزمون',mobile:'09121110000',pw:'123456'});ok(r.token&&!G.apiBoot(r.token).roots.work&&!G.apiBoot(r.token).w.includes('work'),'members get no workspace');
 // upgrade from 1.4: stored roles without the new permissions still work on the server
