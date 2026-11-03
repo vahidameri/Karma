@@ -13,7 +13,7 @@
  * deny, and decides which parts they may read and write (ROOTS). Members only ever receive their
  * own requests and quotes. The audit trail and the search log are append-only.
  */
-var KARMA_VERSION = '1.5.1';
+var KARMA_VERSION = '1.5.2';
 
 var T = {
   STORE: '_store', SESS: '_sessions', ASSETS: '_assets', USERS: 'کاربران', CFG: 'تنظیمات', LOG: 'گزارش فعالیت',
